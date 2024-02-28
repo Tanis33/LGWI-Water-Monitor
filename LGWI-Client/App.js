@@ -2,8 +2,6 @@ import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { globalStyles } from './styles/globalStyles.js';
-
 
 /* Import of all screens for react navigation */
 import HomeScreen from "./screens/home";
@@ -14,9 +12,7 @@ import LoginScreen from "./screens/login";
 import MenuScreen from "./screens/menu";
 import Tabs from './shared/footer';
 
-
 const Stack = createNativeStackNavigator();
-
 export default function App() {
   return (
     <NavigationContainer>

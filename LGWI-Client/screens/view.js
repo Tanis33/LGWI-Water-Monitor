@@ -1,149 +1,207 @@
-import React, { useState, Component } from 'react';
-import { Text, View, StyleSheet, Button, ScrollView } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import React from 'react';
+import AccountView from './accountview';
+import {
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from 'react-native';
 
-export default function ViewScreen({ navigation, Component }) {
-  const [searchText, setSearchText] = useState('');
-  const [filter, setFilter] = useState({
-    selectedValue: '',
-    category: [
-      {
-        ItemName: 'All',
-      },
-      {
-        ItemName: 'Name',
-      },
-      {
-        ItemName: 'Paid',
-      },
-      {
-        ItemName: 'Owed',
-      }
-    ]
-  });
+const items = [
+  {
+    name: 'John Doe',
+    systemID: '123214',
+    gagueID: '123214',
+    tag: 'unpaid',
+    date: 'Mar 24, 2023',
+  },
+  {
+    name: 'Johny Bravo',
+    systemID: '123214',
+    gagueID: '21321412',
+    tag: 'paid',
+    date: 'Mar 23, 2023',
+  },
+  {
+    name: 'John Cena',
+    systemID: '123214',
+    gagueID: '21321312',
+    tag: 'paid',
+    date: 'Mar 28, 2023',
+  },
+  {
+    name: 'John Doe',
+    systemID: '123214',
+    gagueID: '123214',
+    tag: 'unpaid',
+    date: 'Mar 24, 2023',
+  },
+  {
+    name: 'Johny Bravo',
+    systemID: '123214',
+    gagueID: '21321412',
+    tag: 'paid',
+    date: 'Mar 23, 2023',
+  },
+  {
+    name: 'John Cena',
+    systemID: '123214',
+    gagueID: '21321312',
+    tag: 'paid',
+    date: 'Mar 28, 2023',
+  },
+  {
+    name: 'John Doe',
+    systemID: '123214',
+    gagueID: '123214',
+    tag: 'unpaid',
+    date: 'Mar 24, 2023',
+  },
+  {
+    name: 'Johny Bravo',
+    systemID: '123214',
+    gagueID: '21321412',
+    tag: 'paid',
+    date: 'Mar 23, 2023',
+  },
+  {
+    name: 'John Cena',
+    systemID: '123214',
+    gagueID: '21321312',
+    tag: 'paid',
+    date: 'Mar 28, 2023',
+  },
+];
 
-  const handleFilterChange = (value) => {
-    setFilter({ ...filter, selectedValue: value });
-  };
-
+export default function Example() {
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.card}>
-        <Picker
-          style={[styles.picker]}
-          itemStyle={{ height: 50 }}
-          mode="dropdown"
-          selectedValue={filter.selectedValue}
-          onValueChange={handleFilterChange}
-        >
-          {filter.category.map((item, index) => (
-            <Picker.Item
-              key={index}
-              label={item.ItemName}
-              value={item.ItemName}
-              color='black'
-            />
-          ))}
-        </Picker>
+    <SafeAreaView style={{ backgroundColor: '#fff' }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.name}>Sort By:</Text>
+        </View>
+        <ScrollView contentContainerStyle={styles.content}>
+          <Text style={styles.name}>System Members</Text>
 
-        <Text style={styles.text}>John</Text>
-        <Text style={styles.text}>Emma</Text>
-        <Text style={styles.text}>Michael</Text>
-        <Text style={styles.text}>Sophia</Text>
-        <Text style={styles.text}>William</Text>
-        <Text style={styles.text}>Olivia</Text>
-        <Text style={styles.text}>James</Text>
-        <Text style={styles.text}>Liam</Text>
-        <Text style={styles.text}>Ava</Text>
-        <Text style={styles.text}>Benjamin</Text>
-        <Text style={styles.text}>Mia</Text>
-        <Text style={styles.text}>Lucas</Text>
-        <Text style={styles.text}>Charlotte</Text>
-        <Text style={styles.text}>Alexander</Text>
-        <Text style={styles.text}>Amelia</Text>
-        <Text style={styles.text}>Henry</Text>
-        <Text style={styles.text}>Harper</Text>
-        <Text style={styles.text}>Daniel</Text>
-        <Text style={styles.text}>Evelyn</Text>
-      </ScrollView>
+          {items.map(({ name, systemID, gagueID, tag, date }, index) => {
+            return (
+              <TouchableOpacity
+                key={index} component={AccountView}
+                onPress={(
 
-      <View style={styles.buttonBottomContainer}>
-        <Button title="Change System" color="#03312E" style={styles.button} onPress={() => navigation.goBack()} />
+                ) => {
+                  
+                }}>
+                <View style={styles.card}>
+                  <View style={styles.cardBody}>
+                    <Text style={styles.cardTag}>{tag}</Text>
+
+                    <Text style={styles.cardname}>{name}</Text>
+
+                    <View style={styles.cardRow}>
+                      <View style={styles.cardRowItem}>
+                        <Text style={styles.cardRowItemText}>{systemID}</Text>
+                      </View>
+                      <Text style={styles.cardRowDivider}>·</Text>
+                      <View style={styles.cardRowItem}>
+                        <Text style={styles.cardRowItemText}>{gagueID}</Text>
+                      </View>
+
+                      <Text style={styles.cardRowDivider}>·</Text>
+
+                      <View style={styles.cardRowItem}>
+                        <Text style={styles.cardRowItemText}>{date}</Text>
+                      </View>
+                    </View>
+
+                  </View>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 16,
+    marginBottom: 140,
   },
+  name: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#1d1d1d',
+    marginBottom: 12,
+  },
+  /** Card */
   card: {
-    width: '90%',
-    height: '75%',
-    backgroundColor: 'white',
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    position: 'absolute',
-    top: 15,
-    padding: 10, // Add padding to fit the searchContainer
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    marginVertical: 5,
-    marginHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'darkgrey',
-    borderRadius: 8,
-    padding: 10,
-  },
-  buttonBottomContainer: {
     flexDirection: 'row',
-    marginTop: 40,
-    borderWidth: 1,
-    justifyContent: 'space-between',
-    marginHorizontal: 40,
-    backgroundColor: '#009F93',
-    padding: 5,
-    borderRadius: 10,
-    position: 'absolute',
-    bottom: 100,
+    alignItems: 'stretch',
+    borderRadius: 12,
+    marginBottom: 16,
+    backgroundColor: '#fff',
   },
-  button: {
-    backgroundColor: '#009F93',
-    borderColor: '#03312E',
-    padding: 15,
-    textAlign: 'center',
-    borderRadius: 5,
-    width: '30%',
+
+  cardBody: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    paddingHorizontal: 16,
   },
-  picker: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#03312E',
-    borderRadius: 8,
-    marginVertical: 10,
-    backgroundColor: '#009F93',
+  cardTag: {
+    fontWeight: '500',
+    fontSize: 12,
+    color: '#939393',
+    marginBottom: 7,
+    textTransform: 'capitalize',
   },
-  buttonContainer: {
-    width: 100,
-    height: 40,
-    backgroundColor: '#009F93',
-    justifyContent: 'center',
+  cardname: {
+    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#000',
+    marginBottom: 8,
+  },
+  cardRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 8,
+    marginHorizontal: -8,
+    marginBottom: 'auto',
+  },
+  cardRowItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 6,
+    borderRightWidth: 1,
+    borderColor: 'transparent',
+  },
+  cardRowItemImg: {
+    width: 22,
+    height: 22,
+    borderRadius: 9999,
+    marginRight: 6,
+  },
+  cardRowItemText: {
+    fontWeight: '400',
+    fontSize: 13,
+    color: '#939393',
+  },
+  cardRowDivider: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#939393',
+  },
+  content: {
+    paddingHorizontal: 8,
   },
 });
-
-

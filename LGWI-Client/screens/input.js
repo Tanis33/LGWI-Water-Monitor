@@ -1,78 +1,168 @@
-import React from 'react';
-import { View, TextInput, StyleSheet, Button, Image } from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-export default function InputScreen({ navigation }) {
+export default function Example() {
+  const [form, setForm] = useState({
+    fullname: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
   return (
-    <View style={styles.container}>
-      <View style={styles.circle}>
-        <Image source={require('../assets/Sanlian.png')} style={styles.image} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Input Data</Text>
+
+          <Text style={styles.subtitle}>Input water meter reading and click submit</Text>
+        </View>
+
+        <KeyboardAwareScrollView>
+          <View style={styles.form}>
+            <View style={styles.input}>
+              <Text style={styles.inputLabel}>Gauge ID</Text>
+
+              <TextInput
+                onChangeText={fullname => setForm({ ...form, fullname })}
+                placeholder="1234"
+                placeholderTextColor="#6b7280"
+                style={styles.inputControl}
+                value={form.fullname} />
+            </View>
+
+            <View style={styles.input}>
+              <Text style={styles.inputLabel}>Read Amount</Text>
+
+              <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType="email-address"
+                onChangeText={email => setForm({ ...form, email })}
+                placeholder="123.43"
+                placeholderTextColor="#6b7280"
+                style={styles.inputControl}
+                value={form.email} />
+            </View>
+
+            <View style={styles.input}>
+              <Text style={styles.inputLabel}>Rate</Text>
+
+              <TextInput
+                autoCorrect={false}
+                onChangeText={password => setForm({ ...form, password })}
+                placeholder="0.43"
+                placeholderTextColor="#6b7280"
+                style={styles.inputControl}
+                secureTextEntry={true}
+                value={form.password} />
+            </View>
+
+            <View style={styles.formAction}>
+              <TouchableOpacity
+                onPress={() => {
+                  // handle onPress
+                }}>
+                <View style={styles.btn}>
+                  <Text style={styles.btnText}>Submit</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <TouchableOpacity
+              onPress={() => {
+                // handle link
+              }}>
+              <Text style={styles.formFooter}>
+                Already have an account?{' '}
+                <Text style={{ textDecorationLine: 'underline' }}>Sign in</Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </KeyboardAwareScrollView>
       </View>
-      <TextInput style={[styles.input, styles.textbox]} placeholder="Meter Reading"/>
-      <TextInput style={[styles.input, styles.textbox]} placeholder="Meter ID" />
-      <TextInput style={[styles.input, styles.textbox]} placeholder="Cost" />
-      <View style={styles.buttonContainer}>
-        <Button title="Submit" color="#03312E" onPress={() => console.log('Button pressed')} style={[styles.button]} />
-      </View>
-    </View>
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingVertical: 24,
+    paddingHorizontal: 0,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
   },
-  circle: {
-    width: 375,
-    height: 375,
-    borderRadius: 150,
-    borderWidth: 2,
-    borderColor: '#03312E',
-    marginBottom: 20,
-    marginTop: -180, // Adjust the marginTop value to move the circle higher up
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden', // Add this line to hide overflow
+  header: {
+    marginVertical: 24,
+    paddingHorizontal: 24,
   },
-  image: {
-    width: 373,
-    height: 373,
-    borderRadius: 150,
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#1d1d1d',
+    marginBottom: 6,
   },
+  subtitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#929292',
+  },
+  /** Form */
+  form: {
+    paddingHorizontal: 24,
+  },
+  formAction: {
+    marginVertical: 24,
+  },
+  formFooter: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#222',
+    textAlign: 'center',
+  },
+  /** Input */
   input: {
-    width: 200,
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    marginBottom: 16,
   },
-  textbox: {
-    borderRadius: 10,
-    height: 50,
-    width: 225,
-    borderColor: '#03312E',
-    backgroundColor: 'white',
+  inputLabel: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#222',
+    marginBottom: 8,
   },
-  button: {
-    width: 200,
-    height: 40,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'black',
+  inputControl: {
+    height: 44,
+    backgroundColor: '#f1f5f9',
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#222',
   },
-  buttonContainer: {
+  /** Button */
+  btn: {
     flexDirection: 'row',
-    marginTop: 40,
+    alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 40,
-    backgroundColor: '#009F93',
-    padding: 5,
-    borderRadius: 10,
-    position: 'absolute',
-    bottom: 100,
-    width: 150,
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderWidth: 1,
+    backgroundColor: '#02C3BD',
+    borderColor: '#02C3BD',
+  },
+  btnText: {
+    fontSize: 17,
+    lineHeight: 24,
+    fontWeight: '600',
+    color: '#fff',
   },
 });

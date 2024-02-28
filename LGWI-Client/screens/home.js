@@ -4,13 +4,12 @@ import { Button, StyleSheet, Text, TouchableOpacity, View, Image, ImageBackgroun
 import { NavigationContainer } from '@react-navigation/native';
 import MenuScreen from '../screens/menu';
 
-
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Created by: Jacob Westra and Ben Tanis</Text>
       <Text style={styles.text}>©Calvin University</Text>
-
+      <Text style={styles.text}>Data to go here</Text>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('tabsHome', {screen: 'Menu'})}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>

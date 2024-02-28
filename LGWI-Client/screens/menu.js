@@ -3,6 +3,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
+
 // Define the MenuScreen component
 export default function MenuScreen({ navigation }) {
   return (

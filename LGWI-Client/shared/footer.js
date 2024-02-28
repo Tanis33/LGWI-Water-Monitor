@@ -25,19 +25,18 @@ export default function Tabs() {
           bottom: 0,
           right: 0,
           padding: 5,
-          borderTopLeftRadius: 15, // Add this line
-          borderTopRightRadius: 15, // Add this line
+          borderTopLeftRadius: 15, 
+          borderTopRightRadius: 15, 
         },
         headerTintColor: '#fff',
         headerStyle: {
           backgroundColor: '#02C3BD',
-          borderBottomLeftRadius: 15, // Add this line
-          borderBottomRightRadius: 15, // Add this line
+          borderBottomLeftRadius: 15,
+          borderBottomRightRadius: 15,
         },
         headerTitleStyle: {
-          fontSize: '1',
+          fontSize: 1,
         },
-
       }}>
 
       <Tab.Screen name="Home" component={MenuScreen} options={{
