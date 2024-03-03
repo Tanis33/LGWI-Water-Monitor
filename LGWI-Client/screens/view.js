@@ -1,5 +1,4 @@
 import React from 'react';
-import AccountView from './accountview';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,6 +7,8 @@ import {
   TouchableOpacity,
   View,
   Image,
+  FeatherIcon,
+  TextInput,
 } from 'react-native';
 
 const items = [
@@ -76,7 +77,7 @@ const items = [
   },
 ];
 
-export default function Example() {
+export default function ViewScreen({ navigation }) {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>
@@ -89,12 +90,8 @@ export default function Example() {
           {items.map(({ name, systemID, gagueID, tag, date }, index) => {
             return (
               <TouchableOpacity
-                key={index} component={AccountView}
-                onPress={(
-
-                ) => {
-                  
-                }}>
+                key={index}
+                onPress={() => navigation.navigate('AccountView', {})}>
                 <View style={styles.card}>
                   <View style={styles.cardBody}>
                     <Text style={styles.cardTag}>{tag}</Text>

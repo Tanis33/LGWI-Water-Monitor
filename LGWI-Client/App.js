@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -11,7 +10,9 @@ import SettingsScreen from "./screens/settings";
 import LoginScreen from "./screens/login";
 import MenuScreen from "./screens/menu";
 import Tabs from './shared/footer';
+import AccountViewScreen from './screens/accountview';
 
+//Stack Navigaitor
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
@@ -27,23 +28,28 @@ export default function App() {
             headerTintColor: '#fff',
             headerBackTitleVisible: false,
             headerStyle: {
-              backgroundColor: '#953635',
+              backgroundColor: '#02C3BD',
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
             },
           }}>
-
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
         </Stack.Group>
-
-
-        {/*Stack group for menu pages and order pages */}
+        {/*Stack group for main pages */}
         <Stack.Group
           screenOptions={{
             title: '',
             headerTintColor: '#fff',
             headerBackTitleVisible: false,
             headerStyle: {
-              backgroundColor: '#953635',
+              backgroundColor: '#02C3BD',
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
             },
           }}>
           <Stack.Screen name="tabsHome" component={Tabs} options={{ headerShown: false, }} />
@@ -51,6 +57,7 @@ export default function App() {
           <Stack.Screen name="Input" component={InputScreen} />
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
+          <Stack.Screen name="AccountView" component={AccountViewScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

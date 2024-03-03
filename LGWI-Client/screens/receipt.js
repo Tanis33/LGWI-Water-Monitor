@@ -21,15 +21,26 @@ const items = [
 ];
 
 
-export default function Example( ) {
+export default function Example() {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
           <View style={styles.header}>
             <View style={styles.headerAction}>
+              <TouchableOpacity
+                onPress={() => {
+                  // handle onPress
+                }}>
+                <FeatherIcon
+                  color="#0e0e0e"
+                  name="x"
+                  size={24} />
+              </TouchableOpacity>
             </View>
-            <Text style={styles.headerTitle}>Information</Text>
+
+            <Text style={styles.headerTitle}>Receipt</Text>
+
             <View
               style={[styles.headerAction, { alignItems: 'flex-end' }]} />
           </View>
@@ -110,6 +121,45 @@ export default function Example( ) {
                 <Text style={styles.detailsField}>Category</Text>
 
                 <Text style={styles.detailsValue}>Development</Text>
+              </View>
+
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Payment method</Text>
+
+                <Text style={styles.detailsValue}>Visa ending in 0182</Text>
+              </View>
+
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Receipt Number</Text>
+
+                <Text style={styles.detailsValue}>9876543210</Text>
+              </View>
+
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Billing Name</Text>
+
+                <Text style={styles.detailsValue}>John Smith</Text>
+              </View>
+
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Billing Email</Text>
+
+                <Text style={styles.detailsValue}>johnsmith@example.com</Text>
+              </View>
+
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Test Address</Text>
+
+                <Text style={styles.detailsValue}>
+                  1234 Elm Street, Suite 567, Anytown, USA
+                </Text>
+              </View>
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Test</Text>
+
+                <Text style={styles.detailsValue}>
+                  1234 Elm Street, Suite 567, Anytown, USA
+                </Text>
               </View>
             </View>
           </ScrollView>

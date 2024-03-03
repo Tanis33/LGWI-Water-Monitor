@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet,
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
+  StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -75,16 +70,6 @@ export default function Example() {
                 </View>
               </TouchableOpacity>
             </View>
-
-            <TouchableOpacity
-              onPress={() => {
-                // handle link
-              }}>
-              <Text style={styles.formFooter}>
-                Already have an account?{' '}
-                <Text style={{ textDecorationLine: 'underline' }}>Sign in</Text>
-              </Text>
-            </TouchableOpacity>
           </View>
         </KeyboardAwareScrollView>
       </View>
@@ -92,9 +77,10 @@ export default function Example() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 24,
+    paddingVertical: 0,
     paddingHorizontal: 0,
     flexGrow: 1,
     flexShrink: 1,

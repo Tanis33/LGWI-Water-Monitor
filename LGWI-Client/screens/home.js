@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image, ImageBackground } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import MenuScreen from '../screens/menu';
+
 
 export default function HomeScreen({ navigation }) {
   return (
