@@ -22,9 +22,9 @@ export default function Tabs() {
           position: 'absolute',
           backgroundColor: '#02C3BD',
           left: 0,
-          bottom: 0,
           right: 0,
-          padding: 5,
+          height: 60,
+          paddingBottom: 8,
           borderTopLeftRadius: 8, 
           borderTopRightRadius: 8, 
         },
@@ -33,6 +33,7 @@ export default function Tabs() {
           backgroundColor: '#02C3BD',
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
+          height: 40
         },
         headerTitleStyle: {
           fontSize: 1,

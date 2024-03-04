@@ -128,7 +128,8 @@ export default function ViewScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    marginBottom: 140,
+    marginBottom: 160,
+    backgroundColor: '#f3f3f3',
   },
   name: {
     fontSize: 32,
@@ -141,7 +142,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'stretch',
     borderRadius: 12,
-    marginBottom: 16,
+    padding: 8,
+    marginBottom: 8,
+    backgroundColor: '#fff',
+    borderColor: 'black',
     backgroundColor: '#fff',
   },
 
@@ -158,7 +162,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 12,
     color: '#939393',
-    marginBottom: 7,
+    marginBottom: 8,
     textTransform: 'capitalize',
   },
   cardname: {
@@ -182,23 +186,17 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderColor: 'transparent',
   },
-  cardRowItemImg: {
-    width: 22,
-    height: 22,
-    borderRadius: 9999,
-    marginRight: 6,
-  },
   cardRowItemText: {
     fontWeight: '400',
     fontSize: 13,
     color: '#939393',
   },
   cardRowDivider: {
-    fontSize: 17,
+    fontSize: 12,
     fontWeight: 'bold',
     color: '#939393',
   },
   content: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 0,
   },
 });

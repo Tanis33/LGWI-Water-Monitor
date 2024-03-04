@@ -3,6 +3,7 @@ import {
   StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 export default function Example() {
   const [form, setForm] = useState({
@@ -12,7 +13,7 @@ export default function Example() {
     confirmPassword: '',
   });
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Input Data</Text>
@@ -22,44 +23,55 @@ export default function Example() {
 
         <KeyboardAwareScrollView>
           <View style={styles.form}>
-            <View style={styles.input}>
-              <Text style={styles.inputLabel}>Gauge ID</Text>
-
-              <TextInput
-                onChangeText={fullname => setForm({ ...form, fullname })}
-                placeholder="1234"
-                placeholderTextColor="#6b7280"
-                style={styles.inputControl}
-                value={form.fullname} />
+            {/* Input for read amount */}
+            <View style={styles.statsRow}>
+              <View style={styles.statsItem}>
+                <View style={{ backgroundColor: 'white', width: '100%' }}>
+                  <Text style={styles.statsItemLabel}>Gauge ID</Text>
+                  <TextInput
+                    onChangeText={fullname => setForm({ ...form, fullname })}
+                    placeholder="1234"
+                    placeholderTextColor="#6b7280"
+                    style={styles.inputControl}
+                    value={form.fullname} />
+                </View>
+              </View>
+            </View>
+            {/* Read Amount (Input Data) */}
+            <View style={styles.statsRow}>
+              <View style={styles.statsItem}>
+                <View style={{ backgroundColor: 'white', width: '100%' }}>
+                  <Text style={styles.statsItemLabel}>Read Amount</Text>
+                  <TextInput
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    keyboardType="email-address"
+                    onChangeText={email => setForm({ ...form, email })}
+                    placeholder="123.43"
+                    placeholderTextColor="#6b7280"
+                    style={styles.inputControl}
+                    value={form.email} />
+                </View>
+              </View>
             </View>
 
-            <View style={styles.input}>
-              <Text style={styles.inputLabel}>Read Amount</Text>
 
-              <TextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="email-address"
-                onChangeText={email => setForm({ ...form, email })}
-                placeholder="123.43"
-                placeholderTextColor="#6b7280"
-                style={styles.inputControl}
-                value={form.email} />
+            <View style={styles.statsRow}>
+              <View style={styles.statsItem}>
+                <View style={{ backgroundColor: 'white', width: '100%' }}>
+                  <Text style={styles.statsItemLabel}>Rate</Text>
+                  <TextInput
+                    autoCorrect={false}
+                    onChangeText={password => setForm({ ...form, password })}
+                    placeholder="0.43"
+                    placeholderTextColor="#6b7280"
+                    style={styles.inputControl}
+                    secureTextEntry={true}
+                    value={form.password} />
+                </View>
+              </View>
             </View>
-
-            <View style={styles.input}>
-              <Text style={styles.inputLabel}>Rate</Text>
-
-              <TextInput
-                autoCorrect={false}
-                onChangeText={password => setForm({ ...form, password })}
-                placeholder="0.43"
-                placeholderTextColor="#6b7280"
-                style={styles.inputControl}
-                secureTextEntry={true}
-                value={form.password} />
-            </View>
-
+            {/* Button Goes here */}
             <View style={styles.formAction}>
               <TouchableOpacity
                 onPress={() => {
@@ -77,7 +89,6 @@ export default function Example() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 0,
@@ -85,6 +96,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
+    display: 'flex',
   },
   header: {
     marginVertical: 24,
@@ -106,14 +118,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   formAction: {
-    marginVertical: 24,
+    marginVertical: 8,
   },
-  formFooter: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: '#222',
-    textAlign: 'center',
-  },
+
   /** Input */
   input: {
     marginBottom: 16,
@@ -126,12 +133,14 @@ const styles = StyleSheet.create({
   },
   inputControl: {
     height: 44,
-    backgroundColor: '#f1f5f9',
+    backgroundColor: 'white',
     paddingHorizontal: 16,
     borderRadius: 12,
     fontSize: 15,
     fontWeight: '500',
     color: '#222',
+    borderWidth: 1,
+    borderColor: '#02C3BD',
   },
   /** Button */
   btn: {
@@ -144,11 +153,45 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#02C3BD',
     borderColor: '#02C3BD',
+    width: '50%',
+    alignSelf: 'center',
+
   },
   btnText: {
-    fontSize: 17,
+    fontSize: 18,
     lineHeight: 24,
     fontWeight: '600',
-    color: '#fff',
+    color: 'black',
+  },
+  /** From Menu Screen */
+  stats: {
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+  statsRow: {
+    flexDirection: 'row',
+    marginHorizontal: -6,
+  },
+  statsItem: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: '#fff',
+    marginHorizontal: 6,
+    marginBottom: 12,
+  },
+  statsItemLabel: {
+    fontSize: 18,
+    color: 'black',
+    marginBottom: 2,
+    fontWeight: 'bold',
+    marginTop: -6,
   },
 });

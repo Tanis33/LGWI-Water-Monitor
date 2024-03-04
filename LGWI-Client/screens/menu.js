@@ -33,19 +33,19 @@ export default function Example() {
               </View>
 
               <View>
-                <Text style={styles.statsItemLabel}>Clients</Text>
+                <Text style={styles.statsItemLabel}>Paid</Text>
 
-                <Text style={styles.statsItemValue}>832</Text>
+                <Text style={styles.statsItemValue}>43</Text>
               </View>
             </View>
 
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="grid" size={22} />
+                <FeatherIcon color="#fff" name="users" size={22} />
               </View>
 
               <View>
-                <Text style={styles.statsItemLabel}>Views</Text>
+                <Text style={styles.statsItemLabel}>Unpaid</Text>
 
                 <Text style={styles.statsItemValue}>8</Text>
               </View>
@@ -91,9 +91,9 @@ export default function Example() {
               </View>
 
               <View>
-                <Text style={styles.statsItemLabel}>Active Tasks</Text>
+                <Text style={styles.statsItemLabel}>Next Payment Due</Text>
 
-                <Text style={styles.statsItemValue}>83</Text>
+                <Text style={styles.statsItemValue}>8/3/24</Text>
               </View>
             </View>
           </View>
@@ -105,7 +105,7 @@ export default function Example() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 24,
+    padding: 16,
   },
   title: {
     fontSize: 32,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   statsItemIcon: {
-    backgroundColor: '#faad55',
+    backgroundColor: '#03312E',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
