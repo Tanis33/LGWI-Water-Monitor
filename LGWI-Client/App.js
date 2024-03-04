@@ -21,10 +21,7 @@ export default function App() {
         {/*Stack group for home login and register screen */}
         <Stack.Group
           screenOptions={{
-            title: 'LGWI Management System',
-            headerTitleStyle: {
-              fontSize: 24,
-            },
+            headerShown: false,
             headerTintColor: '#fff',
             headerBackTitleVisible: false,
             headerStyle: {
@@ -53,7 +50,7 @@ export default function App() {
             },
           }}>
           <Stack.Screen name="tabsHome" component={Tabs} options={{ headerShown: false, }} />
-          <Stack.Screen name="Menu" component={MenuScreen} options={{ headerShown: true }} />
+          <Stack.Screen name="Menu" component={MenuScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Input" component={InputScreen} />
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
