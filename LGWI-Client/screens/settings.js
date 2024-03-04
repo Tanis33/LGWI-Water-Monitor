@@ -6,17 +6,21 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  Switch,
-  Image,
+  Modal,
+  Image
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-export default function Example() {
+export default function Settings({ navigation }) {
   const [form, setForm] = useState({
     darkMode: false,
     emailNotifications: true,
     pushNotifications: false,
   });
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
@@ -37,7 +41,7 @@ export default function Example() {
             {/* Language */}
             <TouchableOpacity
               onPress={() => {
-                // handle onPress
+
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#fe9400' }]}>
@@ -123,7 +127,7 @@ export default function Example() {
                 name="chevron-right"
                 size={20} />
             </TouchableOpacity>
-            
+
             {/* View Project (link to github)*/}
             <TouchableOpacity
               onPress={() => {
@@ -147,7 +151,7 @@ export default function Example() {
             {/* About (about page for app developers*/}
             <TouchableOpacity
               onPress={() => {
-                // handle onPress
+                openModal();
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#32c759' }]}>
@@ -164,6 +168,76 @@ export default function Example() {
                 size={20} />
             </TouchableOpacity>
           </View>
+          {/* About Developers Modal */}
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={modalVisible}
+            onRequestClose={() => {
+              closeModal();
+            }}>
+            <View style={styles.header}>
+              <View style={styles.headerAction}>
+                <TouchableOpacity onPress={() => closeModal()}>
+                  <FeatherIcon name="x" size={40} style ={{paddingTop: 25, alignItems: 'flex-end', }}/>
+                </TouchableOpacity>
+
+                <View style={styles.projInfo}>
+                  <View>
+                    <Text style={styles.profileName}>LGWI Liquid Metics</Text>
+
+                    <Text style={styles.profileAddress}>
+                      Calvin University - Senior Design Project 2023/2024
+                    </Text>
+                    <Text style={styles.profileAddress}>
+                      Version 1.0.0
+                    </Text>
+                  </View>
+                </View>
+
+                <View style={styles.profile}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      // open up website / github
+                    }}>
+                    <View style={styles.profileAvatarWrapper}>
+                      <Image
+                        alt=""
+                        source={require('../assets/benPFP.png')}
+                        style={styles.profileAvatar} />
+                    </View>
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.profileName}>Benjamin Tanis</Text>
+                    <Text style={styles.profileAddress}>
+                      Calvin University - Full Stack Developer
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.profile}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      // open up website / github
+                    }}>
+                    <View style={styles.profileAvatarWrapper}>
+                      <Image
+                        alt=""
+                        source={require('../assets/jacobPFP.png')}
+                        style={styles.profileAvatar} />
+                    </View>
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.profileName}>Jacob Westra</Text>
+                    <Text style={styles.profileAddress}>
+                      Calvin University
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </Modal>
+
+
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -184,6 +258,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#02C3BD',
+    borderRadius: 12,
+    padding: 16,
+    margin: 16,
   },
   profileAvatarWrapper: {
     position: 'relative',
@@ -259,5 +338,19 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
+  },
+  header: {
+    marginBottom: 16,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#f3f3f3',
+    height: '100%',
+  },
+  projInfo: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+    marginTop: -24,
   },
 });
