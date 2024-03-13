@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '500',
     color: '#929292',
   },
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   inputLabel: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: '600',
     color: '#222',
     marginBottom: 8,
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 16,
     borderRadius: 12,
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: '500',
     color: '#222',
     borderWidth: 1,
@@ -144,18 +144,12 @@ const styles = StyleSheet.create({
   },
   /** Button */
   btn: {
-    flexDirection: 'row',
+    backgroundColor: '#02C3BD',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    backgroundColor: '#02C3BD',
-    borderColor: '#02C3BD',
-    width: '50%',
-    alignSelf: 'center',
-
+    borderRadius: 12,
   },
   btnText: {
     fontSize: 18,

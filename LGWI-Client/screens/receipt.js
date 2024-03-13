@@ -20,7 +20,6 @@ const items = [
   },
 ];
 
-
 export default function Example() {
   return (
     <View style={{ flex: 1 }}>

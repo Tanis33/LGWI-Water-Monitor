@@ -1,0 +1,23 @@
+{
+  "language": "English",
+  "screens": {
+      "home": {
+          "title": "Track water usage {'\n'}with{' '}",
+          "text": {
+              "appName": "LGWI Liquid Metircs",
+              "submitButton": "Let's go!"
+          }
+      },
+      "login": {
+          "title": "Sign in",
+          "text": {
+              "login": "login",
+              "emailAddress": "Email address",
+              "password": "password",
+              "continue": "Continue",
+              "createAccount": "Create an Account",
+              "forgotPassword": "Forgotten password?"
+          }
+      }
+  }
+}

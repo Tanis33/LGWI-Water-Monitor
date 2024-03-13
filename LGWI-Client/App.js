@@ -11,9 +11,11 @@ import LoginScreen from "./screens/login";
 import MenuScreen from "./screens/menu";
 import Tabs from './shared/footer';
 import AccountViewScreen from './screens/accountview';
+import './localization/i18n';
 
 //Stack Navigaitor
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>

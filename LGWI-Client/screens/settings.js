@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   Modal,
-  Image
+  Image,
+  Linking
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
@@ -27,9 +28,9 @@ export default function Settings({ navigation }) {
       <View style={styles.container}>
         <View style={styles.profile}>
           <View>
-            <Text style={styles.profileName}>John Doe</Text>
+            <Text style={styles.profileName}>USER1234</Text>
             <Text style={styles.profileAddress}>
-              Description
+              About
             </Text>
           </View>
         </View>
@@ -71,7 +72,7 @@ export default function Settings({ navigation }) {
                   size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>System</Text>
+              <Text style={styles.rowLabel}>Change System</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -84,7 +85,7 @@ export default function Settings({ navigation }) {
             {/* System Location */}
             <TouchableOpacity
               onPress={() => {
-                // handle onPress
+                Linking.openURL('https://console.firebase.google.com/u/0/project/lgwi-csv/storage/lgwi-csv.appspot.com/files')
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#32c759' }]}>
@@ -94,7 +95,7 @@ export default function Settings({ navigation }) {
                   size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>CSV Info</Text>
+              <Text style={styles.rowLabel}>Firebase CSVs</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -131,7 +132,7 @@ export default function Settings({ navigation }) {
             {/* View Project (link to github)*/}
             <TouchableOpacity
               onPress={() => {
-                // handle onPress
+                Linking.openURL('https://github.com/Tanis33/LGWI-Water-Monitor');
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#007afe' }]}>

@@ -17,7 +17,7 @@ export default function Example() {
               </View>
 
               <View>
-                <Text style={styles.statsItemLabel}>System Number</Text>
+                <Text style={styles.statsItemLabel}>System Info</Text>
 
                 <Text style={styles.statsItemValue}>83</Text>
               </View>
@@ -33,7 +33,7 @@ export default function Example() {
               </View>
 
               <View>
-                <Text style={styles.statsItemLabel}>Paid</Text>
+                <Text style={styles.statsItemLabelGreen}>Paid</Text>
 
                 <Text style={styles.statsItemValue}>43</Text>
               </View>
@@ -45,7 +45,7 @@ export default function Example() {
               </View>
 
               <View>
-                <Text style={styles.statsItemLabel}>Unpaid</Text>
+                <Text style={styles.statsItemLabelRed}>Unpaid</Text>
 
                 <Text style={styles.statsItemValue}>8</Text>
               </View>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   statsItemLabel: {
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: '500',
     color: '#8e8e93',
     marginBottom: 2,
@@ -157,5 +157,17 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '600',
     color: '#081730',
+  },
+  statsItemLabelGreen: { 
+    fontSize: 18, 
+    fontWeight: '700', 
+    color: '#2E7D32', 
+    marginBottom: 2 
+  },
+  statsItemLabelRed: { 
+    fontSize: 18, 
+    fontWeight: '700', 
+    color: '#C62828', 
+    marginBottom: 2 
   },
 });
