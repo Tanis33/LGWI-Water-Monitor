@@ -11,7 +11,6 @@ import Menu from './menu';
 import { useTranslation } from 'react-i18next';
 
 export default function Example({navigation}) {
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.hero}>
@@ -39,7 +38,7 @@ export default function Example({navigation}) {
             
           }}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>test</Text>
+            <Text style={styles.buttonText}>Test</Text>
             {/* //{t('screens.home.text.submitButton')} */}
           </View>
         </TouchableOpacity>
