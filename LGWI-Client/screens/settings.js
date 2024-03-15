@@ -84,9 +84,8 @@ export default function Settings({ navigation }) {
 
             {/* System Location */}
             <TouchableOpacity
-              onPress={() => {
-                Linking.openURL('https://console.firebase.google.com/u/0/project/lgwi-csv/storage/lgwi-csv.appspot.com/files')
-              }}
+              onPress={() => navigation.navigate('DatabaseTest', {})
+              }
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#32c759' }]}>
                 <FeatherIcon

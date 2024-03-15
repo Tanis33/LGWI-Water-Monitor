@@ -4,7 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 /* Import of all screens for react navigation */
+//import firestore from '@react-native-firebase/firestore';
 import HomeScreen from "./screens/home";
+import DatabaseTest from "./screens/DatabaseTest";
 import InputScreen from "./screens/input";
 import ViewScreen from "./screens/view";
 import SettingsScreen from "./screens/settings";
@@ -52,7 +54,8 @@ export default function App() {
               borderTopRightRadius: 8,
             },
           }}>
-          <Stack.Screen name="tabsHome" component={Tabs} options={{ headerShown: false, }} />
+          <Stack.Screen name="DatabaseTest" component={DatabaseTest} />
+          <Stack.Screen name="tabsHome" component={Tabs} options={{ headerShown: false }} />
           <Stack.Screen name="Menu" component={MenuScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Input" component={InputScreen} />
           <Stack.Screen name="View" component={ViewScreen} />
