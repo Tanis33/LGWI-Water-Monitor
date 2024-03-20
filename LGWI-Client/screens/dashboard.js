@@ -15,7 +15,7 @@ export default function Dashboard({ navigation }) {
                 <FeatherIcon color="#fff" name="list" size={22} />
               </View>
               <View>
-                <Text style={styles.statsItemLabel}>System Info</Text>
+                <Text style={styles.statsItemLabel}>Community Name</Text>
                 <Text style={styles.statsItemValue}>83</Text>
               </View>
             </View>

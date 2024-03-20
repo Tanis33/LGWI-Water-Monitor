@@ -25,84 +25,22 @@ export default function Example() {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <View style={styles.headerAction}>
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}>
-                <FeatherIcon
-                  color="#0e0e0e"
-                  name="x"
-                  size={24} />
-              </TouchableOpacity>
-            </View>
-
-            <Text style={styles.headerTitle}>Receipt</Text>
-
-            <View
-              style={[styles.headerAction, { alignItems: 'flex-end' }]} />
-          </View>
-
+        <View style={styles.container}>  
           <ScrollView
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
-            <View style={styles.receiptLogo}>
-              <FeatherIcon color="#fff" name="codepen" size={32} />
-            </View>
-
-            <Text style={styles.receiptTitle}>
-              TechWorld Consulting Inc.
-            </Text>
 
             <Text style={styles.receiptSubtitle}>Invoice #0012-2832</Text>
 
             <View style={styles.receiptPrice}>
-              <Text style={styles.receiptPriceText}>$115,900</Text>
-
-              <Text
-                style={[
-                  styles.receiptPriceText,
-                  { fontSize: 20, lineHeight: 32 },
-                ]}>
-                .00
-              </Text>
+              <Text style={styles.receiptPriceText}>$111 (amount owed)</Text>
             </View>
 
             <Text style={styles.receiptDescription}>
-              Software Development March 2023 - April 2023
+              Water Bill March 2023 - April 2023
             </Text>
 
-            <View style={styles.avatarWrapper}>
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-            </View>
+            
 
             <View style={styles.divider}>
               <View style={styles.dividerInset} />
@@ -120,7 +58,7 @@ export default function Example() {
               <View style={styles.detailsRow}>
                 <Text style={styles.detailsField}>Category</Text>
 
-                <Text style={styles.detailsValue}>Development</Text>
+                <Text style={styles.detailsValue}>Residential</Text>
               </View>
 
               <View style={styles.detailsRow}>
@@ -142,16 +80,16 @@ export default function Example() {
               </View>
 
               <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Billing Email</Text>
+                <Text style={styles.detailsField}>Billing ID Number</Text>
 
-                <Text style={styles.detailsValue}>johnsmith@example.com</Text>
+                <Text style={styles.detailsValue}>123456789</Text>
               </View>
 
               <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Test Address</Text>
+                <Text style={styles.detailsField}>Neighborhood</Text>
 
                 <Text style={styles.detailsValue}>
-                  1234 Elm Street, Suite 567, Anytown, USA
+                  Name of Neighborhood
                 </Text>
               </View>
               <View style={styles.detailsRow}>
@@ -172,7 +110,7 @@ export default function Example() {
             // handle onPress
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Submit Receipt</Text>
+            <Text style={styles.btnText}>Confrim Bill</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -180,7 +118,7 @@ export default function Example() {
             // handle onPress
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>Save as PDF</Text>
+            <Text style={styles.btnSecondaryText}>Change Bill</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -228,11 +166,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
-  headerTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#000',
-  },
   /** Receipt */
   receipt: {
     alignItems: 'center',
@@ -255,7 +188,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   receiptSubtitle: {
-    fontSize: 13,
+    fontSize: 18,
     lineHeight: 20,
     color: '#818181',
     marginBottom: 12,
@@ -274,7 +207,7 @@ const styles = StyleSheet.create({
     color: '#8338ec',
   },
   receiptDescription: {
-    fontSize: 14,
+    fontSize: 18,
     lineHeight: 22,
     color: '#818181',
     textAlign: 'center',
@@ -314,8 +247,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   detailsTitle: {
-    fontSize: 17,
-    fontWeight: '600',
+    fontSize: 18,
+    fontWeight: 'bold',
     color: '#222',
     marginBottom: 16,
   },
@@ -353,8 +286,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderWidth: 1,
-    backgroundColor: '#8338ec',
-    borderColor: '#8338ec',
+    backgroundColor: '#02C3BD',
+    borderColor: '#02C3BD',
     marginBottom: 12,
   },
   btnText: {
@@ -372,12 +305,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderWidth: 1,
     backgroundColor: 'transparent',
-    borderColor: '#8338ec',
+    borderColor: '#02C3BD',
   },
   btnSecondaryText: {
     fontSize: 18,
     lineHeight: 26,
     fontWeight: '600',
-    color: '#8338ec',
+    color: '#02C3BD',
   },
 });

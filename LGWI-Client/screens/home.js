@@ -18,13 +18,7 @@ export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
 
-      <View style={styles.hero}>
-        <Image
-          source={{ uri: 'https://assets.withfra.me/Landing.3.png' }}
-          style={styles.heroImage}
-          resizeMode="contain"
-        />
-      </View>
+
       <View style={styles.content}>
         <View style={styles.contentHeader}>
           <Text style={styles.title}>
@@ -59,13 +53,20 @@ export default function Home({ navigation }) {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('tabsHome', { })
+            navigation.navigate('tabsHome', {})
           }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Lets go!</Text>
             {/* //{t('screens.home.text.submitButton')} */}
           </View>
         </TouchableOpacity>
+      </View>
+      <View style={styles.hero}>
+        <Image
+          source={{ uri: 'https://assets.withfra.me/Landing.3.png' }}
+          style={styles.heroImage}
+          resizeMode="contain"
+        />
       </View>
     </SafeAreaView>
   );
