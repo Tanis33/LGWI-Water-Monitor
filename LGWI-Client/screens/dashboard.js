@@ -16,7 +16,7 @@ export default function Dashboard({ navigation }) {
               </View>
               <View>
                 <Text style={styles.statsItemLabel}>Community Name</Text>
-                <Text style={styles.statsItemValue}>83</Text>
+                <Text style={styles.statsItemValue}>Community.Name</Text>
               </View>
             </View>
           </View> 
@@ -44,16 +44,39 @@ export default function Dashboard({ navigation }) {
             </View>
           </View>
 
+          {/* Payment Status for current system how mcuh $$ paid and unpaid*/}
+          <View style={styles.statsRow}>
+
+            <View style={styles.statsItem}>
+              <View style={styles.statsItemIcon}>
+                <FeatherIcon color="#fff" name="dollar-sign" size={22} />
+              </View>
+              <View>
+                <Text style={styles.statsItemLabelGreen}>Paid</Text>
+                <Text style={styles.statsItemValue}>$43</Text>
+              </View>
+            </View>
+            <View style={styles.statsItem}>
+              <View style={styles.statsItemIcon}>
+                <FeatherIcon color="#fff" name="dollar-sign" size={22} />
+              </View>
+              <View>
+                <Text style={styles.statsItemLabelRed}>Unpaid</Text>
+                <Text style={styles.statsItemValue}>$8</Text>
+              </View>
+            </View>
+          </View>
+
           {/* Monthly Usage */}
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="list" size={22} />
+                <FeatherIcon color="#fff" name="activity" size={22} />
               </View>
               <View>
                 <Text style={styles.statsItemLabel}>Monthly Usage</Text>
 
-                <Text style={styles.statsItemValue}>8/3/24</Text>
+                <Text style={styles.statsItemValue}>8324</Text>
               </View>
             </View>
           </View>
@@ -61,12 +84,12 @@ export default function Dashboard({ navigation }) {
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="list" size={22} />
+                <FeatherIcon color="#fff" name="activity" size={22} />
               </View>
               <View>
                 <Text style={styles.statsItemLabel}>Yearly Usage</Text>
 
-                <Text style={styles.statsItemValue}>8/3/24</Text>
+                <Text style={styles.statsItemValue}>43523</Text>
               </View>
             </View>
           </View>

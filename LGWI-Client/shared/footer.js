@@ -42,7 +42,7 @@ export default function Tabs() {
 
       <Tab.Screen name="Dashboard" component={DashboardScreen} options={{
         tabBarIcon: ({ color, size }) => (
-          <Ionicons name="home-outline" color={color} size={size} />),
+          <Ionicons name="analytics-outline" color={color} size={size} />),
       }} />
 
       <Tab.Screen name="Input" component={InputScreen} options={{
