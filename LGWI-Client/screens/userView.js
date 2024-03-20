@@ -11,13 +11,17 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const items = [
+const userDetails = [
   {
-    name: 'John Doe',
-    systemID: '123214',
-    gagueID: '123214',
-    tag: 'unpaid',
-    date: 'Mar 24, 2023',
+    meternumber: '1234',
+    name: 'user.name',
+    surname: 'user.surname',
+    idNumber: 'user.idnumber',
+    sector: 'user.sector',
+    phoneNumber: 'user.phonenumber',
+    email: 'user.email',
+    status: 'user.status',
+    category: 'user.category',
   },
 ];
 
@@ -25,60 +29,64 @@ export default function UserView() {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={styles.container}>  
+        <View style={styles.container}>
           <ScrollView
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
 
-            <View style={styles.details}>
-              <Text style={styles.detailsTitle}>User Details</Text>
-              {/* Meter Number */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Meter Number</Text>
-                <Text style={styles.detailsValue}>#1234</Text>
-              </View>
-              {/* First Name */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Name</Text>
-                <Text style={styles.detailsValue}>John</Text>
-              </View>
-              {/* Last Name */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Surname</Text>
-                <Text style={styles.detailsValue}>Doe</Text>
-              </View>
-              {/* ID Number */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>ID Number</Text>
-                <Text style={styles.detailsValue}>98765</Text>
-              </View>
-              {/* Sector */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Sector</Text>
-                <Text style={styles.detailsValue}>Name of Sector</Text>
-              </View>
-              {/* Phone Number */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Phone Number</Text>
-                <Text style={styles.detailsValue}>111-111-1111</Text>
-              </View>
-              {/* Email */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Email</Text>
-                <Text style={styles.detailsValue}>johndoe@example.com</Text>
-              </View>
-              {/* Status */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Status</Text>
-                <Text style={styles.detailsValue}>Active</Text>
-              </View>
-              {/* Category */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Category</Text>
-                <Text style={styles.detailsValue}>Residential</Text>
-              </View>
-             
-            </View>
+            {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
+              return (
+                <View style={styles.details} key={index}>
+                  <Text style={styles.detailsTitle}>User Details</Text>
+                  {/* Meter Number */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Meter Number</Text>
+                    <Text style={styles.detailsValue}>{meternumber}</Text>
+                  </View>
+                  {/* First Name */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Name</Text>
+                    <Text style={styles.detailsValue}>{name}</Text>
+                  </View>
+                  {/* Last Name */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Surname</Text>
+                    <Text style={styles.detailsValue}>{surname}</Text>
+                  </View>
+                  {/* ID Number */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>ID Number</Text>
+                    <Text style={styles.detailsValue}>{idNumber}</Text>
+                  </View>
+                  {/* Sector */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Sector</Text>
+                    <Text style={styles.detailsValue}>{sector}</Text>
+                  </View>
+                  {/* Phone Number */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Phone Number</Text>
+                    <Text style={styles.detailsValue}>{phoneNumber}</Text>
+                  </View>
+                  {/* Email */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Email</Text>
+                    <Text style={styles.detailsValue}>{email}</Text>
+                  </View>
+                  {/* Status */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Status</Text>
+                    <Text style={styles.detailsValue}>{status}</Text>
+                  </View>
+                  {/* Category */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Category</Text>
+                    <Text style={styles.detailsValue}>{category}</Text>
+                  </View>
+
+                </View>
+              );
+            })}
           </ScrollView>
         </View>
       </SafeAreaView>
