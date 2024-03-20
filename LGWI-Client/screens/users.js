@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   View,
   Image,
-  FeatherIcon,
   TextInput,
 } from 'react-native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const items = [
   {
@@ -83,6 +83,14 @@ export default function Users({ navigation }) {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.name}>Users</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('AddUser', {})}
+            style={styles.addBtn}>
+            <Text style={styles.addUser}>Add User
+            </Text>
+            <FeatherIcon color="#000" name="plus" size={30} />
+
+          </TouchableOpacity>
         </View>
         <ScrollView contentContainerStyle={styles.content}>
           <Text style={styles.filter}>Filter</Text>
@@ -137,6 +145,32 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#1d1d1d',
     marginBottom: 12,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  addBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
+  },
+  addUser: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#000',
   },
   /** Card */
   card: {
@@ -206,4 +240,5 @@ const styles = StyleSheet.create({
     color: '#000',
     marginBottom: 8,
   },
+
 });

@@ -14,6 +14,7 @@ import DashboardScreen from "./screens/dashboard";
 import Tabs from './shared/footer';
 import UserViewScreen from './screens/userView';
 import ConformationScreen from './screens/conformation';
+import UserScreen from './screens/addUser';
 import './localization/i18n';
 
 //Stack Navigaitor
@@ -62,6 +63,7 @@ export default function App() {
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="UserView" component={UserViewScreen} />
           <Stack.Screen name="Conformation" component={ConformationScreen} />
+          <Stack.Screen name="AddUser" component={UserScreen} />          
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
