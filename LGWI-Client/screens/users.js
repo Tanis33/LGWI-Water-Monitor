@@ -82,11 +82,11 @@ export default function Users({ navigation }) {
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.name}>System Users</Text>
+          <Text style={styles.name}>Users</Text>
         </View>
         <ScrollView contentContainerStyle={styles.content}>
-          <Text style={styles.name}>Filter</Text>
-          <Text style={styles.name}>Search</Text>
+          <Text style={styles.filter}>Filter</Text>
+          <Text style={styles.filter}>Search</Text>
 
           {items.map(({ name, systemID, gagueID, tag, date }, index) => {
             return (
@@ -199,5 +199,11 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 0,
+  },
+  filter: {
+    fontSize: 22,
+    fontWeight: '600',
+    color: '#000',
+    marginBottom: 8,
   },
 });

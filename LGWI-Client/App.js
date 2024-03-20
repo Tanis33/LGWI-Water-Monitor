@@ -12,7 +12,7 @@ import ViewScreen from "./screens/users";
 import SettingsScreen from "./screens/settings";
 import DashboardScreen from "./screens/dashboard";
 import Tabs from './shared/footer';
-import AccountViewScreen from './screens/accountview';
+import UserViewScreen from './screens/userView';
 import ConformationScreen from './screens/conformation';
 import './localization/i18n';
 
@@ -60,7 +60,7 @@ export default function App() {
           <Stack.Screen name="Input" component={InputScreen} />
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
-          <Stack.Screen name="AccountView" component={AccountViewScreen} />
+          <Stack.Screen name="UserView" component={UserViewScreen} />
           <Stack.Screen name="Conformation" component={ConformationScreen} />
         </Stack.Group>
       </Stack.Navigator>
