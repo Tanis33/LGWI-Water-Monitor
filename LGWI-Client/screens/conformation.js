@@ -11,96 +11,104 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const items = [
+const conformationData = [
   {
-    name: 'John Doe',
-    systemID: '123214',
-    gagueID: '123214',
-    tag: 'unpaid',
-    date: 'Mar 24, 2023',
+    receiptID: 'receipt.receiptID',
+    balance: 'receipt.balance',
+    date: 'receipt.date',
+    chargeType: 'receipt.chargeType',
+    meternumber: 'user.meternumber',
+    name: 'user.name',
+    surname: 'user.surname',
+    idNumber: 'user.idnumber',
+    sector: 'user.sector',
+    phoneNumber: 'user.phonenumber',
+    email: 'user.email',
+    status: 'user.status',
+    category: 'user.category',
   },
 ];
 
-export default function Example() {
+export default function ConformationScreen({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={styles.container}>  
-          <ScrollView
-            contentContainerStyle={styles.receipt}
-            showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          {conformationData.map(({receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
+            return (
+              <ScrollView
+                contentContainerStyle={styles.receipt}
+                showsVerticalScrollIndicator={false}
+                key={index}>
 
-            <Text style={styles.receiptSubtitle}>Invoice #0012-2832</Text>
+                <Text style={styles.receiptSubtitle}>Invoice {receiptID}</Text>
 
-            <View style={styles.receiptPrice}>
-              <Text style={styles.receiptPriceText}>$111 (amount owed)</Text>
-            </View>
+                <View style={styles.receiptPrice}>
+                  <Text style={styles.receiptPriceText}>{balance}</Text>
+                </View>
 
-            <Text style={styles.receiptDescription}>
-              Water Bill March 2023 - April 2023
-            </Text>
-
-            
-
-            <View style={styles.divider}>
-              <View style={styles.dividerInset} />
-            </View>
-
-            <View style={styles.details}>
-              <Text style={styles.detailsTitle}>Transaction details</Text>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Date</Text>
-
-                <Text style={styles.detailsValue}>April 2, 2023</Text>
-              </View>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Category</Text>
-
-                <Text style={styles.detailsValue}>Residential</Text>
-              </View>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Payment method</Text>
-
-                <Text style={styles.detailsValue}>Visa ending in 0182</Text>
-              </View>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Receipt Number</Text>
-
-                <Text style={styles.detailsValue}>9876543210</Text>
-              </View>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Billing Name</Text>
-
-                <Text style={styles.detailsValue}>John Smith</Text>
-              </View>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Billing ID Number</Text>
-
-                <Text style={styles.detailsValue}>123456789</Text>
-              </View>
-
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Neighborhood</Text>
-
-                <Text style={styles.detailsValue}>
-                  Name of Neighborhood
+                <Text style={styles.receiptDescription}>
+                  {chargeType} {date}
                 </Text>
-              </View>
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Test</Text>
 
-                <Text style={styles.detailsValue}>
-                  1234 Elm Street, Suite 567, Anytown, USA
-                </Text>
-              </View>
-            </View>
-          </ScrollView>
+                <View style={styles.divider}>
+                  <View style={styles.dividerInset} />
+                </View>
+
+
+                <View style={styles.details} >
+                  <Text style={styles.detailsTitle}>User Details</Text>
+                  {/* Meter Number */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Meter Number</Text>
+                    <Text style={styles.detailsValue}>{meternumber}</Text>
+                  </View>
+                  {/* First Name */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Name</Text>
+                    <Text style={styles.detailsValue}>{name}</Text>
+                  </View>
+                  {/* Last Name */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Surname</Text>
+                    <Text style={styles.detailsValue}>{surname}</Text>
+                  </View>
+                  {/* ID Number */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>ID Number</Text>
+                    <Text style={styles.detailsValue}>{idNumber}</Text>
+                  </View>
+                  {/* Sector */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Sector</Text>
+                    <Text style={styles.detailsValue}>{sector}</Text>
+                  </View>
+                  {/* Phone Number */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Phone Number</Text>
+                    <Text style={styles.detailsValue}>{phoneNumber}</Text>
+                  </View>
+                  {/* Email */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Email</Text>
+                    <Text style={styles.detailsValue}>{email}</Text>
+                  </View>
+                  {/* Status */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Status</Text>
+                    <Text style={styles.detailsValue}>{status}</Text>
+                  </View>
+                  {/* Category */}
+                  <View style={styles.detailsRow}>
+                    <Text style={styles.detailsField}>Category</Text>
+                    <Text style={styles.detailsValue}>{category}</Text>
+                  </View>
+
+                </View>
+                
+              </ScrollView>
+              );
+            })}
         </View>
       </SafeAreaView>
 
@@ -110,15 +118,15 @@ export default function Example() {
             // handle onPress
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Confrim Bill</Text>
+            <Text style={styles.btnText}>Confirm Charge</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            // handle onPress
+            navigation.navigate('tabsHome', {});
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>Change Bill</Text>
+            <Text style={styles.btnSecondaryText}>Cancel</Text>
           </View>
         </TouchableOpacity>
       </View>
