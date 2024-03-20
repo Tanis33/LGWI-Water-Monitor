@@ -8,15 +8,16 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import Menu from './dashboard';
+import DashboardScreen from './dashboard';
 import { useTranslation } from 'react-i18next';
 
-export default function Example({ navigation }) {
+export default function Home({ navigation }) {
   const [form, setForm] = useState({
-    communityID: '',
+    locationID: '',
   });
   return (
     <SafeAreaView style={styles.container}>
+
       <View style={styles.hero}>
         <Image
           source={{ uri: 'https://assets.withfra.me/Landing.3.png' }}
@@ -40,24 +41,25 @@ export default function Example({ navigation }) {
         <View style={styles.statsRow}>
           <View style={styles.statsItem}>
             <View style={{ backgroundColor: 'white', width: '100%' }}>
-              <Text style={styles.statsItemLabel}>Community Login ID</Text>
+              <Text style={styles.statsItemLabel}>Location ID</Text>
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                keyboardType="email-address"
-                onChangeText={email => setForm({ ...form, email })}
+                keyboardType="numeric"
+                onChangeText={locationID => setForm({ ...form, locationID })}
                 placeholder="123456"
                 placeholderTextColor="#6b7280"
                 style={styles.inputControl}
-                value={form.email} />
+                value={form.locationID} />
             </View>
           </View>
         </View>
 
+
+
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('tabsHome', { Menu })
-
+            navigation.navigate('tabsHome', { })
           }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Lets go!</Text>

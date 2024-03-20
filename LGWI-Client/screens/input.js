@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 
-export default function InputScreen( {navigation} ) {
+export default function Input( {navigation} ) {
   const [form, setForm] = useState({
     fullname: '',
     email: '',
@@ -16,36 +16,38 @@ export default function InputScreen( {navigation} ) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-        <View style={styles.header}>
+
           <Text style={styles.title}>Input Data</Text>
 
-          <Text style={styles.subtitle}>Input water meter reading and click submit</Text>
-        </View>
 
         <KeyboardAwareScrollView>
           <View style={styles.form}>
-            {/* Input for read amount */}
+
+            {/* Input for house id or gauge ID*/}
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
                   <Text style={styles.statsItemLabel}>Gauge ID OR House ID</Text>
                   <TextInput
-                    onChangeText={fullname => setForm({ ...form, fullname })}
+                    onChangeText={gaugeID => setForm({ ...form, gaugeID })}
                     placeholder="Gauge ID"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
-                    value={form.fullname} />
+                    keyboardType="numeric"
+                    value={form.gaugeID} />
                     <TextInput
                     autoCorrect={false}
-                    onChangeText={password => setForm({ ...form, password })}
+                    onChangeText={houseID => setForm({ ...form, houseID })}
                     placeholder="House ID"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     secureTextEntry={true}
-                    value={form.password} />
+                    keyboardType="numeric"
+                    value={form.houseID} />
                 </View>
               </View>
             </View>
+
             {/* Read Amount (Input Data) */}
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
@@ -54,7 +56,7 @@ export default function InputScreen( {navigation} ) {
                   <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
-                    keyboardType="email-address"
+                    keyboardType="numeric"
                     onChangeText={email => setForm({ ...form, email })}
                     placeholder="123.43"
                     placeholderTextColor="#6b7280"
@@ -64,7 +66,7 @@ export default function InputScreen( {navigation} ) {
               </View>
             </View>
             
-            {/* Button Goes here */}
+            {/*Submit Button */}
             <View style={styles.formAction}>
               <TouchableOpacity
                 onPress={() => {
@@ -84,31 +86,21 @@ export default function InputScreen( {navigation} ) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 0,
-    paddingHorizontal: 0,
+    padding: 16,
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
     display: 'flex',
   },
-  header: {
-    marginVertical: 24,
-    paddingHorizontal: 24,
-  },
   title: {
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#1d1d1d',
     marginBottom: 6,
   },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#929292',
-  },
   /** Form */
   form: {
-    paddingHorizontal: 24,
+    paddingVertical: 8,
   },
   formAction: {
     marginVertical: 8,

@@ -1,3 +1,4 @@
+// conformation.js page for confirming of the cost and the calculation of the cost based on water usage
 import React from 'react';
 import {
   StyleSheet,

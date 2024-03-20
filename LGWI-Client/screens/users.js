@@ -77,7 +77,7 @@ const items = [
   },
 ];
 
-export default function ViewScreen({ navigation }) {
+export default function Users({ navigation }) {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>

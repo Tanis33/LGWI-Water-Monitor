@@ -10,7 +10,7 @@ import DatabaseTest from "./screens/DatabaseTest";
 import InputScreen from "./screens/input";
 import ViewScreen from "./screens/users";
 import SettingsScreen from "./screens/settings";
-import MenuScreen from "./screens/dashboard";
+import DashboardScreen from "./screens/dashboard";
 import Tabs from './shared/footer';
 import AccountViewScreen from './screens/accountview';
 import ConformationScreen from './screens/conformation';
@@ -39,7 +39,7 @@ export default function App() {
           }}>
           <Stack.Screen name="Home" component={HomeScreen} />
         </Stack.Group>
-        
+
         {/*Stack group for main pages */}
         <Stack.Group
           screenOptions={{
@@ -56,7 +56,7 @@ export default function App() {
           }}>
           <Stack.Screen name="DatabaseTest" component={DatabaseTest} />
           <Stack.Screen name="tabsHome" component={Tabs} options={{ headerShown: false }} />
-          <Stack.Screen name="Menu" component={MenuScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Input" component={InputScreen} />
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />

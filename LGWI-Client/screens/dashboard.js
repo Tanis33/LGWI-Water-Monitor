@@ -44,7 +44,7 @@ export default function Dashboard({ navigation }) {
             </View>
           </View>
 
-          {/* Projects and Boards */}
+          {/* Unsure what data to put here */}
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
@@ -54,7 +54,7 @@ export default function Dashboard({ navigation }) {
                   size={22} />
               </View>
               <View>
-                <Text style={styles.statsItemLabel}>Projects</Text>
+                <Text style={styles.statsItemLabel}>????</Text>
                 <Text style={styles.statsItemValue}>22</Text>
               </View>
             </View>
@@ -66,21 +66,19 @@ export default function Dashboard({ navigation }) {
                   name="columns"
                   size={22} />
               </View>
-
               <View>
-                <Text style={styles.statsItemLabel}>Boards</Text>
-
+                <Text style={styles.statsItemLabel}>????</Text>
                 <Text style={styles.statsItemValue}>48</Text>
               </View>
             </View>
           </View>
 
+          {/* Next Payment Due */}
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
                 <FeatherIcon color="#fff" name="list" size={22} />
               </View>
-
               <View>
                 <Text style={styles.statsItemLabel}>Next Payment Due</Text>
 

@@ -26,6 +26,7 @@ export default function Settings({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
+        <Text style={styles.title}>Settings</Text>
         <ScrollView>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Preferences</Text>
@@ -147,7 +148,7 @@ export default function Settings({ navigation }) {
             <View style={styles.header}>
               <View style={styles.headerAction}>
                 <TouchableOpacity onPress={() => closeModal()}>
-                  <FeatherIcon name="x" size={40} style ={{paddingTop: 25, alignItems: 'flex-end', }}/>
+                  <FeatherIcon name="x" size={40} style={{ paddingTop: 25, alignItems: 'flex-end', }} />
                 </TouchableOpacity>
 
                 <View style={styles.projInfo}>
@@ -214,7 +215,7 @@ export default function Settings({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 0,
+    padding: 16,
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
@@ -266,7 +267,7 @@ const styles = StyleSheet.create({
   },
   /** Section */
   section: {
-    paddingHorizontal: 24,
+    paddingHorizontal: 8,
   },
   sectionTitle: {
     paddingVertical: 12,
@@ -284,9 +285,9 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: 'white',
     borderRadius: 8,
-    marginBottom: 12,
-    paddingLeft: 12,
-    paddingRight: 12,
+    marginBottom: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   rowIcon: {
     width: 32,
@@ -320,5 +321,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     marginTop: -24,
+  },
+
+  header: {
+    marginVertical: 24,
+    paddingHorizontal: 24,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#1d1d1d',
+    marginBottom: 12,
+  },
+  subtitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#929292',
   },
 });
