@@ -82,10 +82,11 @@ export default function ViewScreen({ navigation }) {
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.name}>Sort By:</Text>
+          <Text style={styles.name}>System Users</Text>
         </View>
         <ScrollView contentContainerStyle={styles.content}>
-          <Text style={styles.name}>System Members</Text>
+          <Text style={styles.name}>Filter</Text>
+          <Text style={styles.name}>Search</Text>
 
           {items.map(({ name, systemID, gagueID, tag, date }, index) => {
             return (

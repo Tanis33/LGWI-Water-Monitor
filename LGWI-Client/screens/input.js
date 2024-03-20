@@ -4,8 +4,9 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Example() {
+export default function InputScreen( {navigation} ) {
   const [form, setForm] = useState({
     fullname: '',
     email: '',
@@ -27,13 +28,21 @@ export default function Example() {
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>Gauge ID</Text>
+                  <Text style={styles.statsItemLabel}>Gauge ID OR House ID</Text>
                   <TextInput
                     onChangeText={fullname => setForm({ ...form, fullname })}
-                    placeholder="1234"
+                    placeholder="Gauge ID"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     value={form.fullname} />
+                    <TextInput
+                    autoCorrect={false}
+                    onChangeText={password => setForm({ ...form, password })}
+                    placeholder="House ID"
+                    placeholderTextColor="#6b7280"
+                    style={styles.inputControl}
+                    secureTextEntry={true}
+                    value={form.password} />
                 </View>
               </View>
             </View>
@@ -54,28 +63,12 @@ export default function Example() {
                 </View>
               </View>
             </View>
-
-
-            <View style={styles.statsRow}>
-              <View style={styles.statsItem}>
-                <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>Rate</Text>
-                  <TextInput
-                    autoCorrect={false}
-                    onChangeText={password => setForm({ ...form, password })}
-                    placeholder="0.43"
-                    placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
-                    secureTextEntry={true}
-                    value={form.password} />
-                </View>
-              </View>
-            </View>
+            
             {/* Button Goes here */}
             <View style={styles.formAction}>
               <TouchableOpacity
                 onPress={() => {
-                  // handle onPress
+                  navigation.navigate('Conformation', {})
                 }}>
                 <View style={styles.btn}>
                   <Text style={styles.btnText}>Submit</Text>
@@ -141,6 +134,7 @@ const styles = StyleSheet.create({
     color: '#222',
     borderWidth: 1,
     borderColor: '#02C3BD',
+    margin: 8,
   },
   /** Button */
   btn: {

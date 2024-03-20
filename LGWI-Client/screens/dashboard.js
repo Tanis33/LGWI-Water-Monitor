@@ -2,12 +2,11 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-export default function Example() {
+export default function Dashboard({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
         <Text style={styles.title}>Dashboard</Text>
-
         <View style={styles.stats}>
           {/* Current System Box */}
           <View style={styles.statsRow}>
@@ -15,43 +14,37 @@ export default function Example() {
               <View style={styles.statsItemIcon}>
                 <FeatherIcon color="#fff" name="list" size={22} />
               </View>
-
               <View>
                 <Text style={styles.statsItemLabel}>System Info</Text>
-
                 <Text style={styles.statsItemValue}>83</Text>
               </View>
             </View>
           </View> 
 
-          {/* Payment Status for current system */}
+          {/* Payment Status for current system how many paid and unpaid*/}
           <View style={styles.statsRow}>
 
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
                 <FeatherIcon color="#fff" name="users" size={22} />
               </View>
-
               <View>
                 <Text style={styles.statsItemLabelGreen}>Paid</Text>
-
                 <Text style={styles.statsItemValue}>43</Text>
               </View>
             </View>
-
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
                 <FeatherIcon color="#fff" name="users" size={22} />
               </View>
-
               <View>
                 <Text style={styles.statsItemLabelRed}>Unpaid</Text>
-
                 <Text style={styles.statsItemValue}>8</Text>
               </View>
             </View>
           </View>
 
+          {/* Projects and Boards */}
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
@@ -60,10 +53,8 @@ export default function Example() {
                   name="archive"
                   size={22} />
               </View>
-
               <View>
                 <Text style={styles.statsItemLabel}>Projects</Text>
-
                 <Text style={styles.statsItemValue}>22</Text>
               </View>
             </View>

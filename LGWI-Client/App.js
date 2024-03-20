@@ -8,12 +8,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "./screens/home";
 import DatabaseTest from "./screens/DatabaseTest";
 import InputScreen from "./screens/input";
-import ViewScreen from "./screens/view";
+import ViewScreen from "./screens/users";
 import SettingsScreen from "./screens/settings";
-import LoginScreen from "./screens/login";
-import MenuScreen from "./screens/menu";
+import MenuScreen from "./screens/dashboard";
 import Tabs from './shared/footer';
 import AccountViewScreen from './screens/accountview';
+import ConformationScreen from './screens/conformation';
 import './localization/i18n';
 
 //Stack Navigaitor
@@ -23,7 +23,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="home">
-        {/*Stack group for home login and register screen */}
+        {/*Home Screen*/}
         <Stack.Group
           screenOptions={{
             headerShown: false,
@@ -38,8 +38,8 @@ export default function App() {
             },
           }}>
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
         </Stack.Group>
+        
         {/*Stack group for main pages */}
         <Stack.Group
           screenOptions={{
@@ -61,6 +61,7 @@ export default function App() {
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="AccountView" component={AccountViewScreen} />
+          <Stack.Screen name="Conformation" component={ConformationScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

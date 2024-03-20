@@ -26,15 +26,6 @@ export default function Settings({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-        <View style={styles.profile}>
-          <View>
-            <Text style={styles.profileName}>USER1234</Text>
-            <Text style={styles.profileAddress}>
-              About
-            </Text>
-          </View>
-        </View>
-
         <ScrollView>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Preferences</Text>
@@ -50,29 +41,6 @@ export default function Settings({ navigation }) {
               </View>
 
               <Text style={styles.rowLabel}>Language</Text>
-
-              <View style={styles.rowSpacer} />
-
-              <FeatherIcon
-                color="#C6C6C6"
-                name="chevron-right"
-                size={20} />
-            </TouchableOpacity>
-
-            {/* System Location */}
-            <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}
-              style={styles.row}>
-              <View style={[styles.rowIcon, { backgroundColor: '#32c759' }]}>
-                <FeatherIcon
-                  color="#fff"
-                  name="navigation"
-                  size={20} />
-              </View>
-
-              <Text style={styles.rowLabel}>Change System</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -148,7 +116,7 @@ export default function Settings({ navigation }) {
                 size={20} />
             </TouchableOpacity>
 
-            {/* About (about page for app developers*/}
+            {/* Developers */}
             <TouchableOpacity
               onPress={() => {
                 openModal();
@@ -158,7 +126,7 @@ export default function Settings({ navigation }) {
                 <FeatherIcon color="#fff" name="star" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>About</Text>
+              <Text style={styles.rowLabel}>Developers</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -210,7 +178,7 @@ export default function Settings({ navigation }) {
                   <View>
                     <Text style={styles.profileName}>Benjamin Tanis</Text>
                     <Text style={styles.profileAddress}>
-                      Calvin University - Full Stack Developer
+                      Calvin University - Front End Developer
                     </Text>
                   </View>
                 </View>
@@ -229,7 +197,7 @@ export default function Settings({ navigation }) {
                   <View>
                     <Text style={styles.profileName}>Jacob Westra</Text>
                     <Text style={styles.profileAddress}>
-                      Calvin University
+                      Calvin University - Back End Developer
                     </Text>
                   </View>
                 </View>

@@ -3,9 +3,9 @@ import React from "react";
 
 /* Import of all screens for react navigation */
 import InputScreen from "../screens/input";
-import ViewScreen from "../screens/view";
+import ViewScreen from "../screens/users";
 import SettingsScreen from "../screens/settings";
-import MenuScreen from "../screens/menu";
+import DashboardScreen from "../screens/dashboard";
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -40,7 +40,7 @@ export default function Tabs() {
         },
       }}>
 
-      <Tab.Screen name="Home" component={MenuScreen} options={{
+      <Tab.Screen name="Dashboard" component={DashboardScreen} options={{
         tabBarIcon: ({ color, size }) => (
           <Ionicons name="home-outline" color={color} size={size} />),
       }} />
@@ -50,7 +50,7 @@ export default function Tabs() {
           <Ionicons name="duplicate-outline" color={color} size={size} />),
       }} />
 
-      <Tab.Screen name="View" component={ViewScreen} options={{
+      <Tab.Screen name="Users" component={ViewScreen} options={{
         tabBarIcon: ({ color, size }) => (
           <Ionicons name="folder-outline" color={color} size={size} />),
       }} />

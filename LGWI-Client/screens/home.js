@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -6,11 +6,15 @@ import {
   Image,
   Text,
   TouchableOpacity,
+  TextInput,
 } from 'react-native';
-import Menu from './menu';
+import Menu from './dashboard';
 import { useTranslation } from 'react-i18next';
 
-export default function Example({navigation}) {
+export default function Example({ navigation }) {
+  const [form, setForm] = useState({
+    communityID: '',
+  });
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.hero}>
@@ -29,16 +33,34 @@ export default function Example({navigation}) {
             </View>
           </Text>
           <Text style={styles.text}>
-            
+
           </Text>
         </View>
 
+        <View style={styles.statsRow}>
+          <View style={styles.statsItem}>
+            <View style={{ backgroundColor: 'white', width: '100%' }}>
+              <Text style={styles.statsItemLabel}>Community Login ID</Text>
+              <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType="email-address"
+                onChangeText={email => setForm({ ...form, email })}
+                placeholder="123456"
+                placeholderTextColor="#6b7280"
+                style={styles.inputControl}
+                value={form.email} />
+            </View>
+          </View>
+        </View>
+
         <TouchableOpacity
-          onPress={() => { navigation.navigate('tabsHome', {Menu})
-            
+          onPress={() => {
+            navigation.navigate('tabsHome', { Menu })
+
           }}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Test</Text>
+            <Text style={styles.buttonText}>Lets go!</Text>
             {/* //{t('screens.home.text.submitButton')} */}
           </View>
         </TouchableOpacity>
@@ -51,9 +73,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 24,
+    marginBottom: 10,
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '500',
     color: '#281b52',
     textAlign: 'center',
@@ -61,7 +84,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
   text: {
-    fontSize: 15,
+    fontSize: 18,
     lineHeight: 24,
     fontWeight: '400',
     color: '#9992a7',
@@ -76,7 +99,7 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: '100%',
-    height: 400,
+    height: 350,
   },
   /** Content */
   content: {
@@ -98,7 +121,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
   },
   appNameText: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '700',
     color: '#281b52',
   },
@@ -115,5 +138,60 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     color: 'black',
+  },
+  stats: {
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+  statsRow: {
+    flexDirection: 'row',
+    marginHorizontal: -6,
+    width: '80%',
+    alignSelf: 'center',
+  },
+  statsItem: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: '#fff',
+    marginHorizontal: 6,
+    marginBottom: 12,
+  },
+  statsItemLabel: {
+    fontSize: 18,
+    color: 'black',
+    marginBottom: 2,
+    fontWeight: 'bold',
+    marginTop: -6,
+    alignSelf: 'center',
+  },
+  /** Input */
+  input: {
+    marginBottom: 16,
+  },
+  inputLabel: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#222',
+    marginBottom: 8,
+    alignContent: 'center',
+  },
+  inputControl: {
+    height: 44,
+    backgroundColor: 'white',
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#222',
+    borderWidth: 1,
+    borderColor: '#02C3BD',
   },
 });
