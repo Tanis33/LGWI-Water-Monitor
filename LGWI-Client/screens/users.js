@@ -8,6 +8,7 @@ import {
   View,
   Image,
   TextInput,
+  Modal,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
@@ -91,10 +92,11 @@ export default function Users({ navigation }) {
             <FeatherIcon color="#000" name="plus" size={30} />
 
           </TouchableOpacity>
+
         </View>
+        <Text style={styles.filter}>Filter</Text>
+        <Text style={styles.filter}>Search</Text>
         <ScrollView contentContainerStyle={styles.content}>
-          <Text style={styles.filter}>Filter</Text>
-          <Text style={styles.filter}>Search</Text>
 
           {items.map(({ name, systemID, gagueID, tag, date }, index) => {
             return (
@@ -126,6 +128,8 @@ export default function Users({ navigation }) {
                   </View>
                 </View>
               </TouchableOpacity>
+
+
             );
           })}
         </ScrollView>

@@ -1,5 +1,5 @@
 // conformation.js page for confirming of the cost and the calculation of the cost based on water usage
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image,
+  TextInput,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
@@ -26,89 +26,151 @@ const conformationData = [
     email: 'user.email',
     status: 'user.status',
     category: 'user.category',
+    spacer: '                                ',
   },
 ];
 
 export default function ConformationScreen({ navigation }) {
+  const [form, setForm] = useState({
+    meternumber: '',
+    name: '',
+    surname: '',
+    idNumber: '',
+    sector: '',
+    phoneNumber: '',
+    email: '',
+    status: '',
+    category: '',
+  });
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
-          {conformationData.map(({receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
+          {conformationData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category, spacer }, index) => {
             return (
               <ScrollView
                 contentContainerStyle={styles.receipt}
                 showsVerticalScrollIndicator={false}
                 key={index}>
-
-                <Text style={styles.receiptSubtitle}>Invoice {receiptID}</Text>
-
-                <View style={styles.receiptPrice}>
-                  <Text style={styles.receiptPriceText}>{balance}</Text>
-                </View>
-
-                <Text style={styles.receiptDescription}>
-                  {chargeType} {date}
-                </Text>
-
-                <View style={styles.divider}>
-                  <View style={styles.dividerInset} />
-                </View>
-
-
                 <View style={styles.details} >
-                  <Text style={styles.detailsTitle}>User Details</Text>
+                  <Text style={styles.detailsTitle}>Add User</Text>
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Meter Number</Text>
-                    <Text style={styles.detailsValue}>{meternumber}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      keyboardType="numeric"
+                      onChangeText={meternumber => setForm({ ...form, meternumber })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.meternumber} />
                   </View>
                   {/* First Name */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Name</Text>
-                    <Text style={styles.detailsValue}>{name}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      onChangeText={name => setForm({ ...form, name })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.name} />
                   </View>
                   {/* Last Name */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Surname</Text>
-                    <Text style={styles.detailsValue}>{surname}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      onChangeText={surname => setForm({ ...form, surname })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.surname} />
                   </View>
                   {/* ID Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>ID Number</Text>
-                    <Text style={styles.detailsValue}>{idNumber}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      keyboardType="numeric"
+                      onChangeText={idNumber => setForm({ ...form, idNumber })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.idNumber} />
                   </View>
                   {/* Sector */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Sector</Text>
-                    <Text style={styles.detailsValue}>{sector}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      onChangeText={sector => setForm({ ...form, sector })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.sector} />
                   </View>
                   {/* Phone Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Phone Number</Text>
-                    <Text style={styles.detailsValue}>{phoneNumber}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      keyboardType="numeric"
+                      onChangeText={phoneNumber => setForm({ ...form, phoneNumber })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.phoneNumber} />
                   </View>
                   {/* Email */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Email</Text>
-                    <Text style={styles.detailsValue}>{email}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      onChangeText={email => setForm({ ...form, email })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.email} />
                   </View>
                   {/* Status */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Status</Text>
-                    <Text style={styles.detailsValue}>{status}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      onChangeText={status => setForm({ ...form, status })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.status} />
                   </View>
                   {/* Category */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>Category</Text>
-                    <Text style={styles.detailsValue}>{category}</Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      onChangeText={category => setForm({ ...form, category })}
+                      placeholder={spacer}
+                      placeholderTextColor="#000000"
+                      style={styles.inputBox}
+                      value={form.category} />
                   </View>
 
                 </View>
-                
+
               </ScrollView>
-              );
-            })}
+            );
+          })}
         </View>
       </SafeAreaView>
 
@@ -118,7 +180,7 @@ export default function ConformationScreen({ navigation }) {
             // handle onPress
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Confirm Charge</Text>
+            <Text style={styles.btnText}>Add User</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -255,7 +317,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   detailsTitle: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#222',
     marginBottom: 16,
@@ -263,11 +325,11 @@ const styles = StyleSheet.create({
   detailsRow: {
     marginBottom: 14,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   detailsField: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 20,
     fontWeight: '500',
     color: '#8c8c8c',
@@ -276,7 +338,7 @@ const styles = StyleSheet.create({
     flexBasis: 0,
   },
   detailsValue: {
-    fontSize: 15,
+    fontSize: 17,
     lineHeight: 20,
     fontWeight: '600',
     color: '#444',
@@ -320,5 +382,16 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     fontWeight: '600',
     color: '#02C3BD',
+  },
+  inputBox: {
+    height: 32,
+    backgroundColor: 'white',
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    fontSize: 17,
+    fontWeight: '500',
+    color: '#222',
+    borderWidth: 1,
+    borderColor: '#02C3BD',
   },
 });
