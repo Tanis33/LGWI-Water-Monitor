@@ -2,101 +2,122 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
+
+const dashboardData = [
+  {
+    communityName: 'dashboard.communityName',
+    usersPaid: 'dashboard.usersPaid',
+    usersUnpaid: 'dashboard.usersUnpaid',
+    amountPaid: 'dashboard.amountPaid',
+    amountUnpaid: 'dashboard.amountUnpaid',
+    monthlyUsage: 'dashboard.monthlyUsage',
+    yearlyUsage: 'dashboard.yearlyUsage',
+  },
+];
+
 export default function Dashboard({ navigation }) {
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Dashboard</Text>
-        <View style={styles.stats}>
-          {/* Current System Box */}
-          <View style={styles.statsRow}>
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="list" size={22} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }} >
+      {dashboardData.map(({ communityName, usersPaid, usersUnpaid, amountPaid, amountUnpaid, monthlyUsage, yearlyUsage }, index) => {
+        return (
+          <View style={styles.container} key={index}>
+            <Text style={styles.title}>Dashboard</Text>
+            <View style={styles.stats}>
+              {/* Current System Box */}
+              <View style={styles.statsRow}>
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="list" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabel}>Community Name</Text>
+                    <Text style={styles.statsItemValue}>{communityName}</Text>
+                  </View>
+                </View>
               </View>
-              <View>
-                <Text style={styles.statsItemLabel}>Community Name</Text>
-                <Text style={styles.statsItemValue}>Community.Name</Text>
-              </View>
-            </View>
-          </View> 
 
-          {/* Payment Status for current system how many paid and unpaid*/}
-          <View style={styles.statsRow}>
+              {/* Payment Status for current system how many paid and unpaid*/}
+              <View style={styles.statsRow}>
 
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="users" size={22} />
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="users" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabelGreen}>Paid</Text>
+                    <Text style={styles.statsItemValue}>{usersPaid}</Text>
+                  </View>
+                </View>
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="users" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabelRed}>Unpaid</Text>
+                    <Text style={styles.statsItemValue}>{usersUnpaid}</Text>
+                  </View>
+                </View>
               </View>
-              <View>
-                <Text style={styles.statsItemLabelGreen}>Paid</Text>
-                <Text style={styles.statsItemValue}>43</Text>
+
+              {/* Payment Status for current system how mcuh $$ paid and unpaid*/}
+              <View style={styles.statsRow}>
+
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="dollar-sign" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabelGreen}>Paid</Text>
+                    <Text style={styles.statsItemValue}>{amountPaid}</Text>
+                  </View>
+                </View>
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="dollar-sign" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabelRed}>Unpaid</Text>
+                    <Text style={styles.statsItemValue}>{amountUnpaid}</Text>
+                  </View>
+                </View>
               </View>
-            </View>
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="users" size={22} />
+
+              {/* Monthly Usage */}
+              <View style={styles.statsRow}>
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="activity" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabel}>Monthly Usage</Text>
+
+                    <Text style={styles.statsItemValue}>{monthlyUsage}</Text>
+                  </View>
+                </View>
               </View>
-              <View>
-                <Text style={styles.statsItemLabelRed}>Unpaid</Text>
-                <Text style={styles.statsItemValue}>8</Text>
+              {/* Yearly Usage */}
+              <View style={styles.statsRow}>
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="activity" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabel}>Yearly Usage</Text>
+
+                    <Text style={styles.statsItemValue}>{yearlyUsage}</Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
-
-          {/* Payment Status for current system how mcuh $$ paid and unpaid*/}
-          <View style={styles.statsRow}>
-
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="dollar-sign" size={22} />
-              </View>
-              <View>
-                <Text style={styles.statsItemLabelGreen}>Paid</Text>
-                <Text style={styles.statsItemValue}>$43</Text>
-              </View>
-            </View>
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="dollar-sign" size={22} />
-              </View>
-              <View>
-                <Text style={styles.statsItemLabelRed}>Unpaid</Text>
-                <Text style={styles.statsItemValue}>$8</Text>
-              </View>
-            </View>
-          </View>
-
-          {/* Monthly Usage */}
-          <View style={styles.statsRow}>
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="activity" size={22} />
-              </View>
-              <View>
-                <Text style={styles.statsItemLabel}>Monthly Usage</Text>
-
-                <Text style={styles.statsItemValue}>8324</Text>
-              </View>
-            </View>
-          </View>
-          {/* Yearly Usage */}
-          <View style={styles.statsRow}>
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon color="#fff" name="activity" size={22} />
-              </View>
-              <View>
-                <Text style={styles.statsItemLabel}>Yearly Usage</Text>
-
-                <Text style={styles.statsItemValue}>43523</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
+        );
+      })}
     </SafeAreaView>
+
+
   );
+
 }
 
 const styles = StyleSheet.create({
@@ -154,16 +175,16 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#081730',
   },
-  statsItemLabelGreen: { 
-    fontSize: 18, 
-    fontWeight: '700', 
-    color: '#2E7D32', 
-    marginBottom: 2 
+  statsItemLabelGreen: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#2E7D32',
+    marginBottom: 2
   },
-  statsItemLabelRed: { 
-    fontSize: 18, 
-    fontWeight: '700', 
-    color: '#C62828', 
-    marginBottom: 2 
+  statsItemLabelRed: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#C62828',
+    marginBottom: 2
   },
 });
