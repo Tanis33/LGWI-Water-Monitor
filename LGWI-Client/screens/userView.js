@@ -1,3 +1,4 @@
+// conformation.js page for confirming of the cost and the calculation of the cost based on water usage
 import React from 'react';
 import {
   StyleSheet,
@@ -20,97 +21,63 @@ const items = [
   },
 ];
 
-
-export default function Example( ) {
+export default function UserView() {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <View style={styles.headerAction}>
-            </View>
-            <Text style={styles.headerTitle}>Information</Text>
-            <View
-              style={[styles.headerAction, { alignItems: 'flex-end' }]} />
-          </View>
-
+        <View style={styles.container}>  
           <ScrollView
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
-            <View style={styles.receiptLogo}>
-              <FeatherIcon color="#fff" name="codepen" size={32} />
-            </View>
-
-            <Text style={styles.receiptTitle}>
-              TechWorld Consulting Inc.
-            </Text>
-
-            <Text style={styles.receiptSubtitle}>Invoice #0012-2832</Text>
-
-            <View style={styles.receiptPrice}>
-              <Text style={styles.receiptPriceText}>$115,900</Text>
-
-              <Text
-                style={[
-                  styles.receiptPriceText,
-                  { fontSize: 20, lineHeight: 32 },
-                ]}>
-                .00
-              </Text>
-            </View>
-
-            <Text style={styles.receiptDescription}>
-              Software Development March 2023 - April 2023
-            </Text>
-
-            <View style={styles.avatarWrapper}>
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-
-              <Image
-                alt=""
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
-                }}
-                style={[styles.avatar, { marginLeft: -(40 / 4) }]} />
-            </View>
-
-            <View style={styles.divider}>
-              <View style={styles.dividerInset} />
-            </View>
 
             <View style={styles.details}>
-              <Text style={styles.detailsTitle}>Transaction details</Text>
-
+              <Text style={styles.detailsTitle}>User Details</Text>
+              {/* Meter Number */}
               <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Date</Text>
-
-                <Text style={styles.detailsValue}>April 2, 2023</Text>
+                <Text style={styles.detailsField}>Meter Number</Text>
+                <Text style={styles.detailsValue}>#1234</Text>
               </View>
-
+              {/* First Name */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Name</Text>
+                <Text style={styles.detailsValue}>John</Text>
+              </View>
+              {/* Last Name */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Surname</Text>
+                <Text style={styles.detailsValue}>Doe</Text>
+              </View>
+              {/* ID Number */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>ID Number</Text>
+                <Text style={styles.detailsValue}>98765</Text>
+              </View>
+              {/* Sector */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Sector</Text>
+                <Text style={styles.detailsValue}>Name of Sector</Text>
+              </View>
+              {/* Phone Number */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Phone Number</Text>
+                <Text style={styles.detailsValue}>111-111-1111</Text>
+              </View>
+              {/* Email */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Email</Text>
+                <Text style={styles.detailsValue}>johndoe@example.com</Text>
+              </View>
+              {/* Status */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>Status</Text>
+                <Text style={styles.detailsValue}>Active</Text>
+              </View>
+              {/* Category */}
               <View style={styles.detailsRow}>
                 <Text style={styles.detailsField}>Category</Text>
-
-                <Text style={styles.detailsValue}>Development</Text>
+                <Text style={styles.detailsValue}>Residential</Text>
               </View>
+             
             </View>
           </ScrollView>
         </View>
@@ -122,7 +89,7 @@ export default function Example( ) {
             // handle onPress
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Submit Receipt</Text>
+            <Text style={styles.btnText}>Past Receipts</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -130,7 +97,7 @@ export default function Example( ) {
             // handle onPress
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>Save as PDF</Text>
+            <Text style={styles.btnSecondaryText}>Edit User</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -178,11 +145,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
-  headerTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#000',
-  },
   /** Receipt */
   receipt: {
     alignItems: 'center',
@@ -205,7 +167,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   receiptSubtitle: {
-    fontSize: 13,
+    fontSize: 18,
     lineHeight: 20,
     color: '#818181',
     marginBottom: 12,
@@ -224,7 +186,7 @@ const styles = StyleSheet.create({
     color: '#8338ec',
   },
   receiptDescription: {
-    fontSize: 14,
+    fontSize: 18,
     lineHeight: 22,
     color: '#818181',
     textAlign: 'center',
@@ -264,8 +226,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   detailsTitle: {
-    fontSize: 17,
-    fontWeight: '600',
+    fontSize: 22,
+    fontWeight: 'bold',
     color: '#222',
     marginBottom: 16,
   },
@@ -276,7 +238,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   detailsField: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 20,
     fontWeight: '500',
     color: '#8c8c8c',
@@ -285,7 +247,7 @@ const styles = StyleSheet.create({
     flexBasis: 0,
   },
   detailsValue: {
-    fontSize: 15,
+    fontSize: 17,
     lineHeight: 20,
     fontWeight: '600',
     color: '#444',
@@ -303,8 +265,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderWidth: 1,
-    backgroundColor: '#8338ec',
-    borderColor: '#8338ec',
+    backgroundColor: '#02C3BD',
+    borderColor: '#02C3BD',
     marginBottom: 12,
   },
   btnText: {
@@ -322,12 +284,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderWidth: 1,
     backgroundColor: 'transparent',
-    borderColor: '#8338ec',
+    borderColor: '#02C3BD',
   },
   btnSecondaryText: {
     fontSize: 18,
     lineHeight: 26,
     fontWeight: '600',
-    color: '#8338ec',
+    color: '#02C3BD',
   },
 });

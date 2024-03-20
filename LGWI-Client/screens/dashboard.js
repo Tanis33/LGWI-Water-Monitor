@@ -44,43 +44,27 @@ export default function Dashboard({ navigation }) {
             </View>
           </View>
 
-          {/* Unsure what data to put here */}
-          <View style={styles.statsRow}>
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon
-                  color="#fff"
-                  name="archive"
-                  size={22} />
-              </View>
-              <View>
-                <Text style={styles.statsItemLabel}>????</Text>
-                <Text style={styles.statsItemValue}>22</Text>
-              </View>
-            </View>
-
-            <View style={styles.statsItem}>
-              <View style={styles.statsItemIcon}>
-                <FeatherIcon
-                  color="#fff"
-                  name="columns"
-                  size={22} />
-              </View>
-              <View>
-                <Text style={styles.statsItemLabel}>????</Text>
-                <Text style={styles.statsItemValue}>48</Text>
-              </View>
-            </View>
-          </View>
-
-          {/* Next Payment Due */}
+          {/* Monthly Usage */}
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={styles.statsItemIcon}>
                 <FeatherIcon color="#fff" name="list" size={22} />
               </View>
               <View>
-                <Text style={styles.statsItemLabel}>Next Payment Due</Text>
+                <Text style={styles.statsItemLabel}>Monthly Usage</Text>
+
+                <Text style={styles.statsItemValue}>8/3/24</Text>
+              </View>
+            </View>
+          </View>
+          {/* Yearly Usage */}
+          <View style={styles.statsRow}>
+            <View style={styles.statsItem}>
+              <View style={styles.statsItemIcon}>
+                <FeatherIcon color="#fff" name="list" size={22} />
+              </View>
+              <View>
+                <Text style={styles.statsItemLabel}>Yearly Usage</Text>
 
                 <Text style={styles.statsItemValue}>8/3/24</Text>
               </View>

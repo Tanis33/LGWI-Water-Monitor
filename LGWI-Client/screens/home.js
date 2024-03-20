@@ -18,6 +18,7 @@ export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
+        {/* Welcome Message */}
         <View style={styles.contentHeader}>
           <Text style={styles.title}>
             Track water usage {'\n'}with{' '}
@@ -30,6 +31,7 @@ export default function Home({ navigation }) {
           </Text>
         </View>
 
+        {/* Location ID */}
         <View style={styles.statsRow}>
           <View style={styles.statsItem}>
             <View style={{ backgroundColor: 'white', width: '100%' }}>
@@ -47,8 +49,7 @@ export default function Home({ navigation }) {
           </View>
         </View>
 
-
-
+        {/* Let's Go Button */}
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('tabsHome', { })

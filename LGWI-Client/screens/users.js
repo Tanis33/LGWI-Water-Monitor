@@ -92,7 +92,7 @@ export default function Users({ navigation }) {
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigation.navigate('AccountView', {})}>
+                onPress={() => navigation.navigate('UserView', {})}>
                 <View style={styles.card}>
                   <View style={styles.cardBody}>
                     <Text style={styles.cardTag}>{tag}</Text>

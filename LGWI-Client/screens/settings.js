@@ -267,10 +267,10 @@ const styles = StyleSheet.create({
   },
   /** Section */
   section: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 0,
   },
   sectionTitle: {
-    paddingVertical: 12,
+    paddingVertical: 8,
     fontSize: 12,
     fontWeight: '600',
     color: '#9e9e9e',
