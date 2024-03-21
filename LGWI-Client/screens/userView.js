@@ -84,7 +84,14 @@ export default function UserView() {
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
 
+                  {/* Divider */}
+                  <View style={styles.divider}>
+                    <View style={styles.dividerInset} />
+                  </View>
+                  
+
                 </View>
+
               );
             })}
           </ScrollView>

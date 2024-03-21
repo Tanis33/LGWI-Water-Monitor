@@ -1,1 +1,0 @@
-// location for all th euserinfo can also have edit option to change any of the info

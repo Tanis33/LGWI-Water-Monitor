@@ -8,11 +8,17 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Input( {navigation} ) {
   const [form, setForm] = useState({
-    fullname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    gaugeID: '',
+    houseID: '',
+    usageAmount: '',
   });
+
+  const initialFormState = {
+    gaugeID: '',
+    houseID: '',
+    usageAmount: '',
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
@@ -41,7 +47,6 @@ export default function Input( {navigation} ) {
                     placeholder="House ID"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
-                    secureTextEntry={true}
                     keyboardType="numeric"
                     value={form.houseID} />
                 </View>
@@ -52,16 +57,16 @@ export default function Input( {navigation} ) {
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>Read Amount</Text>
+                  <Text style={styles.statsItemLabel}>Water Meter Reading</Text>
                   <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
                     keyboardType="numeric"
-                    onChangeText={email => setForm({ ...form, email })}
+                    onChangeText={usageAmount => setForm({ ...form, usageAmount })}
                     placeholder="123.43"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
-                    value={form.email} />
+                    value={form.usageAmount} />
                 </View>
               </View>
             </View>
@@ -70,7 +75,10 @@ export default function Input( {navigation} ) {
             <View style={styles.formAction}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('Conformation', {})
+                  // pass the data in the input into the next page and query the data for the user based on houseID or gaugeID
+
+                  navigation.navigate('Conformation', { formData: form})
+                  setForm(initialFormState);
                 }}>
                 <View style={styles.btn}>
                   <Text style={styles.btnText}>Submit</Text>

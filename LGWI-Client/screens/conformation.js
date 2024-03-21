@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
+
 const conformationData = [
   {
     receiptID: 'receipt.receiptID',
@@ -29,12 +30,13 @@ const conformationData = [
   },
 ];
 
-export default function ConformationScreen({ navigation }) {
+export default function ConformationScreen({ navigation, route }) {
+  const { formData } = route.params;
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
-          {conformationData.map(({receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
+          {conformationData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
             return (
               <ScrollView
                 contentContainerStyle={styles.receipt}
@@ -105,10 +107,10 @@ export default function ConformationScreen({ navigation }) {
                   </View>
 
                 </View>
-                
+
               </ScrollView>
-              );
-            })}
+            );
+          })}
         </View>
       </SafeAreaView>
 

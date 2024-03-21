@@ -177,7 +177,7 @@ export default function ConformationScreen({ navigation }) {
       <View style={styles.overlay}>
         <TouchableOpacity
           onPress={() => {
-            // handle onPress
+            // on Press add the user data to the database and navigate to the home page also reset the form so its empty
           }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>Add User</Text>
