@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { WebView } from 'react-native-webview';
+import * as FileSystem from 'expo-file-system';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DatabaseTest({ navigation }) {
   const [form, setForm] = useState({
@@ -11,41 +13,36 @@ export default function DatabaseTest({ navigation }) {
 
   let documentHTML = `
   <style>
-  .inputBox {
-      width: 70%;
-      height: 10vh;
-      font-family: monospace;
-      appearance: none;
-      border: none;
-      margin-top: 5vh;
-      border-radius: 2vh;
-      outline: none;
-      background-color:#b8d8e8;
-      padding: .4em;
-      color: rgb(58, 52, 52);
-      font-size: 20pt;
-  }
-
-  .textInput {
-      font-size: 20pt;
-      font-family: 'Geneva';
-  }
 
   .submitButton{
-      font-size: 20pt;
-      font-family: 'Geneva';
-      background-color: #f3cece;
+      font-size: 35pt;
+      font-family: 'Verdana';
+      background-color: lightgrey;
+      color: #7E7E7E;
+      aspect-ratio: 1 / 1;
       border: none;
-      border-radius: 1vw;
-      width: 20%;
-      margin-top: 5vh;
+      border-radius: 10%;
+      width: 47%;
+      margin-left: 2%;
+      margin-top: 2%;
   }
+
+  #warningText {
+    font-size: 35pt;
+    font-family: 'Verdana';
+    color: #CECECE;
+    text-align:center;
+    margin: 15%;
+  }
+
 </style>
 
-<div class="textInput">
-  Filename: <input class=inputBox id="filenameIN" type="text"><br>
-  Content: <input class=inputBox id="contentIN" type="text"><br>
-  <button class="submitButton" onclick="handleWrite()">Write</button>
+
+<button class="submitButton" onclick="handleWrite()"> <img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEmUlEQVR4nO2cy4sdRRSHa5CIC58ENOrGxFdUXPggRkTMSlciKIOP7O9SSHSYO7frd052+geIqPhGxAfiK7oR/wHNMorEJ6MGjIou1AiJaTmhh9vezKSrb9vdh3t/HxwIpOCeqq/PdFVXd4VACCGEEEIIIYQQQgjpBFW9EcBeixjjDRz2nlDVMwG8LCJ5OQC8aP9HMd3LeHdSRik+VNWzKMWHjJxS/MnIKcWfjJxS/MnIKcWfjJxS/MnIKcWfjJxS/MnIKcWfjJxS/MnIKcWfjJxSNmZBRN6oMYh//U9tTgaA1yyH5L+rs46q3ltDxuGU9kWbwzWk3NP3OLhBRF6qIWN7jPG6qrbWxtrWkPJC3+PgBgBvp8oIIYRUIdY2VQqAt/oeBzcAkFQZdYXUkIK19nPPysrKRQB+SpExjZAqKfbbqnrh3ItYZ2/8y4mB+lRVt00O1DRCjCzLLheRAxNtD3EvfgMWFxfPUNVdIrJbVXduNBWdVkjBAoBbi9/YZb/JymhIbCZk/lDVswHcDeBhEXlMRJ62APC4rQ8Gg8Em70IGg8EmAPdZzmv5W1+sT9Y362PwDoA7RGQ/gKMVA/ZJk5tobFmI5WY5VkyTjwJ4H8DtwRuj0ehSSy5hLVGO/V6FAPigZl/eUdVLggdUdQeAH2t2wOLEejOovoUUM7F8ivhBVW8OfQLgJgB/TtkBe950pzchAO6atj8i8kdvU+jRaHSxXRUNkp960GKLQmKM1zfpk4isquqW0DUi8nrDxA94vYfIqYvHWgHg1dD1fcPuAQ0S/j7GeLXjWdb2htV/otP7iV0BiYn9bY8/AHxkISLvARgNh8PN3tchw+Fws+Va5Hwyf+uL9SnxonsldLXVKiK/JyT0hKqeP2sr9eFweAGAJxP6/1vTBXASthBKSOaZWX90IiLPJYzDbW3msJbI7ook/ml7lhEdCLGFoPW1IoeHQtuIyFLFYHzTdg7RgRADwLcVF+ejoYMk9lUMxsF5ESIiByuE7Gs7BwopQSEFrJAS/JM1hhVSwAopwQoZwwopYIWUYIWMYYUUsEJKsELGsEIKWCElWCFjWCEFrJASrJAxrJACVkgJVsgYVsh/3wo57X7I5Ec+bUAhBcvLy+dVbJ8eX1paOie0DIWUON0hA/YRaegACjn1jfuv1xHyVVdvolPIBPbel309C+BjC/t3W++CrQeFOINCnEEhzqAQZ1CIMyjEGS6EiMgjFY8tvgtzgoisVgjZ20USDyZ8PXRZmHFUdVvCV2T3d5HIzqoHe3Zc34wfmbdg52slPODc0XomdlgLgJ+rkgHwZpZlW8OMkWXZ1hQZduRTZwfbAHg+oUrWYrX4qnUWYjW13wCeDV1hew0AjtWQMm9xXFWvDV1iV4CDjuceA8BToWtU9VwAn/XdefEXX3T5xHlSylUAfnUwCLmT+CXGeGUvMkpSrhCRzx0MRt5zHOpiHz8JK1H7Nt1uZg4GJu8ybHJj9wzb5w/esJlF8UH9kb4HStqPIzaxiTFeE7xTLB5viTE+ICJ77NzCWQgR2WN9shU4TzMlhBBCCCGEEEIIIWHO+RcNp9v5dcTlxgAAAABJRU5ErkJggg==><br> Upload</button>
+<button class="submitButton" onclick="read()"> <img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE0UlEQVR4nO2cTYwlUxTH7/gWEx9h4WNjhDE+NhOCRARhh2VnfERY9a7F06Rf3rv//xkSnwsSEUGGWIgEkdBDLCSWNmNhMUQmwqQxYYYQwUgwT45UJ0/nPXXrvVu3rqrzS86uUnXO+VX1u/dW3XbOMAzDMAzDMAzDMAzDMIwkALie5IMaInKdtb0her3eiSRXSY42xFsicoKJSQyApyfIWI+nTEj6p+O3aUIA/GpPSUJEZOt/PB3/hB6TMqdO472/pEyIHtN0np3Bm5C88CYkL7wJyQtvQvLCm5C88CYkL7wJyQtvQvLCm5C88CYkL7wJyQtvQvLCm5C88CYkL7wJyQtvQvLCm5BqiMhmALcAuIfkoySfnxQAniR51/Ly8klNCxGRzd77u4ucJuartWhNWpse73IHwLUk3wFwuKxhGz5K+LJKA31kISJyKcn9FXM+DGA3gGtcbgwGg3M0uSoFTYh9InJMaiGLi4vH6rXnzF2/BTvb5YCIXAHgmzkLWr/rbkotRERujpE7ya9F5HLXJAAu02+gIhU0AnBvaiEke7HyJ/mL9367a4LBYHCW3hURixmRXGhAyI7INayJyJkuNSRfi1kIgEOho62YQvSaeu3ItbzqUv9ukDwSsYifAdzQ4CjrRs0hYj1Hkv6e6B0QmNjvAPYAeH9KvAvgMRE5t+l5yHA43ELy8SKnafnu0ZoCn5JXXApE5DiSPwUk9IyInNq2mXq/3z8NwLMB9f+oQ2pXNzoRCkjmhbYvnZB8MaAPV9eZw3oid5Qk8VfdowyfgRCdCGqtJTnc7uqG5AMlzfii7hx8BkIUXfIpuTnvdwmS2FnSjL1dEUJyb4mQna0QIiJH1S1kaWnp+HnzbLUQbRCAhwB8VZxnDcBg0oLjrEIWFhaO1nOOrTAcBPCEbpGbJec2C9kE4L0p51vVofa8QvQcAN6ecvwHoSvNnRCia1glhe0el1JVSCGj7PXAnTPk3U4hAF4uazDGpFQREihjppl1m4WELsWsaoNDhRSrCpP+ucCk5r1RNe/WCiG5FChkpA3Wdw4BQraHyiiiN0Pe7RQiIidXfI36caRj1uNzzaFq3q0VonjvLyR5oEITY8UBvfYsObdaiCIiW2O9nw+Mb0Xk4lnzbb2QxFLmktEZIYmkzC2jU0JqlhJFRueE1CQlmoxOCoksJaqMzgqJJCW6jE4LmVNKLTJc14XMKKU2GUrnhVSUUqsMxYSES6ldhmJCxhCRbfqad8rHzttcAkzIBkTkDACPkPywiIf7/f7pLhEmJDNMSGaYkMwwIZmRhRCSyyXj//2uI3DyKG9cyH0pkrgtYPdQpQ04/0dE5LyAXWQ7UiRyVcAs+XX9GtG1l00A3izrg279qz2T4vvYQyHfOek2MdcyhsPhlhAZAL7TXiVJCsBLFRb49O/sRy2JtdC6AexyqdClCQB/VJDStfgzxVrav9A7IIPCRzkGgOdcavRLPwCfNF0884vP6tp9HLoM/kMGTRhlEt977y9oRMaYlPNJfppBM0YNx75Uy/6l6COqe9P1xyyDxoxShg5u9DdjZWXlFJcbOrIoNtQfbLpRrD90f+Iu7/1FLneKyeOV3vtbdd+F/j+TNgTJntakM/Bkkz7DMAzDMAzDMAzDMAzDcHnyN4e3uFJjoqCjAAAAAElFTkSuQmCC><br> Download</button>
+
+<div id=warningText>
+Be sure to only upload/download when you have a stable internet connection.
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -71,28 +68,67 @@ const firestore = firebase.firestore();
 
 <script>
 
+let fname = "` + communityID + `";
+let globalContents = "` + csvContents + `";
+
+
   function handleWrite(){
-      writeEntry(document.getElementById('filenameIN').value, document.getElementById('contentIN').value);
+      writeEntry(fname, globalContents);
   }
 
-
-// log your ip address, tehehe :3
 function writeEntry(name, CSVcontent) {
   const newEntry = {
         content: CSVcontent
   };
 
-  // Add the entry to the database
   firestore.collection("csv-files").doc(name).set(newEntry);
+  alert("Successfully uploaded entry '" + fname + "' to database.");
 }
+
+function read() {
+  firestore.collection("csv-files").doc(fname).get()
+    .then((doc) => {
+      if (doc.exists) {
+        Object.keys(doc.data()).forEach(key => {
+          console.log(key + ": ", doc.data()[key].content);
+        });
+        // You can do further processing with the data here
+        window.ReactNativeWebView.postMessage([JSON.stringify(doc.data())]);
+        alert("Successfully retrieved entry '" + fname + "' from database.");
+      } else {
+        console.log("No such document!");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+}
+
+
 
 </script>
   `;
 
-  function onMessage(data) {
-    //alert(data.nativeEvent.data);
-    navigation.navigate(data.nativeEvent.data);
-  }
+async function onMessage(event) {
+    let content = JSON.parse(event.nativeEvent.data).content; // Parse the received data
+
+    try {
+        // store the content locally
+        await AsyncStorage.setItem('local.csv', content);
+        console.log('Content successfully written locally');
+    } catch (error) {
+        console.error('Error writing content to AsyncStorage:', error);
+    }
+
+    // perform a test read on locally-stored content
+    const retrievedContent = await AsyncStorage.getItem('local.csv');
+    console.log('Retrieved content:', retrievedContent);
+
+    // put it in a global variable
+    csvContents = retrievedContent;
+
+}
+
 
   return (
     <WebView
