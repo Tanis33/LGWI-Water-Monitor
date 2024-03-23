@@ -11,9 +11,10 @@ import {
 import DashboardScreen from './dashboard';
 import { useTranslation } from 'react-i18next';
 
-const communityID = '123456';
-
 export default function Home({ navigation }) {
+  // set the global filename and contents variables to some test values
+  global.communityID = '123456';
+  global.csvContents = "NothingInteresting";
   const [home, setHome] = useState({
     locationID: '',
   });
@@ -59,16 +60,9 @@ export default function Home({ navigation }) {
         <TouchableOpacity
           onPress={() => {
             //if home.locationID is 6 digit number then navigate to dashboard
-            if (home.locationID.length === 6) {
               navigation.navigate('tabsHome', { homeData: home });
               setHome(initialFormState);
               //set the global communityID to the locationID
-              communityID = home.locationID;
-            }
-            //else show an alert
-            else {
-              alert('Please enter a valid 6 digit Location ID');
-            }
           }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Lets go!</Text>
