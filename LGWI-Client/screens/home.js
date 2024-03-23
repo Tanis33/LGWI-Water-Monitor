@@ -11,6 +11,8 @@ import {
 import DashboardScreen from './dashboard';
 import { useTranslation } from 'react-i18next';
 
+const communityID = '123456';
+
 export default function Home({ navigation }) {
   const [home, setHome] = useState({
     locationID: '',
@@ -60,6 +62,8 @@ export default function Home({ navigation }) {
             if (home.locationID.length === 6) {
               navigation.navigate('tabsHome', { homeData: home });
               setHome(initialFormState);
+              //set the global communityID to the locationID
+              communityID = home.locationID;
             }
             //else show an alert
             else {
