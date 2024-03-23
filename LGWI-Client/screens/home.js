@@ -12,9 +12,13 @@ import DashboardScreen from './dashboard';
 import { useTranslation } from 'react-i18next';
 
 export default function Home({ navigation }) {
-  const [form, setForm] = useState({
+  const [home, setHome] = useState({
     locationID: '',
   });
+  const initialFormState = {
+    locationID: '',
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -40,11 +44,11 @@ export default function Home({ navigation }) {
                 autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="numeric"
-                onChangeText={locationID => setForm({ ...form, locationID })}
+                onChangeText={locationID => setHome({ ...home, locationID })}
                 placeholder="123456"
                 placeholderTextColor="#6b7280"
                 style={styles.inputControl}
-                value={form.locationID} />
+                value={home.locationID} />
             </View>
           </View>
         </View>
@@ -52,7 +56,15 @@ export default function Home({ navigation }) {
         {/* Let's Go Button */}
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('tabsHome', { })
+            //if home.locationID is 6 digit number then navigate to dashboard
+            if (home.locationID.length === 6) {
+              navigation.navigate('tabsHome', { homeData: home });
+              setHome(initialFormState);
+            }
+            //else show an alert
+            else {
+              alert('Please enter a valid 6 digit Location ID');
+            }
           }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Lets go!</Text>

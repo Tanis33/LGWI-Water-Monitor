@@ -22,10 +22,7 @@ export default function Input( {navigation} ) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-
           <Text style={styles.title}>Input Data</Text>
-
-
         <KeyboardAwareScrollView>
           <View style={styles.form}>
 
@@ -77,6 +74,27 @@ export default function Input( {navigation} ) {
                 onPress={() => {
                   // pass the data in the input into the next page and query the data for the user based on houseID or gaugeID
 
+                  //if the houseID and gagueID are empty then show an alert
+                  if (form.houseID === '' && form.gaugeID === '') {
+                    alert('Please enter a valid House ID or Gauge ID');
+                    return;
+                  }
+                  //if the usageAmount is empty then show an alert
+                  if (form.usageAmount === '') {
+                    alert('Please enter a valid Water Meter Reading');
+                    return;
+                  }
+                  //if the usageAmount is not a number then show an alert
+                  if (isNaN(form.usageAmount)) {
+                    alert('Please enter a valid Water Meter Reading');
+                    return;
+                  }
+                  //if the usageAmount is less than 0 then show an alert
+                  if (form.usageAmount < 0) {
+                    alert('Please enter a valid Water Meter Reading');
+                    return;
+                  }
+                  //else navigate to the conformation page
                   navigation.navigate('Conformation', { formData: form})
                   setForm(initialFormState);
                 }}>
