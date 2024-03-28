@@ -198,7 +198,7 @@ export default function Settings({ navigation }) {
                   <View>
                     <Text style={styles.profileName}>Jacob Westra</Text>
                     <Text style={styles.profileAddress}>
-                      Calvin University - Back End Developer
+                      Calvin University
                     </Text>
                   </View>
                 </View>

@@ -118,6 +118,9 @@ export default function ConformationScreen({ navigation, route }) {
         <TouchableOpacity
           onPress={() => {
             // handle onPress
+            //go to the userView page and take the user data from the input page
+            navigation.navigate('userView', { formData });
+            
           }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>Confirm Charge</Text>

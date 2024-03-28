@@ -10,6 +10,7 @@ import {
   Image,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { readString, parse } from 'react-native-csv';
 
 const userDetails = [
   {
@@ -26,6 +27,14 @@ const userDetails = [
 ];
 
 export default function UserView() {
+  // DOES NOT WORK CAUSE CANT FIND CSV FILE OR NAME FOR IT 
+  // // Parse CSV string
+  // const data = readString(local)
+  // // Convert back to CSV
+  // const jsonData = parse(data, { header: true });
+  // // Filter the data based on gaugeID
+  // const filteredData = jsonData.filter(user => user.gaugeID === '123');
+
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -88,7 +97,7 @@ export default function UserView() {
                   <View style={styles.divider}>
                     <View style={styles.dividerInset} />
                   </View>
-                  
+
 
                 </View>
 

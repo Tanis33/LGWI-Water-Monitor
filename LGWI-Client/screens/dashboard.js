@@ -5,13 +5,13 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const dashboardData = [
   {
-    communityName: 'dashboard.communityName',
-    usersPaid: 'dashboard.usersPaid',
-    usersUnpaid: 'dashboard.usersUnpaid',
-    amountPaid: 'dashboard.amountPaid',
-    amountUnpaid: 'dashboard.amountUnpaid',
-    monthlyUsage: 'dashboard.monthlyUsage',
-    yearlyUsage: 'dashboard.yearlyUsage',
+    communityName: 'Ecuador',
+    usersPaid: '12',
+    usersUnpaid: '12',
+    amountPaid: '123',
+    amountUnpaid: '123',
+    monthlyUsage: '1234',
+    yearlyUsage: '12345',
   },
 ];
 
