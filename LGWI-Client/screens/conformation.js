@@ -9,7 +9,7 @@ import {
   View,
   Image,
 } from 'react-native';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useTranslation } from 'react-i18next';
 
 
 const conformationData = [
@@ -32,6 +32,7 @@ const conformationData = [
 
 export default function ConformationScreen({ navigation, route }) {
   const { formData } = route.params;
+  const { t } = useTranslation();
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -43,7 +44,7 @@ export default function ConformationScreen({ navigation, route }) {
                 showsVerticalScrollIndicator={false}
                 key={index}>
 
-                <Text style={styles.receiptSubtitle}>Invoice {receiptID}</Text>
+                <Text style={styles.receiptSubtitle}>{t('screens.conformation.text.invoice')} {receiptID}</Text>
 
                 <View style={styles.receiptPrice}>
                   <Text style={styles.receiptPriceText}>{balance}</Text>
@@ -59,50 +60,50 @@ export default function ConformationScreen({ navigation, route }) {
 
 
                 <View style={styles.details} >
-                  <Text style={styles.detailsTitle}>User Details</Text>
+                  <Text style={styles.detailsTitle}>{t('screens.conformation.text.userDetails')}</Text>
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Meter Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.meternumber')}</Text>
                     <Text style={styles.detailsValue}>{meternumber}</Text>
                   </View>
                   {/* First Name */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Name</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.name')}</Text>
                     <Text style={styles.detailsValue}>{name}</Text>
                   </View>
                   {/* Last Name */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Surname</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.surname')}</Text>
                     <Text style={styles.detailsValue}>{surname}</Text>
                   </View>
                   {/* ID Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>ID Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.idNumber')}</Text>
                     <Text style={styles.detailsValue}>{idNumber}</Text>
                   </View>
                   {/* Sector */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Sector</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.sector')}</Text>
                     <Text style={styles.detailsValue}>{sector}</Text>
                   </View>
                   {/* Phone Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Phone Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.phoneNumber')}</Text>
                     <Text style={styles.detailsValue}>{phoneNumber}</Text>
                   </View>
                   {/* Email */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Email</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.email')}</Text>
                     <Text style={styles.detailsValue}>{email}</Text>
                   </View>
                   {/* Status */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Status</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.status')}</Text>
                     <Text style={styles.detailsValue}>{status}</Text>
                   </View>
                   {/* Category */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Category</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.category')}</Text>
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
 
@@ -123,7 +124,7 @@ export default function ConformationScreen({ navigation, route }) {
             
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Confirm Charge</Text>
+            <Text style={styles.btnText}>{t('screens.conformation.text.confirmChange')}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -131,7 +132,7 @@ export default function ConformationScreen({ navigation, route }) {
             navigation.navigate('tabsHome', {});
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>Cancel</Text>
+            <Text style={styles.btnSecondaryText}>{t('screens.conformation.text.cancel')}</Text>
           </View>
         </TouchableOpacity>
       </View>

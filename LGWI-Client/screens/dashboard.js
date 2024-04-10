@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-
+import { useTranslation } from 'react-i18next';
 
 const dashboardData = [
   {
@@ -16,13 +16,13 @@ const dashboardData = [
 ];
 
 export default function Dashboard({ navigation }) {
-
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }} >
       {dashboardData.map(({ communityName, usersPaid, usersUnpaid, amountPaid, amountUnpaid, monthlyUsage, yearlyUsage }, index) => {
         return (
           <View style={styles.container} key={index}>
-            <Text style={styles.title}>Dashboard</Text>
+            <Text style={styles.title}>{t('screens.dashboard.title')}</Text>
             <View style={styles.stats}>
               {/* Current System Box */}
               <View style={styles.statsRow}>
@@ -31,7 +31,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="list" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabel}>Community Name</Text>
+                    <Text style={styles.statsItemLabel}>{t('screens.dashboard.text.communityName')}</Text>
                     <Text style={styles.statsItemValue}>{communityName}</Text>
                   </View>
                 </View>
@@ -45,7 +45,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="users" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabelGreen}>Paid</Text>
+                    <Text style={styles.statsItemLabelGreen}>{t('screens.dashboard.text.paid')}</Text>
                     <Text style={styles.statsItemValue}>{usersPaid}</Text>
                   </View>
                 </View>
@@ -54,7 +54,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="users" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabelRed}>Unpaid</Text>
+                    <Text style={styles.statsItemLabelRed}>{t('screens.dashboard.text.unpaid')}</Text>
                     <Text style={styles.statsItemValue}>{usersUnpaid}</Text>
                   </View>
                 </View>
@@ -68,7 +68,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="dollar-sign" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabelGreen}>Paid</Text>
+                    <Text style={styles.statsItemLabelGreen}>{t('screens.dashboard.text.paid')}</Text>
                     <Text style={styles.statsItemValue}>{amountPaid}</Text>
                   </View>
                 </View>
@@ -77,7 +77,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="dollar-sign" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabelRed}>Unpaid</Text>
+                    <Text style={styles.statsItemLabelRed}>{t('screens.dashboard.text.unpaid')}</Text>
                     <Text style={styles.statsItemValue}>{amountUnpaid}</Text>
                   </View>
                 </View>
@@ -90,7 +90,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="activity" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabel}>Monthly Usage</Text>
+                    <Text style={styles.statsItemLabel}>{t('screens.dashboard.text.monthlyUsage')}</Text>
 
                     <Text style={styles.statsItemValue}>{monthlyUsage}</Text>
                   </View>
@@ -103,7 +103,7 @@ export default function Dashboard({ navigation }) {
                     <FeatherIcon color="#fff" name="activity" size={22} />
                   </View>
                   <View>
-                    <Text style={styles.statsItemLabel}>Yearly Usage</Text>
+                    <Text style={styles.statsItemLabel}>{t('screens.dashboard.text.yearlyUsage')}</Text>
 
                     <Text style={styles.statsItemValue}>{yearlyUsage}</Text>
                   </View>

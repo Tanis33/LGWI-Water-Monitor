@@ -2,7 +2,7 @@
     "language": "Spanish",
     "screens": {
       "addUser": {
-        "title": "Add User",
+        "title": "Agregar Usuario",
         "text": {
           "meternumber": "Meter Number",
           "name": "Name",
@@ -73,10 +73,10 @@
       "settings": {
         "title": "Essettings",
         "text": {
-          "prefrences": "Change Password",
-          "language": "Change Email",
-          "firebaseCSV": "Change Language",
-          "resources": "Logout",
+          "prefrences": "Prefrences",
+          "language": "Language",
+          "firebaseCSV": "Firebase CSV",
+          "resources": "Resources",
           "report": "Report Bug",
           "view": "View Project Details",
           "developers": "Developers"

@@ -31,7 +31,7 @@
         "email": "Email",
         "status": "Status",
         "category": "Category",
-        "confrimChange": "Confirm Change",
+        "confirmChange": "Confirm Change",
         "cancel": "Cancel"
       }
     },
@@ -71,7 +71,7 @@
       }
     },
     "settings": {
-      "title": "Test Settings",
+      "title": "Settings",
       "text": {
         "prefrences": "Change Password",
         "language": "Change Email",

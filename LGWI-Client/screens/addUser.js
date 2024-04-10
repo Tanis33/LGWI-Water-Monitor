@@ -9,6 +9,8 @@ import {
   View,
   TextInput,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
+
 
 const conformationData = [
   {
@@ -41,6 +43,8 @@ export default function ConformationScreen({ navigation }) {
     status: '',
     category: '',
   });
+  
+  const { t } = useTranslation();
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -52,10 +56,10 @@ export default function ConformationScreen({ navigation }) {
                 showsVerticalScrollIndicator={false}
                 key={index}>
                 <View style={styles.details} >
-                  <Text style={styles.detailsTitle}>Add User</Text>
+                  <Text style={styles.detailsTitle}>{t('screens.addUser.title')}</Text>
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Meter Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.meternumber')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -68,7 +72,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* First Name */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Name</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.name')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -80,7 +84,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* Last Name */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Surname</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.surname')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -92,7 +96,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* ID Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>ID Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.idNumber')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -105,7 +109,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* Sector */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Sector</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.sector')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -117,7 +121,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* Phone Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Phone Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.phoneNumber')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -130,7 +134,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* Email */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Email</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.email')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -142,7 +146,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* Status */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Status</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.status')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -154,7 +158,7 @@ export default function ConformationScreen({ navigation }) {
                   </View>
                   {/* Category */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Category</Text>
+                    <Text style={styles.detailsField}>{t('screens.addUser.text.category')}</Text>
                     <TextInput
                       autoCapitalize="none"
                       autoCorrect={false}
@@ -180,7 +184,7 @@ export default function ConformationScreen({ navigation }) {
             navigation.navigate('tabsHome', {});
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Add User</Text>
+            <Text style={styles.btnText}>{t('screens.addUser.text.addUser')}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -188,7 +192,7 @@ export default function ConformationScreen({ navigation }) {
             navigation.navigate('tabsHome', {});
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>Cancel</Text>
+            <Text style={styles.btnSecondaryText}>{t('screens.addUser.text.cancel')}</Text>
           </View>
         </TouchableOpacity>
       </View>
