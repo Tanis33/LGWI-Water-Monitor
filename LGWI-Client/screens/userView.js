@@ -7,10 +7,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image,
 } from 'react-native';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import { readString, parse } from 'react-native-csv';
+
 
 const userDetails = [
   {
@@ -93,7 +91,46 @@ export default function UserView() {
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
 
-                  {/* Divider */}
+                  {/* Add a clickable container with reciept info with lower divider. Must be able to show past 10 reciepts. */}
+                  {/* Receipt */}
+
+                  <View style={styles.divider}>
+                    <View style={styles.dividerInset} />
+                  </View>
+
+                  <View style={styles.details} key={index}>
+                    <Text style={styles.detailsTitle}>Reciepts</Text>
+                    <TouchableOpacity onPress={() => {
+                      // generate a pdf of the reciept with all the details and the option to email to customer
+                      
+
+
+
+
+                    }}>
+                      {/* Reciept Info */}
+                      <View style={styles.detailsRow}>
+                        <Text style={styles.detailsField}>Reciept ID</Text>
+                        <Text style={styles.detailsValue}>{meternumber}</Text>
+                      </View>
+                      <View style={styles.detailsRow}>
+                        <Text style={styles.detailsField}>Date</Text>
+                        <Text style={styles.detailsValue}>{meternumber}</Text>
+                      </View>
+                      <View style={styles.detailsRow}>
+                        <Text style={styles.detailsField}>Total</Text>
+                        <Text style={styles.detailsValue}>{meternumber}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.pastReciept}>
+                    <TouchableOpacity>
+                      <View style={styles.receipt}>
+                      </View>
+                    </TouchableOpacity>
+
+                  </View>
                   <View style={styles.divider}>
                     <View style={styles.dividerInset} />
                   </View>
@@ -105,7 +142,7 @@ export default function UserView() {
             })}
           </ScrollView>
         </View>
-      </SafeAreaView>
+      </SafeAreaView >
 
       <View style={styles.overlay}>
         <TouchableOpacity
@@ -125,7 +162,7 @@ export default function UserView() {
           </View>
         </TouchableOpacity>
       </View>
-    </View>
+    </View >
   );
 }
 
@@ -315,5 +352,11 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     fontWeight: '600',
     color: '#02C3BD',
+  },
+
+  pastReciept: {
+    alignItems: 'center',
+    paddingTop: 16,
+    paddingBottom: 16,
   },
 });
