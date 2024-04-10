@@ -11,6 +11,7 @@ import {
   Linking
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useTranslation } from 'react-i18next';
 
 export default function Settings({ navigation }) {
   const [form, setForm] = useState({
@@ -23,25 +24,47 @@ export default function Settings({ navigation }) {
   const openModal = () => setModalVisible(true);
   const closeModal = () => setModalVisible(false);
 
+  const { t, i18n } = useTranslation();
   return (
+
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-        <Text style={styles.title}>Settings</Text>
+        <Text style={styles.title}>{t('screens.settings.title')}</Text>
         <ScrollView>
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Preferences</Text>
+            <Text style={styles.sectionTitle}>Language</Text>
 
             {/* Language */}
+            {/* Button to Change to English */}
             <TouchableOpacity
               onPress={() => {
-
+                i18n.changeLanguage("en")
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#fe9400' }]}>
                 <FeatherIcon color="#fff" name="globe" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Language</Text>
+              <Text style={styles.rowLabel}>English</Text>
+
+              <View style={styles.rowSpacer} />
+
+              <FeatherIcon
+                color="#C6C6C6"
+                name="chevron-right"
+                size={20} />
+            </TouchableOpacity>
+            {/* Button to Change to Spanish */}
+            <TouchableOpacity
+              onPress={() => {
+                i18n.changeLanguage("es")
+              }}
+              style={styles.row}>
+              <View style={[styles.rowIcon, { backgroundColor: '#fe9400' }]}>
+                <FeatherIcon color="#fff" name="globe" size={20} />
+              </View>
+
+              <Text style={styles.rowLabel}>Spanish</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -51,6 +74,11 @@ export default function Settings({ navigation }) {
                 size={20} />
             </TouchableOpacity>
 
+
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Resources</Text>
             {/* System Location */}
             <TouchableOpacity
               onPress={() => navigation.navigate('DatabaseTest', {})
@@ -72,10 +100,6 @@ export default function Settings({ navigation }) {
                 name="chevron-right"
                 size={20} />
             </TouchableOpacity>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Resources</Text>
 
             {/* Report Bug */}
             <TouchableOpacity
@@ -205,8 +229,6 @@ export default function Settings({ navigation }) {
               </View>
             </View>
           </Modal>
-
-
         </ScrollView>
       </View>
     </SafeAreaView>

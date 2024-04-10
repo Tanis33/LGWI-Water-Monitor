@@ -9,7 +9,6 @@ import {
   View,
   TextInput,
 } from 'react-native';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const conformationData = [
   {

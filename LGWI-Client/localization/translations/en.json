@@ -1,23 +1,123 @@
 {
   "language": "English",
   "screens": {
-      "home": {
-          "title": "Track water usage {'\n'}with{' '}",
-          "text": {
-              "appName": "LGWI Liquid Metircs",
-              "submitButton": "Let's go!"
-          }
-      },
-      "login": {
-          "title": "Sign in",
-          "text": {
-              "login": "login",
-              "emailAddress": "Email address",
-              "password": "password",
-              "continue": "Continue",
-              "createAccount": "Create an Account",
-              "forgotPassword": "Forgotten password?"
-          }
+    "addUser": {
+      "title": "Add User",
+      "text": {
+        "meternumber": "Meter Number",
+        "name": "Name",
+        "surname": "Surname",
+        "idNumber": "ID Number",
+        "sector": "Sector",
+        "phoneNumber": "Phone Number",
+        "email": "Email",
+        "status": "Status",
+        "category": "Category",
+        "addUser": "Add User",
+        "cancel": "Cancel"
       }
+    },
+    "conformation": {
+      "title": "Conformation",
+      "text": {
+        "invoice": "Invoice",
+        "userDetails": "User Details",
+        "meternumber": "Meter Number",
+        "name": "Name",
+        "surname": "Surname",
+        "idNumber": "ID Number",
+        "sector": "Sector",
+        "phoneNumber": "Phone Number",
+        "email": "Email",
+        "status": "Status",
+        "category": "Category",
+        "confrimChange": "Confirm Change",
+        "cancel": "Cancel"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "text": {
+        "communityName": "Community Name",
+        "paid": "Paid",
+        "unpaid": "Unpaid",
+        "monthlyUsage": "Monthly Usage",
+        "yearlyUsage": "Yearly Usage"
+      }
+    },
+    "home": {
+      "title": "Track water usage {'\n'}with{' '}",
+      "text": {
+        "locationID": "Location ID",
+        "appName": "LGWI Liquid Metircs",
+        "submitButton": "Let's go!"
+      }
+    },
+    "input": {
+      "title": "Input Data",
+      "text": {
+        "title": "Gauge ID OR House ID",
+        "gaugeId": "Email address",
+        "houseID": "password",
+        "waterMeter": "Water Meter Reading",
+        "submit": "Submit"
+      }
+    },
+    "receipt": {
+      "title": "Receipt",
+      "text": {
+        "receipt": "Receipt",
+        "submit": "Submit"
+      }
+    },
+    "settings": {
+      "title": "Test Settings",
+      "text": {
+        "prefrences": "Change Password",
+        "language": "Change Email",
+        "firebaseCSV": "Change Language",
+        "resources": "Logout",
+        "report": "Report Bug",
+        "view": "View Project Details",
+        "developers": "Developers"
+      }
+    },
+    "users": {
+      "title": "Users",
+      "text": {
+        "filter": "Filter",
+        "search": "Search",
+        "addUser": "Add User",
+        "submit": "Submit"
+      }
+    },
+    "userView": {
+      "title": "User Details",
+      "text": {
+        "meternumber": "Meter Number",
+        "name": "Name",
+        "surname": "Surname",
+        "idNumber": "ID Number",
+        "sector": "Sector",
+        "phoneNumber": "Phone Number",
+        "email": "Email",
+        "status": "Status",
+        "category": "Category",
+        "receipt": "Receipts",
+        "recieptID": "Receipt ID",
+        "date": "Date",
+        "amount": "Amount",
+        "submit": "Submit",
+        "edit": "Edit User"
+      }
+    },
+    "footer": {
+      "text": {
+        "dashboard": "Dashboard",
+        "input": "Input",
+        "users": "Users",
+        "settings": "Settings"
+      }
+    }
   }
 }
