@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import { useTranslation } from 'react-i18next';
 
 const userDetails = [
   {
@@ -33,6 +33,7 @@ export default function UserView() {
   // // Filter the data based on gaugeID
   // const filteredData = jsonData.filter(user => user.gaugeID === '123');
 
+  const { t } = useTranslation();
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -44,50 +45,50 @@ export default function UserView() {
             {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
               return (
                 <View style={styles.details} key={index}>
-                  <Text style={styles.detailsTitle}>User Details</Text>
+                  <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Meter Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.meternumber')}</Text>
                     <Text style={styles.detailsValue}>{meternumber}</Text>
                   </View>
                   {/* First Name */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Name</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.name')}</Text>
                     <Text style={styles.detailsValue}>{name}</Text>
                   </View>
                   {/* Last Name */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Surname</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.surname')}</Text>
                     <Text style={styles.detailsValue}>{surname}</Text>
                   </View>
                   {/* ID Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>ID Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.idNumber')}</Text>
                     <Text style={styles.detailsValue}>{idNumber}</Text>
                   </View>
                   {/* Sector */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Sector</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.sector')}</Text>
                     <Text style={styles.detailsValue}>{sector}</Text>
                   </View>
                   {/* Phone Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Phone Number</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.phoneNumber')}</Text>
                     <Text style={styles.detailsValue}>{phoneNumber}</Text>
                   </View>
                   {/* Email */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Email</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.email')}</Text>
                     <Text style={styles.detailsValue}>{email}</Text>
                   </View>
                   {/* Status */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Status</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.status')}</Text>
                     <Text style={styles.detailsValue}>{status}</Text>
                   </View>
                   {/* Category */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>Category</Text>
+                    <Text style={styles.detailsField}>{t('screens.userView.text.category')}</Text>
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
 
@@ -99,26 +100,21 @@ export default function UserView() {
                   </View>
 
                   <View style={styles.details} key={index}>
-                    <Text style={styles.detailsTitle}>Reciepts</Text>
+                    <Text style={styles.detailsTitle}>{t('screens.userView.text.receipt')}</Text>
                     <TouchableOpacity onPress={() => {
                       // generate a pdf of the reciept with all the details and the option to email to customer
-                      
-
-
-
-
                     }}>
                       {/* Reciept Info */}
                       <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>Reciept ID</Text>
+                        <Text style={styles.detailsField}>{t('screens.userView.text.receiptID')}</Text>
                         <Text style={styles.detailsValue}>{meternumber}</Text>
                       </View>
                       <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>Date</Text>
+                        <Text style={styles.detailsField}>{t('screens.userView.text.date')}</Text>
                         <Text style={styles.detailsValue}>{meternumber}</Text>
                       </View>
                       <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>Total</Text>
+                        <Text style={styles.detailsField}>{t('screens.userView.text.amount')}</Text>
                         <Text style={styles.detailsValue}>{meternumber}</Text>
                       </View>
                     </TouchableOpacity>
@@ -150,7 +146,7 @@ export default function UserView() {
             // handle onPress
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>Past Receipts</Text>
+            <Text style={styles.btnText}>{t('screens.userView.text.submit')}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -158,7 +154,7 @@ export default function UserView() {
             // handle onPress
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>Edit User</Text>
+            <Text style={styles.btnSecondaryText}>{t('screens.userView.text.edit')}</Text>
           </View>
         </TouchableOpacity>
       </View>

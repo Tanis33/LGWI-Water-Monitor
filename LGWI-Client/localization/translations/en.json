@@ -73,10 +73,12 @@
     "settings": {
       "title": "Settings",
       "text": {
-        "prefrences": "Change Password",
-        "language": "Change Email",
-        "firebaseCSV": "Change Language",
-        "resources": "Logout",
+        "english": "English",
+        "spanish": "Spanish",
+        "prefrences": "Prefrences",
+        "language": "Language",
+        "firebaseCSV": "Firebase CSV",
+        "resources": "Resuources",
         "report": "Report Bug",
         "view": "View Project Details",
         "developers": "Developers"
@@ -104,7 +106,7 @@
         "status": "Status",
         "category": "Category",
         "receipt": "Receipts",
-        "recieptID": "Receipt ID",
+        "receiptID": "Receipt ID",
         "date": "Date",
         "amount": "Amount",
         "submit": "Submit",

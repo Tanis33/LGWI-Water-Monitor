@@ -11,6 +11,7 @@ import {
   Modal,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useTranslation } from 'react-i18next';
 
 const items = [
   {
@@ -79,15 +80,16 @@ const items = [
 ];
 
 export default function Users({ navigation }) {
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.name}>Users</Text>
+          <Text style={styles.name}>{t('screens.users.title')}</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('AddUser', {})}
             style={styles.addBtn}>
-            <Text style={styles.addUser}>Add User
+            <Text style={styles.addUser}>{t('screens.users.text.addUser')}
             </Text>
             <FeatherIcon color="#000" name="plus" size={30} />
 

@@ -32,7 +32,7 @@ export default function Settings({ navigation }) {
         <Text style={styles.title}>{t('screens.settings.title')}</Text>
         <ScrollView>
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Language</Text>
+            <Text style={styles.sectionTitle}>{t('screens.settings.text.language')}</Text>
 
             {/* Language */}
             {/* Button to Change to English */}
@@ -45,7 +45,7 @@ export default function Settings({ navigation }) {
                 <FeatherIcon color="#fff" name="globe" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>English</Text>
+              <Text style={styles.rowLabel}>{t('screens.settings.text.english')}</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -64,7 +64,7 @@ export default function Settings({ navigation }) {
                 <FeatherIcon color="#fff" name="globe" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Spanish</Text>
+              <Text style={styles.rowLabel}>{t('screens.settings.text.spanish')}</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -78,7 +78,7 @@ export default function Settings({ navigation }) {
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Resources</Text>
+            <Text style={styles.sectionTitle}>{t('screens.settings.text.resources')}</Text>
             {/* System Location */}
             <TouchableOpacity
               onPress={() => navigation.navigate('DatabaseTest', {})
@@ -91,7 +91,7 @@ export default function Settings({ navigation }) {
                   size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Firebase CSVs</Text>
+              <Text style={styles.rowLabel}>{t('screens.settings.text.firebaseCSV')}</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -111,7 +111,7 @@ export default function Settings({ navigation }) {
                 <FeatherIcon color="#fff" name="flag" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Report Bug</Text>
+              <Text style={styles.rowLabel}>{t('screens.settings.text.report')}</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -131,7 +131,7 @@ export default function Settings({ navigation }) {
                 <FeatherIcon color="#fff" name="mail" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>View Project</Text>
+              <Text style={styles.rowLabel}>{t('screens.settings.text.view')}</Text>
 
               <View style={styles.rowSpacer} />
 
@@ -151,7 +151,7 @@ export default function Settings({ navigation }) {
                 <FeatherIcon color="#fff" name="star" size={20} />
               </View>
 
-              <Text style={styles.rowLabel}>Developers</Text>
+              <Text style={styles.rowLabel}>{t('screens.settings.text.developers')}</Text>
 
               <View style={styles.rowSpacer} />
 

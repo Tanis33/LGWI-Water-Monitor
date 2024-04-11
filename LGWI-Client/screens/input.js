@@ -3,10 +3,10 @@ import {
   StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 export default function Input( {navigation} ) {
+  
   const [form, setForm] = useState({
     gaugeID: '',
     houseID: '',
@@ -19,10 +19,12 @@ export default function Input( {navigation} ) {
     usageAmount: '',
   };
 
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-          <Text style={styles.title}>Input Data</Text>
+          <Text style={styles.title}>{t('screens.input.title')}</Text>
         <KeyboardAwareScrollView>
           <View style={styles.form}>
 
@@ -30,7 +32,7 @@ export default function Input( {navigation} ) {
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>Gauge ID OR House ID</Text>
+                  <Text style={styles.statsItemLabel}>{t('screens.input.text.title')}</Text>
                   <TextInput
                     onChangeText={gaugeID => setForm({ ...form, gaugeID })}
                     placeholder="Gauge ID"
