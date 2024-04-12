@@ -96,8 +96,12 @@ export default function Users({ navigation }) {
           </TouchableOpacity>
 
         </View>
-        <Text style={styles.filter}>Filter</Text>
-        <Text style={styles.filter}>Search</Text>
+
+{/* 
+        <Text style={styles.filter}>{t('screens.users.text.filter')}</Text>
+        <Text style={styles.filter}>{t('screens.users.text.search')}</Text>
+
+         */}
         <ScrollView contentContainerStyle={styles.content}>
 
           {items.map(({ name, systemID, gagueID, tag, date }, index) => {

@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 24,
     fontWeight: '600',
-    color: 'black',
+    color: '#fff',
   },
   /** From Menu Screen */
   stats: {

@@ -14,19 +14,19 @@ import { useTranslation } from 'react-i18next';
 
 const conformationData = [
   {
-    receiptID: 'receipt.receiptID',
-    balance: 'receipt.balance',
-    date: 'receipt.date',
-    chargeType: 'receipt.chargeType',
-    meternumber: 'user.meternumber',
-    name: 'user.name',
-    surname: 'user.surname',
-    idNumber: 'user.idnumber',
-    sector: 'user.sector',
-    phoneNumber: 'user.phonenumber',
-    email: 'user.email',
-    status: 'user.status',
-    category: 'user.category',
+    receiptID: '123',
+    balance: '$123',
+    date: '1/1/11',
+    chargeType: 'Water Charge',
+    meternumber: '123',
+    name: 'John',
+    surname: 'Doe',
+    idNumber: '123',
+    sector: 'Ecuador',
+    phoneNumber: '111111111',
+    email: 'john@doe.com',
+    status: 'Active',
+    category: 'Residential',
   },
 ];
 

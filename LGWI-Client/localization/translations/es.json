@@ -31,7 +31,7 @@
           "email": "Email",
           "status": "Status",
           "category": "Category",
-          "confrimChange": "Confirm Change",
+          "confrimChange": "Confirm ",
           "cancel": "Cancel"
         }
       },
@@ -108,7 +108,8 @@
           "date": "Date",
           "amount": "Amount",
           "submit": "Submit",
-          "edit": "Edit User"
+          "edit": "Edit User",
+          "cancel": "Cancel"
         }
       },
       "footer": {

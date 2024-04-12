@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: '500',
-    color: 'black',
+    color: '#fff',
   },
   stats: {
     flexDirection: 'column',

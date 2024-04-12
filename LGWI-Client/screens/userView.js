@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+
 const userDetails = [
   {
     meternumber: '1234',
@@ -24,7 +25,7 @@ const userDetails = [
   },
 ];
 
-export default function UserView() {
+export default function UserView( {navigation} ) {
   // DOES NOT WORK CAUSE CANT FIND CSV FILE OR NAME FOR IT 
   // // Parse CSV string
   // const data = readString(local)
@@ -38,6 +39,17 @@ export default function UserView() {
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('AddUser', {})}
+              style={styles.addBtn}>
+              <Text style={styles.addUser}>{t('screens.userView.text.edit')}
+              </Text>
+
+            </TouchableOpacity>
+          </View>
+
           <ScrollView
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
@@ -45,7 +57,8 @@ export default function UserView() {
             {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
               return (
                 <View style={styles.details} key={index}>
-                  <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
+
+
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>{t('screens.userView.text.meternumber')}</Text>
@@ -140,10 +153,17 @@ export default function UserView() {
         </View>
       </SafeAreaView >
 
+      {/* Add Charge to User Account Use Modal*/}
       <View style={styles.overlay}>
         <TouchableOpacity
           onPress={() => {
-            // handle onPress
+            // add charge button
+            // amount
+            // charge type
+            // date
+            // confriamtion
+            // cancel
+            // add charge to user account
           }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>{t('screens.userView.text.submit')}</Text>
@@ -151,10 +171,11 @@ export default function UserView() {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            // handle onPress
+            // navigate back to the previous page
+            navigation.goBack();
           }}>
           <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>{t('screens.userView.text.edit')}</Text>
+            <Text style={styles.btnSecondaryText}>{t('screens.userView.text.cancel')}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -164,8 +185,7 @@ export default function UserView() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 0,
-    paddingHorizontal: 16,
+    padding: 16,
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
@@ -354,5 +374,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 16,
     paddingBottom: 16,
+  },
+  addUser: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#000',
+  },
+  addBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
 });

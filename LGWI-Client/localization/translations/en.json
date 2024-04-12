@@ -31,7 +31,7 @@
         "email": "Email",
         "status": "Status",
         "category": "Category",
-        "confirmChange": "Confirm Change",
+        "confirmChange": "Confirm Charge",
         "cancel": "Cancel"
       }
     },
@@ -109,8 +109,9 @@
         "receiptID": "Receipt ID",
         "date": "Date",
         "amount": "Amount",
-        "submit": "Submit",
-        "edit": "Edit User"
+        "submit": "Add Charge",
+        "edit": "Edit User",
+        "cancel": "Cancel"
       }
     },
     "footer": {
