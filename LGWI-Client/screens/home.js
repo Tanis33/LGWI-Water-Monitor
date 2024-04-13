@@ -15,6 +15,7 @@ export default function Home({ navigation }) {
   // set the global filename and contents variables to some test values
   global.communityID = '123456';
   global.csvContents = "NothingInteresting";
+  global.csvArray = [];
   const [home, setHome] = useState({
     locationID: '',
   });
