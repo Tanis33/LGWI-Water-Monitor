@@ -3,6 +3,49 @@ import { WebView } from 'react-native-webview';
 import * as FileSystem from 'expo-file-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const write = async () => {
+  parse();
+
+};
+
+export const parse = async () => {
+    // unpack the csv contents
+    let csvString = await AsyncStorage.getItem('local.csv');
+    const rows = csvString.split("\n");
+
+  // Find the maximum length of each column across all rows
+  const colLengths = new Array(rows[0].split(",").length).fill(0);
+
+  for (const row of rows) {
+    const cells = row.split(",");
+    for (let i = 0; i < cells.length; i++) {
+      colLengths[i] = Math.max(colLengths[i], cells[i].length);
+    }
+  }
+
+  // Create an empty 2D array to store the data
+  const dataArray = [];
+
+  // Loop through each row
+  for (const row of rows) {
+    // Split the row into cells by delimiter (comma by default)
+    const cells = row.split(",");
+
+    // Pad each cell with spaces to match the maximum column length
+    const paddedCells = cells.map((cell, i) => cell.padEnd(colLengths[i] + 2)); // +2 for spacing
+
+    // Push the padded cells array into the data array
+    dataArray.push(paddedCells);
+  }
+
+  // Print the 2D array to the console
+  for (const row of dataArray) {
+    console.log(row.join("  "));
+  }
+
+  csvArray = dataArray;
+};
+
 export default function DatabaseTest({ navigation }) {
   const [form, setForm] = useState({
     darkMode: false,
@@ -69,7 +112,7 @@ const firestore = firebase.firestore();
 <script>
 
 let fname = "` + communityID + `";
-let globalContents = "` + csvContents + `";
+let globalContents = "` + csvContents.replace("\n", /#/g) + `";
 
 
   function handleWrite(){
@@ -114,7 +157,7 @@ async function onMessage(event) {
 
     try {
         // store the content locally
-        await AsyncStorage.setItem('local.csv', content);
+        await AsyncStorage.setItem('local.csv', content.replace(/#/g, "\n"));
         console.log('Content successfully written locally');
     } catch (error) {
         console.error('Error writing content to AsyncStorage:', error);
@@ -126,6 +169,7 @@ async function onMessage(event) {
 
     // put it in a global variable
     csvContents = retrievedContent;
+    write();
 
 }
 
