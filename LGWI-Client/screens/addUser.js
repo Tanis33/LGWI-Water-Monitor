@@ -1,4 +1,4 @@
-// conformation.js page for confirming of the cost and the calculation of the cost based on water usage
+//addUser Page Adds a new user to the database
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-
-const conformationData = [
+//User Information
+const userData = [
   {
     receiptID: 'receipt.receiptID',
     balance: 'receipt.balance',
@@ -31,7 +31,10 @@ const conformationData = [
   },
 ];
 
-export default function ConformationScreen({ navigation }) {
+
+export default function AddUser({ navigation }) {
+
+  //Empty form to be filled by the user data and added to the database
   const [form, setForm] = useState({
     meternumber: '',
     name: '',
@@ -43,13 +46,15 @@ export default function ConformationScreen({ navigation }) {
     status: '',
     category: '',
   });
-  
+
+  //Translation
   const { t } = useTranslation();
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
-          {conformationData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category, spacer }, index) => {
+          {/* Maps userData */}
+          {userData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category, spacer }, index) => {
             return (
               <ScrollView
                 contentContainerStyle={styles.receipt}

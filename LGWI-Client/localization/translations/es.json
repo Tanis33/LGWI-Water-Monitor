@@ -1,6 +1,16 @@
 {
     "language": "Spanish",
     "screens": {
+      "addCharge": {
+        "title": "Add Charge",
+        "text": {
+          "title": "Charge Details",
+          "gaugeId": "Email address",
+          "houseID": "password",
+          "waterMeter": "Water Meter Reading",
+          "submit": "Submit"
+        }
+      },
       "addUser": {
         "title": "Agregar Usuario",
         "text": {

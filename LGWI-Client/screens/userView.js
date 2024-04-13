@@ -1,5 +1,5 @@
 // conformation.js page for confirming of the cost and the calculation of the cost based on water usage
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,8 +7,11 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Modal,
+  Image,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 
 const userDetails = [
@@ -25,7 +28,7 @@ const userDetails = [
   },
 ];
 
-export default function UserView( {navigation} ) {
+export default function UserView({ navigation }) {
   // DOES NOT WORK CAUSE CANT FIND CSV FILE OR NAME FOR IT 
   // // Parse CSV string
   // const data = readString(local)
@@ -33,6 +36,11 @@ export default function UserView( {navigation} ) {
   // const jsonData = parse(data, { header: true });
   // // Filter the data based on gaugeID
   // const filteredData = jsonData.filter(user => user.gaugeID === '123');
+
+  // Modal for adding a charge to the user account
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
 
   const { t } = useTranslation();
   return (
@@ -143,10 +151,7 @@ export default function UserView( {navigation} ) {
                   <View style={styles.divider}>
                     <View style={styles.dividerInset} />
                   </View>
-
-
                 </View>
-
               );
             })}
           </ScrollView>
@@ -157,13 +162,7 @@ export default function UserView( {navigation} ) {
       <View style={styles.overlay}>
         <TouchableOpacity
           onPress={() => {
-            // add charge button
-            // amount
-            // charge type
-            // date
-            // confriamtion
-            // cancel
-            // add charge to user account
+            navigation.navigate('AddCharge', {});
           }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>{t('screens.userView.text.submit')}</Text>
@@ -180,6 +179,8 @@ export default function UserView( {navigation} ) {
         </TouchableOpacity>
       </View>
     </View >
+
+    
   );
 }
 

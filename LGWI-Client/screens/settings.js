@@ -14,11 +14,6 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
 export default function Settings({ navigation }) {
-  const [form, setForm] = useState({
-    darkMode: false,
-    emailNotifications: true,
-    pushNotifications: false,
-  });
 
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => setModalVisible(true);
