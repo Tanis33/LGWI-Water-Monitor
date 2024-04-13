@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const dashboardData = [
   {
-    communityName: 'Ecuador',
+    communityName: csvArray[1][1],
     usersPaid: '12',
     usersUnpaid: '12',
     amountPaid: '123',
