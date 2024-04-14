@@ -3,17 +3,81 @@ import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
+// const dashboardData = [
+//   {
+//     communityName: "123",
+//     usersPaid: "123",
+//     usersUnpaid: "123",
+//     amountPaid: "123",
+//     amountUnpaid: "123",
+//     monthlyUsage: "123",
+//     yearlyUsage: '12345',
+//   },
+// ]
+
+
 const dashboardData = [
   {
     communityName: csvArray[1][1],
-    usersPaid: '12',
-    usersUnpaid: '12',
-    amountPaid: '123',
-    amountUnpaid: '123',
-    monthlyUsage: '1234',
-    yearlyUsage: '12345',
+    usersPaid: getusersPaid(),
+    usersUnpaid: getusersUnpaid(),
+    amountPaid: getamountPaid(),
+    amountUnpaid: getamountUnpaid(),
+    monthlyUsage: getUsage(),
+    yearlyUsage: getUsage(),
   },
 ];
+
+function getusersPaid(){
+
+  let paid = 0;
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][20] == "Paid          "){
+      paid++;
+    }
+  }
+  return paid;
+}
+
+function getusersUnpaid(){
+
+  let unpaid = 0;
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][20] == "Unpaid        "){
+      unpaid++;
+    }
+  }
+  return unpaid;
+}
+
+function getamountPaid(){
+  paidAmt = 0;
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][20] == "Paid          "){
+      paidAmt+= parseFloat(csvArray[i][19]);
+    }
+  }
+  return paidAmt;
+}
+
+function getamountUnpaid(){
+  unpaidAmt = 0;
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][20] == "Unpaid        "){
+      unpaidAmt+= parseFloat(csvArray[i][19]);
+    }
+  }
+  return unpaidAmt;
+}
+
+function getUsage(){
+  let totalUsed = 0;
+  for(let i = 3; i < csvArray.length; i++){
+    totalUsed += csvArray[i][11] - csvArray[i][12];
+    
+  }
+  return totalUsed;
+}
 
 export default function Dashboard({ navigation }) {
   const { t } = useTranslation();
