@@ -11,28 +11,48 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+//User - Querry based on Meter Number or Cedula
 
-const conformationData = [
-  {
-    receiptID: '123',
-    balance: '$123',
-    date: '1/1/11',
-    chargeType: 'Water Charge',
-    meternumber: '123',
-    name: 'John',
-    surname: 'Doe',
-    idNumber: '123',
-    sector: 'Ecuador',
-    phoneNumber: '111111111',
-    email: 'john@doe.com',
-    status: 'Active',
-    category: 'Residential',
-  },
-];
+// RecieptID - check what the highest recieptID is and add 1 to it
+
+// Balance - calculate the balance based on the water usage and rate from community
+
+// Date - get the current date based on their device date
+function getDateTime() {
+  var today = new Date();
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+}
+
 
 export default function ConformationScreen({ navigation, route }) {
-  const { formData } = route.params;
+  // Data from the previous screen
+  const { inputData } = route.params;
+
+  // Data to be displayed
+  const conformationData = [
+    {
+      receiptID: 'function',
+      balance: 'function',
+      date: getDateTime(),
+      chargeType: 'Water Usage',
+  
+      meternumber: 'fromUser',
+      name: 'fromUser',
+      surname: 'fromUser',
+      idNumber: 'fromUser',
+      sector: 'fromUser',
+      phoneNumber: 'fromUser',
+      email: 'fromUser',
+      status: 'fromUser',
+      category: 'fromUser',
+    },
+  ];
+
+
+
+  // Translation
   const { t } = useTranslation();
+  // Render
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -57,8 +77,6 @@ export default function ConformationScreen({ navigation, route }) {
                 <View style={styles.divider}>
                   <View style={styles.dividerInset} />
                 </View>
-
-
                 <View style={styles.details} >
                   <Text style={styles.detailsTitle}>{t('screens.conformation.text.userDetails')}</Text>
                   {/* Meter Number */}
@@ -106,9 +124,7 @@ export default function ConformationScreen({ navigation, route }) {
                     <Text style={styles.detailsField}>{t('screens.conformation.text.category')}</Text>
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
-
                 </View>
-
               </ScrollView>
             );
           })}
@@ -118,9 +134,8 @@ export default function ConformationScreen({ navigation, route }) {
       <View style={styles.overlay}>
         <TouchableOpacity
           onPress={() => {
-            // handle onPress
-            //go to the userView page and take the user data from the input page
-            navigation.navigate('userView', { formData });
+            //go to UserView based on Meter Number
+            navigation.navigate('UserView');
             
           }}>
           <View style={styles.btn}>

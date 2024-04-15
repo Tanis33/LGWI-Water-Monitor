@@ -1,4 +1,4 @@
-// conformation.js page for confirming of the cost and the calculation of the cost based on water usage
+// userView.js page displays the user details and reciepts for the user. It also allows the user to add a charge to the user account.
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -11,38 +11,37 @@ import {
   Image,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 
-
-const userDetails = [
-  {
-    meternumber: '1234',
-    name: 'user.name',
-    surname: 'user.surname',
-    idNumber: 'user.idnumber',
-    sector: 'user.sector',
-    phoneNumber: 'user.phonenumber',
-    email: 'user.email',
-    status: 'user.status',
-    category: 'user.category',
-  },
-];
 
 export default function UserView({ navigation }) {
-  // DOES NOT WORK CAUSE CANT FIND CSV FILE OR NAME FOR IT 
-  // // Parse CSV string
-  // const data = readString(local)
-  // // Convert back to CSV
-  // const jsonData = parse(data, { header: true });
-  // // Filter the data based on gaugeID
-  // const filteredData = jsonData.filter(user => user.gaugeID === '123');
 
-  // Modal for adding a charge to the user account
-  const [modalVisible, setModalVisible] = useState(false);
-  const openModal = () => setModalVisible(true);
-  const closeModal = () => setModalVisible(false);
+  // User Details Data
+  const userDetails = [
+    {
+      meternumber: 'fromUser',
+      name: 'fromUser',
+      surname: 'fromUser',
+      idNumber: 'fromUser',
+      sector: 'fromUser',
+      phoneNumber: 'fromUser',
+      email: 'fromUser',
+      status: 'fromUser',
+      category: 'fromUser',
+    },
+  ];
 
+  // Receipt Data
+  const receiptData = [
+    {
+      receiptID: 'function',
+      date: 'function',
+      amount: 'function',
+    },
+  ];
+
+  // Translation
   const { t } = useTranslation();
+  // State
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -65,7 +64,6 @@ export default function UserView({ navigation }) {
             {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
               return (
                 <View style={styles.details} key={index}>
-
 
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
@@ -115,7 +113,6 @@ export default function UserView({ navigation }) {
 
                   {/* Add a clickable container with reciept info with lower divider. Must be able to show past 10 reciepts. */}
                   {/* Receipt */}
-
                   <View style={styles.divider}>
                     <View style={styles.dividerInset} />
                   </View>
@@ -151,14 +148,17 @@ export default function UserView({ navigation }) {
                   <View style={styles.divider}>
                     <View style={styles.dividerInset} />
                   </View>
+
                 </View>
               );
             })}
+
+
           </ScrollView>
         </View>
       </SafeAreaView >
 
-      {/* Add Charge to User Account Use Modal*/}
+      {/* Buttons */}
       <View style={styles.overlay}>
         <TouchableOpacity
           onPress={() => {
@@ -180,7 +180,7 @@ export default function UserView({ navigation }) {
       </View>
     </View >
 
-    
+
   );
 }
 

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function AddCharge( {navigation} ) {
   
-  const [form, setForm] = useState({
+  const [receiptData, setForm] = useState({
     amount: '',
     chargeType: '',
     description: '',
@@ -18,53 +18,53 @@ export default function AddCharge( {navigation} ) {
     chargeType: '',
     description: '',
   };
-
+  // Translation
   const { t } = useTranslation();
-
+  // Render
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
           <Text style={styles.title}>{t('screens.addCharge.title')}</Text>
         <KeyboardAwareScrollView>
-          <View style={styles.form}>
+          <View style={styles.recpeitData}>
             {/* Input for adding Charge*/}
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
                   <Text style={styles.statsItemLabel}>{t('screens.addCharge.text.title')}</Text>
                   <TextInput
-                    onChangeText={amount => setForm({ ...form, amount })}
+                    onChangeText={amount => setForm({ ...receiptData, amount })}
                     placeholder="Amount"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     keyboardType="numeric"
-                    value={form.amount} />
+                    value={receiptData.amount} />
                     <TextInput
                     autoCorrect={false}
-                    onChangeText={chargeType => setForm({ ...form, chargeType })}
+                    onChangeText={chargeType => setForm({ ...receiptData, chargeType })}
                     placeholder="Type of Charge"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
-                    value={form.chargeType} />
+                    value={receiptData.chargeType} />
                     <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
-                    onChangeText={description => setForm({ ...form, description })}
+                    onChangeText={description => setForm({ ...receiptData, description })}
                     placeholder="Description"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
-                    value={form.description} />
+                    value={receiptData.description} />
                 </View>
               </View>
             </View>
   
-            {/*Submit Button */}
+            {/*Cancel Button */}
             <View style={styles.formAction}>
               <TouchableOpacity
                 onPress={() => {
                   
                   //else navigate to the conformation page
-                  navigation.navigate('UserView', { formData: form})
+                  navigation.navigate('UserView', { receiptData: receiptData})
                   setForm(initialFormState);
                 }}>
                 <View style={styles.btn}>

@@ -66,7 +66,7 @@
     "input": {
       "title": "Input Data",
       "text": {
-        "title": "Gauge ID OR House ID",
+        "title": "Meter Number or ID Number",
         "gaugeId": "Email address",
         "houseID": "password",
         "waterMeter": "Water Meter Reading",

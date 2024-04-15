@@ -1,3 +1,4 @@
+// users.js page displays a list of users and their information. It also allows the user to add a new user.
 import React from 'react';
 import {
   StyleSheet,
@@ -13,74 +14,45 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
-const items = [
-  {
-    name: 'John Doe',
-    systemID: '123214',
-    gagueID: '123214',
-    tag: 'unpaid',
-    date: 'Mar 24, 2023',
-  },
-  {
-    name: 'Johny Bravo',
-    systemID: '123214',
-    gagueID: '21321412',
-    tag: 'paid',
-    date: 'Mar 23, 2023',
-  },
-  {
-    name: 'John Cena',
-    systemID: '123214',
-    gagueID: '21321312',
-    tag: 'paid',
-    date: 'Mar 28, 2023',
-  },
-  {
-    name: 'John Doe',
-    systemID: '123214',
-    gagueID: '123214',
-    tag: 'unpaid',
-    date: 'Mar 24, 2023',
-  },
-  {
-    name: 'Johny Bravo',
-    systemID: '123214',
-    gagueID: '21321412',
-    tag: 'paid',
-    date: 'Mar 23, 2023',
-  },
-  {
-    name: 'John Cena',
-    systemID: '123214',
-    gagueID: '21321312',
-    tag: 'paid',
-    date: 'Mar 28, 2023',
-  },
-  {
-    name: 'John Doe',
-    systemID: '123214',
-    gagueID: '123214',
-    tag: 'unpaid',
-    date: 'Mar 24, 2023',
-  },
-  {
-    name: 'Johny Bravo',
-    systemID: '123214',
-    gagueID: '21321412',
-    tag: 'paid',
-    date: 'Mar 23, 2023',
-  },
-  {
-    name: 'John Cena',
-    systemID: '123214',
-    gagueID: '21321312',
-    tag: 'paid',
-    date: 'Mar 28, 2023',
-  },
-];
-
 export default function Users({ navigation }) {
+  // Dummy Data
+  const usersData = [
+    {
+      name: 'John',
+      surname: 'Doe',
+      meterNumber: '123214',
+      cedula: '123214',
+      tag: 'unpaid',
+      date: '4/13/24',
+    },
+    {
+      name: 'Johny',
+      surname: 'Doe',
+      meterNumber: '123214',
+      cedula: '21321412',
+      tag: 'paid',
+      date: '4/13/24',
+    },
+    {
+      name: 'John',
+      surname: 'Doe',
+      meterNumber: '123214',
+      cedula: '21321312',
+      tag: 'paid',
+      date: '4/13/24',
+    },
+    {
+      name: 'John',
+      surname: 'Doe',
+      meterNumber: '123214',
+      cedula: '123214',
+      tag: 'unpaid',
+      date: '4/13/24',
+    },
+  ];
+  // Translation
   const { t } = useTranslation();
+  // Render
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>
@@ -92,19 +64,16 @@ export default function Users({ navigation }) {
             <Text style={styles.addUser}>{t('screens.users.text.addUser')}
             </Text>
             <FeatherIcon color="#000" name="plus" size={30} />
-
           </TouchableOpacity>
-
         </View>
-
-{/* 
-        <Text style={styles.filter}>{t('screens.users.text.filter')}</Text>
+        {/* Filter and Search Option */}
+{/*     <Text style={styles.filter}>{t('screens.users.text.filter')}</Text>
         <Text style={styles.filter}>{t('screens.users.text.search')}</Text>
-
          */}
-        <ScrollView contentContainerStyle={styles.content}>
 
-          {items.map(({ name, systemID, gagueID, tag, date }, index) => {
+        {/* Users List */}
+        <ScrollView contentContainerStyle={styles.content}>
+          {usersData.map(({ name, surname, meterNumber, cedula, tag, date }, index) => {
             return (
               <TouchableOpacity
                 key={index}
@@ -112,33 +81,27 @@ export default function Users({ navigation }) {
                 <View style={styles.card}>
                   <View style={styles.cardBody}>
                     <Text style={styles.cardTag}>{tag}</Text>
-
-                    <Text style={styles.cardname}>{name}</Text>
-
+                    <Text style={styles.cardname}>{name} {surname}</Text>
                     <View style={styles.cardRow}>
                       <View style={styles.cardRowItem}>
-                        <Text style={styles.cardRowItemText}>{systemID}</Text>
+                        <Text style={styles.cardRowItemText}>{meterNumber}</Text>
                       </View>
                       <Text style={styles.cardRowDivider}>·</Text>
                       <View style={styles.cardRowItem}>
-                        <Text style={styles.cardRowItemText}>{gagueID}</Text>
+                        <Text style={styles.cardRowItemText}>{cedula}</Text>
                       </View>
-
                       <Text style={styles.cardRowDivider}>·</Text>
-
                       <View style={styles.cardRowItem}>
                         <Text style={styles.cardRowItemText}>{date}</Text>
                       </View>
                     </View>
-
                   </View>
                 </View>
               </TouchableOpacity>
-
-
             );
           })}
         </ScrollView>
+
       </View>
     </SafeAreaView>
   );

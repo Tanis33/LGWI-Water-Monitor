@@ -7,15 +7,15 @@ import { useTranslation } from 'react-i18next';
 
 export default function Input( {navigation} ) {
   
-  const [form, setForm] = useState({
-    gaugeID: '',
-    houseID: '',
+  const [inputData, setForm] = useState({
+    meterNumber: '',
+    cedula: '',
     usageAmount: '',
   });
 
   const initialFormState = {
-    gaugeID: '',
-    houseID: '',
+    meterNumber: '',
+    cedula: '',
     usageAmount: '',
   };
 
@@ -26,7 +26,7 @@ export default function Input( {navigation} ) {
       <View style={styles.container}>
           <Text style={styles.title}>{t('screens.input.title')}</Text>
         <KeyboardAwareScrollView>
-          <View style={styles.form}>
+          <View style={styles.inputData}>
 
             {/* Input for house id or gauge ID*/}
             <View style={styles.statsRow}>
@@ -34,20 +34,20 @@ export default function Input( {navigation} ) {
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
                   <Text style={styles.statsItemLabel}>{t('screens.input.text.title')}</Text>
                   <TextInput
-                    onChangeText={gaugeID => setForm({ ...form, gaugeID })}
-                    placeholder="Gauge ID"
+                    onChangeText={meterNumber => setForm({ ...inputData, meterNumber })}
+                    placeholder="Meter Number"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     keyboardType="numeric"
-                    value={form.gaugeID} />
+                    value={inputData.meterNumber} />
                     <TextInput
                     autoCorrect={false}
-                    onChangeText={houseID => setForm({ ...form, houseID })}
-                    placeholder="House ID"
+                    onChangeText={cedula => setForm({ ...inputData, cedula })}
+                    placeholder="ID Number"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     keyboardType="numeric"
-                    value={form.houseID} />
+                    value={inputData.cedula} />
                 </View>
               </View>
             </View>
@@ -61,11 +61,11 @@ export default function Input( {navigation} ) {
                     autoCapitalize="none"
                     autoCorrect={false}
                     keyboardType="numeric"
-                    onChangeText={usageAmount => setForm({ ...form, usageAmount })}
+                    onChangeText={usageAmount => setForm({ ...inputData, usageAmount })}
                     placeholder="123.43"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
-                    value={form.usageAmount} />
+                    value={inputData.usageAmount} />
                 </View>
               </View>
             </View>
@@ -74,30 +74,30 @@ export default function Input( {navigation} ) {
             <View style={styles.formAction}>
               <TouchableOpacity
                 onPress={() => {
-                  // pass the data in the input into the next page and query the data for the user based on houseID or gaugeID
+                  // pass the data in the input into the next page and query the data for the user based on houseID or meterNumber
 
-                  //if the houseID and gagueID are empty then show an alert
-                  if (form.houseID === '' && form.gaugeID === '') {
-                    alert('Please enter a valid House ID or Gauge ID');
+                  //if the houseID and meterNumber are empty then show an alert
+                  if (inputData.houseID === '' && form.meterNumber === '') {
+                    alert('Please enter a valid House ID or ID Number');
                     return;
                   }
                   //if the usageAmount is empty then show an alert
-                  if (form.usageAmount === '') {
+                  if (inputData.usageAmount === '') {
                     alert('Please enter a valid Water Meter Reading');
                     return;
                   }
                   //if the usageAmount is not a number then show an alert
-                  if (isNaN(form.usageAmount)) {
+                  if (isNaN(inputData.usageAmount)) {
                     alert('Please enter a valid Water Meter Reading');
                     return;
                   }
                   //if the usageAmount is less than 0 then show an alert
-                  if (form.usageAmount < 0) {
+                  if (inputData.usageAmount < 0) {
                     alert('Please enter a valid Water Meter Reading');
                     return;
                   }
                   //else navigate to the conformation page
-                  navigation.navigate('Conformation', { formData: form})
+                  navigation.navigate('Conformation', { inputData: inputData})
                   setForm(initialFormState);
                 }}>
                 <View style={styles.btn}>
