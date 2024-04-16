@@ -14,9 +14,100 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
+
+
+function getName(inx) {
+  return(global.csvArray[inx+2][1]).trimRight(); 
+}
+
+function getSurname(inx) {
+  return(global.csvArray[inx+2][2]).trimRight(); 
+}
+
+function getMeterNumber(inx) {
+  return(global.csvArray[inx+2][0]).trimRight(); 
+}
+
+function getCedula(inx) {
+  return(global.csvArray[inx+2][3]).trimRight();
+}
+
+function getsector(inx) {
+  return(global.csvArray[inx+2][4]).trimRight();
+}
+function getphoneNumber(inx) {
+  return(global.csvArray[inx+2][5]).trimRight();
+}
+function getemail(inx) {
+  return(global.csvArray[inx+2][6]).trimRight();
+}
+function getstatus(inx) {
+  return(global.csvArray[inx+2][7]).trimRight();
+}
+function getcategory(inx) {
+  return(global.csvArray[inx+2][8]).trimRight();
+}
+
+
+function getPaidUnpaid(inx){
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][16].trimRight() == getMeterNumber(inx).trimRight()){
+      if (csvArray[i][21].trimRight() == "Unpaid"){
+        return "Unpaid"; 
+      }
+    }
+  } 
+return "Paid";
+}
+
+function getDate(inx){
+
+  // first, look for dates of unpaid receipts
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][16].trimRight() == getMeterNumber(inx).trimRight()){
+      if (csvArray[i][21].trimRight() == "Unpaid"){
+        return csvArray[i][19].trimRight();
+      }
+    }
+  } 
+
+  // if no unpaid reciepts are found, look for paid ones
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][16].trimRight() == getMeterNumber(inx).trimRight()){
+      if (csvArray[i][21].trimRight() == "Paid"){
+        return csvArray[i][19].trimRight();
+      }
+    }
+  } 
+
+
+}
+
 export default function Users({ navigation }) {
   // Dummy Data
-  const usersData = [
+  
+  let usersData = [];
+
+  // create a new object for every user in the "users" section of the table
+  // Note: this has no max size limit. Todo: add upper limit for size
+
+  for(let i = 1; i < csvArray.length-2; i++){
+    usersData.push({
+      name: getName(i),
+      surname: getSurname(i),
+      meterNumber: getMeterNumber(i),
+      cedula: getCedula(i),
+      tag: getPaidUnpaid(i),
+      date: getDate(i),
+
+      sector: getsector(i),
+      phoneNumber: getphoneNumber(i),
+      email: getemail(i),
+      status: getstatus(i),
+      category: getcategory(i),
+    });
+  }
+  const testData = [
     {
       name: 'John',
       surname: 'Doe',
