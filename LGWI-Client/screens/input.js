@@ -5,8 +5,8 @@ import {
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
 
-export default function Input( {navigation} ) {
-  
+export default function Input({ navigation }) {
+
   const [inputData, setForm] = useState({
     meterNumber: '',
     cedula: '',
@@ -24,7 +24,7 @@ export default function Input( {navigation} ) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-          <Text style={styles.title}>{t('screens.input.title')}</Text>
+        <Text style={styles.title}>{t('screens.input.title')}</Text>
         <KeyboardAwareScrollView>
           <View style={styles.inputData}>
 
@@ -40,7 +40,7 @@ export default function Input( {navigation} ) {
                     style={styles.inputControl}
                     keyboardType="numeric"
                     value={inputData.meterNumber} />
-                    <TextInput
+                  <TextInput
                     autoCorrect={false}
                     onChangeText={cedula => setForm({ ...inputData, cedula })}
                     placeholder="ID Number"
@@ -56,7 +56,11 @@ export default function Input( {navigation} ) {
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>Water Meter Reading</Text>
+
+                  <View style={{ flexDirection: 'row' }}>
+                    <Text style={styles.statsItemLabel}>Water Meter Reading  m</Text>
+                    <Text style={styles.volumeDescriptor}>3</Text>
+                  </View>
                   <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -69,7 +73,7 @@ export default function Input( {navigation} ) {
                 </View>
               </View>
             </View>
-            
+
             {/*Submit Button */}
             <View style={styles.formAction}>
               <TouchableOpacity
@@ -97,7 +101,7 @@ export default function Input( {navigation} ) {
                     return;
                   }
                   //else navigate to the conformation page
-                  navigation.navigate('Conformation', { inputData: inputData})
+                  navigation.navigate('Conformation', { inputData: inputData })
                   setForm(initialFormState);
                 }}>
                 <View style={styles.btn}>
@@ -155,6 +159,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#02C3BD',
     margin: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   /** Button */
   btn: {
@@ -164,6 +176,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
   },
   btnText: {
     fontSize: 18,
@@ -194,12 +214,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginHorizontal: 6,
     marginBottom: 12,
+    
   },
   statsItemLabel: {
     fontSize: 18,
     color: 'black',
     marginBottom: 2,
     fontWeight: 'bold',
-    marginTop: -6,
+    marginTop: 0,
+  },
+  volumeDescriptor: {
+    fontSize: 14,
+    color: 'black',
+    marginBottom: 4,
+    fontWeight: 'bold',
+
   },
 });

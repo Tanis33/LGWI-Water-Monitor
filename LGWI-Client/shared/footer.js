@@ -21,24 +21,31 @@ export default function Tabs() {
         tabBarActiveTintColor: '#03312E',
         headerShown: true,
         tabBarStyle: {
-          position: 'absolute',
+          position: 'relative',
           backgroundColor: '#02C3BD',
           left: 0,
           right: 0,
-          height: 60,
+          height: 100,
           paddingBottom: 8,
           borderTopLeftRadius: 8, 
-          borderTopRightRadius: 8, 
+          borderTopRightRadius: 8,
+          justifyContent: 'flex-start',
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: 'bold',
+          marginBottom: 32,
         },
         headerTintColor: '#02C3BD',
         headerStyle: {
           backgroundColor: '#02C3BD',
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
-          height: 40
+          height: 80
         },
         headerTitleStyle: {
           fontSize: 1,
+          fontWeight: 'bold',
         },
       }}>
 

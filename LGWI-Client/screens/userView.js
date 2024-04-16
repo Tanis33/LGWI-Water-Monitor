@@ -18,25 +18,36 @@ export default function UserView({ navigation }) {
   // User Details Data
   const userDetails = [
     {
-      meternumber: 'fromUser',
-      name: 'fromUser',
-      surname: 'fromUser',
-      idNumber: 'fromUser',
-      sector: 'fromUser',
-      phoneNumber: 'fromUser',
-      email: 'fromUser',
-      status: 'fromUser',
-      category: 'fromUser',
+      meternumber: '234966',
+      name: 'Peter',
+      surname: 'Parker',
+      idNumber: '123214',
+      sector: 'South East',
+      phoneNumber: '666-666-6666',
+      email: 'pparker@avenge.com',
+      status: 'Active',
+      category: 'Residential',
     },
   ];
 
   // Receipt Data
   const receiptData = [
     {
-      receiptID: 'function',
-      date: 'function',
-      amount: 'function',
+      receiptID: '06',
+      date: '4/16/24',
+      amount: '8.60',
     },
+    {
+      receiptID: '05',
+      date: '4/16/24',
+      amount: '20.00',
+    },
+    {
+      receiptID: '02',
+      date: '4/16/24',
+      amount: '2.43',
+    },
+
   ];
 
   // Translation
@@ -44,8 +55,9 @@ export default function UserView({ navigation }) {
   // State
   return (
     <View style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
         <View style={styles.container}>
+          {/* Header */}
           <View style={styles.header}>
             <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
             <TouchableOpacity
@@ -53,14 +65,15 @@ export default function UserView({ navigation }) {
               style={styles.addBtn}>
               <Text style={styles.addUser}>{t('screens.userView.text.edit')}
               </Text>
-
             </TouchableOpacity>
           </View>
 
+          {/* Body Content */}
           <ScrollView
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
 
+            {/* User Details */}
             {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
               return (
                 <View style={styles.details} key={index}>
@@ -110,51 +123,47 @@ export default function UserView({ navigation }) {
                     <Text style={styles.detailsField}>{t('screens.userView.text.category')}</Text>
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
+                </View>
+              );
+            })}
+            <View style={styles.divider}>
+              <View style={styles.dividerInset} />
+            </View>
+            <View style={styles.details}>
+              <Text style={styles.detailsTitle}>{t('screens.userView.text.receipt')}</Text>
 
-                  {/* Add a clickable container with reciept info with lower divider. Must be able to show past 10 reciepts. */}
-                  {/* Receipt */}
-                  <View style={styles.divider}>
-                    <View style={styles.dividerInset} />
-                  </View>
-
-                  <View style={styles.details} key={index}>
-                    <Text style={styles.detailsTitle}>{t('screens.userView.text.receipt')}</Text>
-                    <TouchableOpacity onPress={() => {
+              {/* Reciept Info */}
+              {receiptData.map(({ receiptID, date, amount }, i) => {
+                return (
+                  <View style={styles.details} key={i}>
+                    <TouchableOpacity style={styles.card} onPress={() => {
                       // generate a pdf of the reciept with all the details and the option to email to customer
                     }}>
                       {/* Reciept Info */}
                       <View style={styles.detailsRow}>
                         <Text style={styles.detailsField}>{t('screens.userView.text.receiptID')}</Text>
-                        <Text style={styles.detailsValue}>{meternumber}</Text>
+                        <Text style={styles.detailsValue}>{receiptID}</Text>
                       </View>
                       <View style={styles.detailsRow}>
                         <Text style={styles.detailsField}>{t('screens.userView.text.date')}</Text>
-                        <Text style={styles.detailsValue}>{meternumber}</Text>
+                        <Text style={styles.detailsValue}>{date}</Text>
                       </View>
                       <View style={styles.detailsRow}>
                         <Text style={styles.detailsField}>{t('screens.userView.text.amount')}</Text>
-                        <Text style={styles.detailsValue}>{meternumber}</Text>
+                        <Text style={styles.detailsValue}>{amount}</Text>
                       </View>
                     </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.pastReciept}>
-                    <TouchableOpacity>
-                      <View style={styles.receipt}>
-                      </View>
-                    </TouchableOpacity>
+                    <View style={styles.divider}>
+                      <View style={styles.dividerInset} />
+                    </View>
 
                   </View>
-                  <View style={styles.divider}>
-                    <View style={styles.dividerInset} />
-                  </View>
-
-                </View>
-              );
-            })}
-
-
+                );
+              })}
+            </View>
+            <View style={{ height: 120 }} />
           </ScrollView>
+
         </View>
       </SafeAreaView >
 
@@ -171,7 +180,7 @@ export default function UserView({ navigation }) {
         <TouchableOpacity
           onPress={() => {
             // navigate back to the previous page
-            navigation.goBack();
+            navigation.navigate('Users', {});
           }}>
           <View style={styles.btnSecondary}>
             <Text style={styles.btnSecondaryText}>{t('screens.userView.text.cancel')}</Text>
@@ -227,35 +236,9 @@ const styles = StyleSheet.create({
   receipt: {
     alignItems: 'center',
     paddingTop: 16,
-    paddingBottom: 140,
+    paddingBottom: 16,
   },
-  receiptLogo: {
-    width: 60,
-    height: 60,
-    borderRadius: 9999,
-    marginBottom: 12,
-    backgroundColor: '#0e0e0e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  receiptTitle: {
-    fontSize: 21,
-    fontWeight: '600',
-    color: '#151515',
-    marginBottom: 2,
-  },
-  receiptSubtitle: {
-    fontSize: 18,
-    lineHeight: 20,
-    color: '#818181',
-    marginBottom: 12,
-  },
-  receiptPrice: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    marginBottom: 6,
-  },
+
   receiptPriceText: {
     fontSize: 30,
     lineHeight: 38,
@@ -270,25 +253,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 12,
   },
-  /** Avatar */
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 9999,
-    borderWidth: 3,
-    borderColor: '#fff',
-  },
-  avatarWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-  },
   /** Divider */
   divider: {
     overflow: 'hidden',
     width: '100%',
-    marginVertical: 24,
+    marginVertical: 8,
   },
   dividerInset: {
     width: '100%',
@@ -346,6 +315,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#02C3BD',
     borderColor: '#02C3BD',
     marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   btnText: {
     fontSize: 18,
@@ -370,7 +347,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#02C3BD',
   },
-
   pastReciept: {
     alignItems: 'center',
     paddingTop: 16,
@@ -397,4 +373,22 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 3,
   },
+  
+  card: {
+    width: '100%',
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
+
+  },
+
 });

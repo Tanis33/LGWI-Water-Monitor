@@ -31,20 +31,20 @@ export default function ConformationScreen({ navigation, route }) {
   // Data to be displayed
   const conformationData = [
     {
-      receiptID: 'function',
-      balance: 'function',
-      date: getDateTime(),
+      receiptID: '#06',
+      balance: '22.40',
+      date: '16/4/24',
       chargeType: 'Water Usage',
-  
-      meternumber: 'fromUser',
-      name: 'fromUser',
-      surname: 'fromUser',
-      idNumber: 'fromUser',
-      sector: 'fromUser',
-      phoneNumber: 'fromUser',
-      email: 'fromUser',
-      status: 'fromUser',
-      category: 'fromUser',
+
+      meternumber: '234966',
+      name: 'Peter',
+      surname: 'Parker',
+      idNumber: '123214',
+      sector: 'South East',
+      phoneNumber: '666-666-6666',
+      email: 'pparker@avenge.com',
+      status: 'Active',
+      category: 'Residential',
     },
   ];
 
@@ -67,7 +67,7 @@ export default function ConformationScreen({ navigation, route }) {
                 <Text style={styles.receiptSubtitle}>{t('screens.conformation.text.invoice')} {receiptID}</Text>
 
                 <View style={styles.receiptPrice}>
-                  <Text style={styles.receiptPriceText}>{balance}</Text>
+                  <Text style={styles.receiptPriceText}>${balance}</Text>
                 </View>
 
                 <Text style={styles.receiptDescription}>

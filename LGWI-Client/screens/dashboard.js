@@ -3,78 +3,78 @@ import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
-// const dashboardData = [
-//   {
-//     communityName: "123",
-//     usersPaid: "123",
-//     usersUnpaid: "123",
-//     amountPaid: "123",
-//     amountUnpaid: "123",
-//     monthlyUsage: "123",
-//     yearlyUsage: '12345',
-//   },
-// ]
-
-
 const dashboardData = [
   {
-    communityName: csvArray[1][1],
-    usersPaid: getusersPaid(),
-    usersUnpaid: getusersUnpaid(),
-    amountPaid: getamountPaid(),
-    amountUnpaid: getamountUnpaid(),
-    monthlyUsage: getUsage(),
-    yearlyUsage: getUsage(),
+    communityName: "Ecovillage",
+    usersPaid: "5",
+    usersUnpaid: "7",
+    amountPaid: "20.75",
+    amountUnpaid: "48.20",
+    monthlyUsage: "34.4",
+    yearlyUsage: "84.6",
   },
-];
+]
 
-function getusersPaid(){
+
+// const dashboardData = [
+//   {
+//     communityName: csvArray[1][1],
+//     usersPaid: getusersPaid(),
+//     usersUnpaid: getusersUnpaid(),
+//     amountPaid: getamountPaid(),
+//     amountUnpaid: getamountUnpaid(),
+//     monthlyUsage: getUsage(),
+//     yearlyUsage: getUsage(),
+//   },
+// ];
+
+function getusersPaid() {
 
   let paid = 0;
-  for(let i = 3; i < csvArray.length; i++){
-    if(csvArray[i][20] == "Paid          "){
+  for (let i = 3; i < csvArray.length; i++) {
+    if (csvArray[i][20] == "Paid          ") {
       paid++;
     }
   }
   return paid;
 }
 
-function getusersUnpaid(){
+function getusersUnpaid() {
 
   let unpaid = 0;
-  for(let i = 3; i < csvArray.length; i++){
-    if(csvArray[i][20] == "Unpaid        "){
+  for (let i = 3; i < csvArray.length; i++) {
+    if (csvArray[i][20] == "Unpaid        ") {
       unpaid++;
     }
   }
   return unpaid;
 }
 
-function getamountPaid(){
+function getamountPaid() {
   paidAmt = 0;
-  for(let i = 3; i < csvArray.length; i++){
-    if(csvArray[i][20] == "Paid          "){
-      paidAmt+= parseFloat(csvArray[i][19]);
+  for (let i = 3; i < csvArray.length; i++) {
+    if (csvArray[i][20] == "Paid          ") {
+      paidAmt += parseFloat(csvArray[i][19]);
     }
   }
   return paidAmt;
 }
 
-function getamountUnpaid(){
+function getamountUnpaid() {
   unpaidAmt = 0;
-  for(let i = 3; i < csvArray.length; i++){
-    if(csvArray[i][20] == "Unpaid        "){
-      unpaidAmt+= parseFloat(csvArray[i][19]);
+  for (let i = 3; i < csvArray.length; i++) {
+    if (csvArray[i][20] == "Unpaid        ") {
+      unpaidAmt += parseFloat(csvArray[i][19]);
     }
   }
   return unpaidAmt;
 }
 
-function getUsage(){
+function getUsage() {
   let totalUsed = 0;
-  for(let i = 3; i < csvArray.length; i++){
+  for (let i = 3; i < csvArray.length; i++) {
     totalUsed += csvArray[i][11] - csvArray[i][12];
-    
+
   }
   return totalUsed;
 }
@@ -133,7 +133,7 @@ export default function Dashboard({ navigation }) {
                   </View>
                   <View>
                     <Text style={styles.statsItemLabelGreen}>{t('screens.dashboard.text.paid')}</Text>
-                    <Text style={styles.statsItemValue}>{amountPaid}</Text>
+                    <Text style={styles.statsItemValue}>${amountPaid}</Text>
                   </View>
                 </View>
                 <View style={styles.statsItem}>
@@ -142,7 +142,7 @@ export default function Dashboard({ navigation }) {
                   </View>
                   <View>
                     <Text style={styles.statsItemLabelRed}>{t('screens.dashboard.text.unpaid')}</Text>
-                    <Text style={styles.statsItemValue}>{amountUnpaid}</Text>
+                    <Text style={styles.statsItemValue}>${amountUnpaid}</Text>
                   </View>
                 </View>
               </View>
@@ -156,7 +156,10 @@ export default function Dashboard({ navigation }) {
                   <View>
                     <Text style={styles.statsItemLabel}>{t('screens.dashboard.text.monthlyUsage')}</Text>
 
-                    <Text style={styles.statsItemValue}>{monthlyUsage}</Text>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.statsItemValue}>{monthlyUsage} m</Text>
+                      <Text style={styles.volumeDescriptor}>3</Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -168,8 +171,10 @@ export default function Dashboard({ navigation }) {
                   </View>
                   <View>
                     <Text style={styles.statsItemLabel}>{t('screens.dashboard.text.yearlyUsage')}</Text>
-
-                    <Text style={styles.statsItemValue}>{yearlyUsage}</Text>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.statsItemValue}>{yearlyUsage} m</Text>
+                      <Text style={styles.volumeDescriptor}>3</Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -217,6 +222,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginHorizontal: 6,
     marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
   },
   statsItemIcon: {
     backgroundColor: '#03312E',
@@ -250,5 +263,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#C62828',
     marginBottom: 2
+  },
+  volumeDescriptor: {
+    fontSize: 14,
+    color: 'black',
+    marginBottom: 2,
+    fontWeight: 'bold',
   },
 });

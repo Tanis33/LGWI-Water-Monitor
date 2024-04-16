@@ -27,7 +27,7 @@ const userData = [
     email: 'user.email',
     status: 'user.status',
     category: 'user.category',
-    spacer: '                                ',
+    spacer: '                                            ',
   },
 ];
 
@@ -60,8 +60,8 @@ export default function AddUser({ navigation }) {
                 contentContainerStyle={styles.receipt}
                 showsVerticalScrollIndicator={false}
                 key={index}>
+                <Text style={styles.detailsTitle}>{t('screens.addUser.title')}</Text>
                 <View style={styles.details} >
-                  <Text style={styles.detailsTitle}>{t('screens.addUser.title')}</Text>
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>{t('screens.addUser.text.meternumber')}</Text>
@@ -251,91 +251,27 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 140,
   },
-  receiptLogo: {
-    width: 60,
-    height: 60,
-    borderRadius: 9999,
-    marginBottom: 12,
-    backgroundColor: '#0e0e0e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  receiptTitle: {
-    fontSize: 21,
-    fontWeight: '600',
-    color: '#151515',
-    marginBottom: 2,
-  },
-  receiptSubtitle: {
-    fontSize: 18,
-    lineHeight: 20,
-    color: '#818181',
-    marginBottom: 12,
-  },
-  receiptPrice: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    marginBottom: 6,
-  },
-  receiptPriceText: {
-    fontSize: 30,
-    lineHeight: 38,
-    fontWeight: 'bold',
-    letterSpacing: 0.35,
-    color: '#8338ec',
-  },
-  receiptDescription: {
-    fontSize: 18,
-    lineHeight: 22,
-    color: '#818181',
-    textAlign: 'center',
-    marginBottom: 12,
-  },
-  /** Avatar */
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 9999,
-    borderWidth: 3,
-    borderColor: '#fff',
-  },
-  avatarWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-  },
-  /** Divider */
-  divider: {
-    overflow: 'hidden',
-    width: '100%',
-    marginVertical: 24,
-  },
-  dividerInset: {
-    width: '100%',
-    borderWidth: 2,
-    borderColor: '#e5e5e5',
-    borderStyle: 'dashed',
-    marginTop: -2,
-  },
   /** Details */
   details: {
     width: '100%',
     flexDirection: 'column',
     alignItems: 'stretch',
+    borderRadius: 12,
+    padding: 8, 
   },
   detailsTitle: {
-    fontSize: 22,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#222',
     marginBottom: 16,
+    alignSelf: 'left',
   },
   detailsRow: {
     marginBottom: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+
   },
   detailsField: {
     fontSize: 18,
@@ -345,9 +281,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
+
   },
   detailsValue: {
-    fontSize: 17,
+    fontSize: 18,
     lineHeight: 20,
     fontWeight: '600',
     color: '#444',
@@ -355,6 +292,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     flexBasis: 0,
     textAlign: 'right',
+
   },
   /** Button */
   btn: {
@@ -368,6 +306,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#02C3BD',
     borderColor: '#02C3BD',
     marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   btnText: {
     fontSize: 18,
@@ -385,6 +331,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: 'transparent',
     borderColor: '#02C3BD',
+
   },
   btnSecondaryText: {
     fontSize: 18,
@@ -393,7 +340,7 @@ const styles = StyleSheet.create({
     color: '#02C3BD',
   },
   inputBox: {
-    height: 32,
+    height: 40,
     backgroundColor: 'white',
     paddingHorizontal: 16,
     borderRadius: 12,
@@ -402,5 +349,13 @@ const styles = StyleSheet.create({
     color: '#222',
     borderWidth: 1,
     borderColor: '#02C3BD',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
 });
