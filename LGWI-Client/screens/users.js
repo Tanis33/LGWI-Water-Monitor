@@ -14,91 +14,76 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
+
+function getName(inx) {
+  return(global.csvArray[inx+2][1]).trimRight(); 
+}
+
+function getSurname(inx) {
+  return(global.csvArray[inx+2][2]).trimRight(); 
+}
+
+function getMeterNumber(inx) {
+  return(global.csvArray[inx+2][0]).trimRight(); 
+}
+
+function getCedula(inx) {
+  return(global.csvArray[inx+2][3]).trimRight();
+}
+
+function getPaidUnpaid(inx){
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][16].trimRight() == getMeterNumber(inx).trimRight()){
+      if (csvArray[i][21].trimRight() == "Unpaid"){
+        return "Unpaid"; 
+      }
+    }
+  } 
+return "Paid";
+}
+
+function getDate(inx){
+
+  // first, look for dates of unpaid receipts
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][16].trimRight() == getMeterNumber(inx).trimRight()){
+      if (csvArray[i][21].trimRight() == "Unpaid"){
+        return csvArray[i][19].trimRight();
+      }
+    }
+  } 
+
+  // if no unpaid reciepts are found, look for paid ones
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][16].trimRight() == getMeterNumber(inx).trimRight()){
+      if (csvArray[i][21].trimRight() == "Paid"){
+        return csvArray[i][19].trimRight();
+      }
+    }
+  } 
+
+
+}
+
+
 export default function Users({ navigation }) {
-  // Dummy Data
-  const usersData = [
-    {
-      name: 'John',
-      surname: 'Doe',
-      meterNumber: '234961',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'James',
-      surname: 'Smith',
-      meterNumber: '234962',
-      cedula: '21321412',
-      tag: 'paid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Howard',
-      surname: 'Lane',
-      meterNumber: '234963',
-      cedula: '21321312',
-      tag: 'paid',
-      date: '4/13/24',
-    },
-    {
-      name: 'John',
-      surname: 'Cena',
-      meterNumber: '234964',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Haim',
-      surname: 'Hong',
-      meterNumber: '234965',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Peter',
-      surname: 'Parker',
-      meterNumber: '234966',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Frank',
-      surname: 'Castle',
-      meterNumber: '234967',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Tony',
-      surname: 'Stark',
-      meterNumber: '234968',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Steve',
-      surname: 'Rogers',
-      meterNumber: '234969',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    {
-      name: 'Bruce',
-      surname: 'Wayne',
-      meterNumber: '234970',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-    },
-    
-  ];
+
+  let usersData = [];
+
+  // create a new object for every user in the "users" section of the table
+  // Note: this has no max size limit. Todo: add upper limit for size
+
+  for(let i = 1; i < csvArray.length-2; i++){
+    usersData.push({
+      name: getName(i),
+      surname: getSurname(i),
+      meterNumber: getMeterNumber(i),
+      cedula: getCedula(i),
+      tag: getPaidUnpaid(i),
+      date: getDate(i),
+    });
+  }
+  
   // Translation
   const { t } = useTranslation();
   // Render
