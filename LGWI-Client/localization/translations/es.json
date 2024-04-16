@@ -46,13 +46,13 @@
         }
       },
       "dashboard": {
-        "title": "Dashboard",
+        "title": "Panel",
         "text": {
-          "communityName": "Community Name",
-          "paid": "Paid",
-          "unpaid": "Unpaid",
-          "monthlyUsage": "Monthly Usage",
-          "yearlyUsage": "Yearly Usage"
+          "communityName": "Nombre de la comunidad",
+          "paid": "Pagado",
+          "unpaid": "No pagado",
+          "monthlyUsage": "Uso mensual",
+          "yearlyUsage": "Uso anual"
         }
       },
       "home": {
@@ -64,13 +64,13 @@
         }
       },
       "input": {
-        "title": "Input Data",
+        "title": "Aporte",
         "text": {
-          "title": "Gauge ID OR House ID",
+          "title": "Número de Medidor o Cédula",
           "gaugeId": "Email address",
           "houseID": "password",
-          "waterMeter": "Water Meter Reading",
-          "submit": "Submit"
+          "waterMeter": "Lectura del medidor de agua",
+          "submit": "Entregar"
         }
       },
       "receipt": {
@@ -81,23 +81,25 @@
         }
       },
       "settings": {
-        "title": "Essettings",
+        "title": "Ajustes",
         "text": {
-          "prefrences": "Prefrences",
-          "language": "Language",
+          "english": "Inglés",
+          "spanish": "Español",
+          "prefrences": "Preferencias",
+          "language": "Idioma",
           "firebaseCSV": "Firebase CSV",
-          "resources": "Resources",
-          "report": "Report Bug",
-          "view": "View Project Details",
-          "developers": "Developers"
+          "resources": "Recursos",
+          "report": "Reportar un error",
+          "view": "Ver detalles del proyecto",
+          "developers": "Programadores"
         }
       },
       "users": {
-        "title": "Users",
+        "title": "Usuarios",
         "text": {
           "filter": "Filter",
           "search": "Search",
-          "addUser": "Add User",
+          "addUser": "Agregar usuario",
           "submit": "Submit"
         }
       },

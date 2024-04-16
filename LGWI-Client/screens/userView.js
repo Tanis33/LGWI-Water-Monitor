@@ -13,22 +13,24 @@ import {
 import { useTranslation } from 'react-i18next';
 
 
-export default function UserView({ navigation }) {
+export default function UserView({ navigation, route }) {
+
+  const { name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category } = route.params;
 
   // User Details Data
-  const userDetails = [
-    {
-      meternumber: '234966',
-      name: 'Peter',
-      surname: 'Parker',
-      idNumber: '123214',
-      sector: 'South East',
-      phoneNumber: '666-666-6666',
-      email: 'pparker@avenge.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-  ];
+  // const userDetails = [
+  //   {
+  //     meternumber: '234966',
+  //     name: 'Peter',
+  //     surname: 'Parker',
+  //     idNumber: '123214',
+  //     sector: 'South East',
+  //     phoneNumber: '666-666-6666',
+  //     email: 'pparker@avenge.com',
+  //     status: 'Active',
+  //     category: 'Residential',
+  //   },
+  // ];
 
   // Receipt Data
   const receiptData = [
@@ -36,16 +38,19 @@ export default function UserView({ navigation }) {
       receiptID: '06',
       date: '4/16/24',
       amount: '8.60',
+      tag: 'Unpaid',
     },
     {
       receiptID: '05',
-      date: '4/16/24',
+      date: '4/10/24',
       amount: '20.00',
+      tag: 'Paid',
     },
     {
       receiptID: '02',
-      date: '4/16/24',
+      date: '4/12/24',
       amount: '2.43',
+      tag: 'Paid',
     },
 
   ];
@@ -61,7 +66,7 @@ export default function UserView({ navigation }) {
           <View style={styles.header}>
             <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AddUser', {})}
+              onPress={() => navigation.navigate('EditUser', {})}
               style={styles.addBtn}>
               <Text style={styles.addUser}>{t('screens.userView.text.edit')}
               </Text>
@@ -74,14 +79,14 @@ export default function UserView({ navigation }) {
             showsVerticalScrollIndicator={false}>
 
             {/* User Details */}
-            {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
-              return (
-                <View style={styles.details} key={index}>
+            {/* {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
+              return ( */}
+                <View style={styles.details}>
 
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>{t('screens.userView.text.meternumber')}</Text>
-                    <Text style={styles.detailsValue}>{meternumber}</Text>
+                    <Text style={styles.detailsValue}>{meterNumber}</Text>
                   </View>
                   {/* First Name */}
                   <View style={styles.detailsRow}>
@@ -96,7 +101,7 @@ export default function UserView({ navigation }) {
                   {/* ID Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>{t('screens.userView.text.idNumber')}</Text>
-                    <Text style={styles.detailsValue}>{idNumber}</Text>
+                    <Text style={styles.detailsValue}>{cedula}</Text>
                   </View>
                   {/* Sector */}
                   <View style={styles.detailsRow}>
@@ -124,8 +129,8 @@ export default function UserView({ navigation }) {
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
                 </View>
-              );
-            })}
+              {/* );
+            })} */}
             <View style={styles.divider}>
               <View style={styles.dividerInset} />
             </View>
@@ -133,16 +138,17 @@ export default function UserView({ navigation }) {
               <Text style={styles.detailsTitle}>{t('screens.userView.text.receipt')}</Text>
 
               {/* Reciept Info */}
-              {receiptData.map(({ receiptID, date, amount }, i) => {
+              {receiptData.map(({ receiptID, date, amount, tag }, i) => {
                 return (
                   <View style={styles.details} key={i}>
                     <TouchableOpacity style={styles.card} onPress={() => {
                       // generate a pdf of the reciept with all the details and the option to email to customer
+                      navigation.navigate('Receipt', { receiptID, date, amount, tag });
                     }}>
                       {/* Reciept Info */}
                       <View style={styles.detailsRow}>
                         <Text style={styles.detailsField}>{t('screens.userView.text.receiptID')}</Text>
-                        <Text style={styles.detailsValue}>{receiptID}</Text>
+                        <Text style={styles.detailsValue}>#{receiptID}</Text>
                       </View>
                       <View style={styles.detailsRow}>
                         <Text style={styles.detailsField}>{t('screens.userView.text.date')}</Text>
@@ -150,7 +156,11 @@ export default function UserView({ navigation }) {
                       </View>
                       <View style={styles.detailsRow}>
                         <Text style={styles.detailsField}>{t('screens.userView.text.amount')}</Text>
-                        <Text style={styles.detailsValue}>{amount}</Text>
+                        <Text style={styles.detailsValue}>${amount}</Text>
+                      </View>
+                      <View style={styles.detailsRow}>
+                        <Text style={styles.detailsField}>Status</Text>
+                        <Text style={styles.detailsValue}>{tag}</Text>
                       </View>
                     </TouchableOpacity>
                     <View style={styles.divider}>
@@ -279,14 +289,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   detailsRow: {
-    marginBottom: 14,
+    marginBottom: 18,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
   },
   detailsField: {
-    fontSize: 18,
-    lineHeight: 20,
+    fontSize: 19,
+    lineHeight: 25,
     fontWeight: '500',
     color: '#8c8c8c',
     flexGrow: 1,

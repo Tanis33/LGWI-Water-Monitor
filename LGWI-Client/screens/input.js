@@ -35,7 +35,7 @@ export default function Input({ navigation }) {
                   <Text style={styles.statsItemLabel}>{t('screens.input.text.title')}</Text>
                   <TextInput
                     onChangeText={meterNumber => setForm({ ...inputData, meterNumber })}
-                    placeholder="Meter Number"
+                    placeholder="Meter"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     keyboardType="numeric"
@@ -43,7 +43,7 @@ export default function Input({ navigation }) {
                   <TextInput
                     autoCorrect={false}
                     onChangeText={cedula => setForm({ ...inputData, cedula })}
-                    placeholder="ID Number"
+                    placeholder="Cédula"
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     keyboardType="numeric"
@@ -101,7 +101,13 @@ export default function Input({ navigation }) {
                     return;
                   }
                   //else navigate to the conformation page
-                  navigation.navigate('Conformation', { inputData: inputData })
+                  
+                  navigation.navigate('Loading');
+                  setTimeout(()=> {
+                    navigation.navigate('Conformation', { inputData: inputData });
+                   }, 1000);
+                  
+                  
                   setForm(initialFormState);
                 }}>
                 <View style={styles.btn}>

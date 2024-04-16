@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 const dashboardData = [
   {
     communityName: "Ecovillage",
-    usersPaid: "5",
-    usersUnpaid: "7",
-    amountPaid: "20.75",
+    usersPaid: "2",
+    usersUnpaid: "10",
+    amountPaid: "11.75",
     amountUnpaid: "48.20",
     monthlyUsage: "34.4",
     yearlyUsage: "84.6",

@@ -32,23 +32,21 @@ export default function ConformationScreen({ navigation, route }) {
   const conformationData = [
     {
       receiptID: '#06',
-      balance: '22.40',
+      balance: '8.60',
       date: '16/4/24',
       chargeType: 'Water Usage',
 
-      meternumber: '234966',
+      meternumber: '66',
       name: 'Peter',
       surname: 'Parker',
-      idNumber: '123214',
+      cedula: '123214',
       sector: 'South East',
-      phoneNumber: '666-666-6666',
+      phoneNumber: '1234569',
       email: 'pparker@avenge.com',
       status: 'Active',
       category: 'Residential',
     },
   ];
-
-
 
   // Translation
   const { t } = useTranslation();
@@ -57,7 +55,7 @@ export default function ConformationScreen({ navigation, route }) {
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
-          {conformationData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
+          {conformationData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, cedula, sector, phoneNumber, email, status, category }, index) => {
             return (
               <ScrollView
                 contentContainerStyle={styles.receipt}
@@ -65,7 +63,10 @@ export default function ConformationScreen({ navigation, route }) {
                 key={index}>
 
                 <Text style={styles.receiptSubtitle}>{t('screens.conformation.text.invoice')} {receiptID}</Text>
-
+                <View style={{ flexDirection: 'row' }}>
+                  <Text style={styles.receiptSubtitle}>Water Reading {inputData.usageAmount} m</Text>
+                  <Text style={styles.volumeDescriptor}>3</Text>
+                </View>
                 <View style={styles.receiptPrice}>
                   <Text style={styles.receiptPriceText}>${balance}</Text>
                 </View>
@@ -97,7 +98,7 @@ export default function ConformationScreen({ navigation, route }) {
                   {/* ID Number */}
                   <View style={styles.detailsRow}>
                     <Text style={styles.detailsField}>{t('screens.conformation.text.idNumber')}</Text>
-                    <Text style={styles.detailsValue}>{idNumber}</Text>
+                    <Text style={styles.detailsValue}>{cedula}</Text>
                   </View>
                   {/* Sector */}
                   <View style={styles.detailsRow}>
@@ -125,32 +126,34 @@ export default function ConformationScreen({ navigation, route }) {
                     <Text style={styles.detailsValue}>{category}</Text>
                   </View>
                 </View>
+                <View style={styles.spacing} />
+                <View style={styles.overlay}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      //go to UserView based on Meter Number
+                      navigation.navigate('Loading');
+                      setTimeout(() => {
+                        navigation.navigate('UserView', { receiptID, balance, date, chargeType, meternumber, name, surname, cedula, sector, phoneNumber, email, status, category });
+                      }, 1000);
+                    }}>
+                    <View style={styles.btn}>
+                      <Text style={styles.btnText}>{t('screens.conformation.text.confirmChange')}</Text>
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate('tabsHome', {});
+                    }}>
+                    <View style={styles.btnSecondary}>
+                      <Text style={styles.btnSecondaryText}>{t('screens.conformation.text.cancel')}</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </ScrollView>
             );
           })}
         </View>
       </SafeAreaView>
-
-      <View style={styles.overlay}>
-        <TouchableOpacity
-          onPress={() => {
-            //go to UserView based on Meter Number
-            navigation.navigate('UserView');
-            
-          }}>
-          <View style={styles.btn}>
-            <Text style={styles.btnText}>{t('screens.conformation.text.confirmChange')}</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('tabsHome', {});
-          }}>
-          <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>{t('screens.conformation.text.cancel')}</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
@@ -165,7 +168,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     position: 'absolute',
-    bottom: 0,
+    bottom: -20,
     left: 0,
     right: 0,
     backgroundColor: '#fff',
@@ -341,5 +344,15 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     fontWeight: '600',
     color: '#02C3BD',
+  },
+  spacing: {
+    marginBottom: 120,
+  },
+  volumeDescriptor: {
+    fontSize: 14,
+    color: '#818181',
+    marginBottom: -10,
+    fontWeight: '500',
+    
   },
 });

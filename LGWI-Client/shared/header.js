@@ -18,7 +18,7 @@ export default function Header() {
               onPress={() => {
                 // handle onPress
               }}>
-              <FeatherIcon name="chevron-left" size={24} />
+              
             </TouchableOpacity>
           </View>
 

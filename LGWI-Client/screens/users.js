@@ -20,84 +20,144 @@ export default function Users({ navigation }) {
     {
       name: 'John',
       surname: 'Doe',
-      meterNumber: '234961',
+      meterNumber: '61',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'North East',
+      phoneNumber: '123.456.3456',
+      email: 'jd@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'James',
       surname: 'Smith',
-      meterNumber: '234962',
+      meterNumber: '62',
       cedula: '21321412',
       tag: 'paid',
       date: '4/13/24',
+
+      sector: 'North East',
+      phoneNumber: '123.456.3456',
+      email: 'jsm@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'Howard',
       surname: 'Lane',
-      meterNumber: '234963',
+      meterNumber: '63',
       cedula: '21321312',
       tag: 'paid',
       date: '4/13/24',
+
+      sector: 'North East',
+      phoneNumber: '123.456.3456',
+      email: 'hlane@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'John',
       surname: 'Cena',
-      meterNumber: '234964',
+      meterNumber: '64',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'North West',
+      phoneNumber: '123.456.3456',
+      email: 'jcena@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'Haim',
       surname: 'Hong',
-      meterNumber: '234965',
+      meterNumber: '65',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'South West',
+      phoneNumber: '123.456.3456',
+      email: 'hh@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'Peter',
       surname: 'Parker',
-      meterNumber: '234966',
+      meterNumber: '66',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'South East',
+      phoneNumber: '666-666-6666',
+      email: 'pparker@avenge.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'Frank',
       surname: 'Castle',
-      meterNumber: '234967',
+      meterNumber: '67',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'North East',
+      phoneNumber: '123.456.3456',
+      email: 'fcastle@demo.com',
+      status: 'Inactive',
+      category: 'Commercial',
     },
     {
       name: 'Tony',
       surname: 'Stark',
-      meterNumber: '234968',
+      meterNumber: '68',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'South West',
+      phoneNumber: '123.456.3456',
+      email: 'tstark@avenge.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'Steve',
       surname: 'Rogers',
-      meterNumber: '234969',
+      meterNumber: '69',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'North West',
+      phoneNumber: '123.456.3456',
+      email: 'srog@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
     {
       name: 'Bruce',
       surname: 'Wayne',
-      meterNumber: '234970',
+      meterNumber: '70',
       cedula: '123214',
       tag: 'unpaid',
       date: '4/13/24',
+
+      sector: 'North West',
+      phoneNumber: '123.456.3456',
+      email: 'srog@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
-    
+
   ];
   // Translation
   const { t } = useTranslation();
@@ -116,17 +176,17 @@ export default function Users({ navigation }) {
           </TouchableOpacity>
         </View>
         {/* Filter and Search Option */}
-{/*     <Text style={styles.filter}>{t('screens.users.text.filter')}</Text>
+        {/*     <Text style={styles.filter}>{t('screens.users.text.filter')}</Text>
         <Text style={styles.filter}>{t('screens.users.text.search')}</Text>
          */}
 
         {/* Users List */}
         <ScrollView contentContainerStyle={styles.content}>
-          {usersData.map(({ name, surname, meterNumber, cedula, tag, date }, index) => {
+          {usersData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigation.navigate('UserView', {})}>
+                onPress={() => navigation.navigate('UserView', { name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category })}>
                 <View style={styles.card}>
                   <View style={styles.cardBody}>
                     <Text style={styles.cardTag}>{tag}</Text>

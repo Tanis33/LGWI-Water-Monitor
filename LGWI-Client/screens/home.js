@@ -26,24 +26,19 @@ export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        {/* Welcome Message */}
-        <View style={styles.contentHeader}>
-          <Text style={styles.title}>
-            Track water usage {'\n'}with{' '}
-            <View style={styles.appName}>
-              <Text style={styles.appNameText}>LGWI Liquid Metircs</Text>
-            </View>
-          </Text>
-          <Text style={styles.text}>
-
-          </Text>
+        <View style={styles.hero}>
+          <Image
+            source={{ uri: 'https://assets.withfra.me/Landing.3.png' }}
+            style={styles.heroImage}
+            resizeMode="contain"
+          />
         </View>
 
         {/* Location ID */}
         <View style={styles.statsRow}>
           <View style={styles.statsItem}>
             <View style={{ backgroundColor: 'white', width: '100%' }}>
-              <Text style={styles.statsItemLabel}>Location ID</Text>
+              <Text style={styles.statsItemLabel}>Community ID</Text>
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -57,16 +52,44 @@ export default function Home({ navigation }) {
           </View>
         </View>
 
+        {/* Welcome Message */}
+        <View style={styles.contentHeader}>
+          <Text style={styles.title}>
+            Track water usage {'\n'}with{' '}
+            <View style={styles.appName}>
+              <Text style={styles.appNameText}>LGWI Liquid Metircs</Text>
+            </View>
+          </Text>
+          <Text style={styles.text}>
+
+          </Text>
+        </View>
+
+
+
         {/* Let's Go Button */}
         <TouchableOpacity
           onPress={() => {
             //if home.locationID is 6 digit number then navigate to dashboard
-              navigation.navigate('tabsHome', { homeData: home });
-              setHome(initialFormState);
-              //set the global communityID to the locationID
+            navigation.navigate('tabsHome', { homeData: home });
+            setHome(initialFormState);
+            //set the global communityID to the locationID
           }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Lets go!</Text>
+            {/* //{t('screens.home.text.submitButton')} */}
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            //if home.locationID is 6 digit number then navigate to dashboard
+            navigation.navigate('tabsHome', { homeData: home });
+            setHome(initialFormState);
+            //set the global communityID to the locationID
+          }}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Vamos!</Text>
             {/* //{t('screens.home.text.submitButton')} */}
           </View>
         </TouchableOpacity>
@@ -153,7 +176,7 @@ const styles = StyleSheet.create({
   statsRow: {
     flexDirection: 'row',
     marginHorizontal: -6,
-    width: '80%',
+    width: '100%',
     alignSelf: 'center',
   },
   statsItem: {

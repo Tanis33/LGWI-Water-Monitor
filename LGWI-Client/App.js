@@ -15,6 +15,9 @@ import UserViewScreen from './screens/userView';
 import ConformationScreen from './screens/conformation';
 import UserScreen from './screens/addUser';
 import AddCharge from './screens/addCharge';
+import EditUser from './screens/editUser';
+import LoadingScreen from './screens/loading';
+import ReceiptScreen from './screens/receipt';
 import './localization/i18n';
 
 //Stack Navigaitor
@@ -47,6 +50,7 @@ export default function App() {
             title: '',
             headerTintColor: '#fff',
             headerBackTitleVisible: false,
+            headerBackButtonMenuEnabled: false,
             headerStyle: {
               backgroundColor: '#02C3BD',
               borderBottomLeftRadius: 8,
@@ -62,9 +66,12 @@ export default function App() {
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="UserView" component={UserViewScreen} />
-          <Stack.Screen name="Conformation" component={ConformationScreen} />
+          <Stack.Screen name="Conformation" component={ConformationScreen} options={{ headerBackButtonMenuEnabled: false }}/>
           <Stack.Screen name="AddUser" component={UserScreen} />  
-          <Stack.Screen name="AddCharge" component={AddCharge} />        
+          <Stack.Screen name="AddCharge" component={AddCharge} />   
+          <Stack.Screen name="EditUser" component={EditUser} />     
+          <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }}/>
+          <Stack.Screen name="Receipt" component={ReceiptScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

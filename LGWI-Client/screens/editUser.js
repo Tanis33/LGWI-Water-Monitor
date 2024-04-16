@@ -1,4 +1,4 @@
-//addUser Page Adds a new user to the database
+//editUser Page Adds a new user to the database
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -14,25 +14,21 @@ import { useTranslation } from 'react-i18next';
 //User Information
 const userData = [
   {
-    receiptID: 'receipt.receiptID',
-    balance: 'receipt.balance',
-    date: 'receipt.date',
-    chargeType: 'receipt.chargeType',
-    meternumber: 'user.meternumber',
-    name: 'user.name',
-    surname: 'user.surname',
-    idNumber: 'user.idnumber',
-    sector: 'user.sector',
-    phoneNumber: 'user.phonenumber',
-    email: 'user.email',
-    status: 'user.status',
-    category: 'user.category',
     spacer: '                                            ',
+    meternumber: '234966',
+    name: 'Peter',
+    surname: 'Parker',
+    idNumber: '123214',
+    sector: 'South East',
+    phoneNumber: '666-666-6666',
+    email: 'pparker@avenge.com',
+    status: 'Active',
+    category: 'Residential',
   },
 ];
 
 
-export default function AddUser({ navigation }) {
+export default function EditUser({ navigation }) {
 
   //Empty form to be filled by the user data and added to the database
   const [form, setForm] = useState({
@@ -60,7 +56,7 @@ export default function AddUser({ navigation }) {
                 contentContainerStyle={styles.receipt}
                 showsVerticalScrollIndicator={false}
                 key={index}>
-                <Text style={styles.detailsTitle}>{t('screens.addUser.title')}</Text>
+                <Text style={styles.detailsTitle}>Edit User</Text>
                 <View style={styles.details} >
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
@@ -70,7 +66,7 @@ export default function AddUser({ navigation }) {
                       autoCorrect={false}
                       keyboardType="numeric"
                       onChangeText={meternumber => setForm({ ...form, meternumber })}
-                      placeholder={spacer}
+                      placeholder={meternumber}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.meternumber} />
@@ -82,7 +78,7 @@ export default function AddUser({ navigation }) {
                       autoCapitalize="none"
                       autoCorrect={false}
                       onChangeText={name => setForm({ ...form, name })}
-                      placeholder={spacer}
+                      placeholder={name}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.name} />
@@ -94,7 +90,7 @@ export default function AddUser({ navigation }) {
                       autoCapitalize="none"
                       autoCorrect={false}
                       onChangeText={surname => setForm({ ...form, surname })}
-                      placeholder={spacer}
+                      placeholder={surname}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.surname} />
@@ -107,7 +103,7 @@ export default function AddUser({ navigation }) {
                       autoCorrect={false}
                       keyboardType="numeric"
                       onChangeText={idNumber => setForm({ ...form, idNumber })}
-                      placeholder={spacer}
+                      placeholder={idNumber}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.idNumber} />
@@ -119,7 +115,7 @@ export default function AddUser({ navigation }) {
                       autoCapitalize="none"
                       autoCorrect={false}
                       onChangeText={sector => setForm({ ...form, sector })}
-                      placeholder={spacer}
+                      placeholder={sector}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.sector} />
@@ -132,7 +128,7 @@ export default function AddUser({ navigation }) {
                       autoCorrect={false}
                       keyboardType="numeric"
                       onChangeText={phoneNumber => setForm({ ...form, phoneNumber })}
-                      placeholder={spacer}
+                      placeholder={phoneNumber}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.phoneNumber} />
@@ -144,7 +140,7 @@ export default function AddUser({ navigation }) {
                       autoCapitalize="none"
                       autoCorrect={false}
                       onChangeText={email => setForm({ ...form, email })}
-                      placeholder={spacer}
+                      placeholder={email}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.email} />
@@ -156,7 +152,7 @@ export default function AddUser({ navigation }) {
                       autoCapitalize="none"
                       autoCorrect={false}
                       onChangeText={status => setForm({ ...form, status })}
-                      placeholder={spacer}
+                      placeholder={status}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.status} />
@@ -168,7 +164,7 @@ export default function AddUser({ navigation }) {
                       autoCapitalize="none"
                       autoCorrect={false}
                       onChangeText={category => setForm({ ...form, category })}
-                      placeholder={spacer}
+                      placeholder={category}
                       placeholderTextColor="#000000"
                       style={styles.inputBox}
                       value={form.category} />
@@ -189,7 +185,7 @@ export default function AddUser({ navigation }) {
             navigation.navigate('tabsHome', {});
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>{t('screens.addUser.text.addUser')}</Text>
+            <Text style={styles.btnText}>Confrim Edit</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -257,8 +253,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'stretch',
     borderRadius: 12,
-    padding: 8, 
-    
+    padding: 8,
+
   },
   detailsTitle: {
     fontSize: 32,
@@ -272,7 +268,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    
+
 
   },
   detailsField: {
@@ -283,7 +279,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
-    
+
 
   },
   detailsValue: {
@@ -344,6 +340,7 @@ const styles = StyleSheet.create({
   },
   inputBox: {
     height: 40,
+    width: 200,
     backgroundColor: 'white',
     paddingHorizontal: 16,
     borderRadius: 12,

@@ -20,6 +20,7 @@ export default function Tabs() {
         tabBarInactiveTintColor: '#037171',
         tabBarActiveTintColor: '#03312E',
         headerShown: true,
+        headerIcon: false,
         tabBarStyle: {
           position: 'relative',
           backgroundColor: '#02C3BD',

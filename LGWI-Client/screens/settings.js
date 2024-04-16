@@ -34,6 +34,7 @@ export default function Settings({ navigation }) {
             <TouchableOpacity
               onPress={() => {
                 i18n.changeLanguage("en")
+            
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#fe9400' }]}>
@@ -44,15 +45,13 @@ export default function Settings({ navigation }) {
 
               <View style={styles.rowSpacer} />
 
-              <FeatherIcon
-                color="#C6C6C6"
-                name="chevron-right"
-                size={20} />
+             
             </TouchableOpacity>
             {/* Button to Change to Spanish */}
             <TouchableOpacity
               onPress={() => {
                 i18n.changeLanguage("es")
+                
               }}
               style={styles.row}>
               <View style={[styles.rowIcon, { backgroundColor: '#fe9400' }]}>
@@ -63,10 +62,7 @@ export default function Settings({ navigation }) {
 
               <View style={styles.rowSpacer} />
 
-              <FeatherIcon
-                color="#C6C6C6"
-                name="chevron-right"
-                size={20} />
+              
             </TouchableOpacity>
 
 
