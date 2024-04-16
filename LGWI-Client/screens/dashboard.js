@@ -3,81 +3,82 @@ import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
-const dashboardData = [
-  {
-    communityName: "Ecovillage",
-    usersPaid: "2",
-    usersUnpaid: "10",
-    amountPaid: "11.75",
-    amountUnpaid: "48.20",
-    monthlyUsage: "34.4",
-    yearlyUsage: "84.6",
-  },
-]
-
-
-// const dashboardData = [
+c// const dashboardData = [
 //   {
-//     communityName: csvArray[1][1],
-//     usersPaid: getusersPaid(),
-//     usersUnpaid: getusersUnpaid(),
-//     amountPaid: getamountPaid(),
-//     amountUnpaid: getamountUnpaid(),
-//     monthlyUsage: getUsage(),
-//     yearlyUsage: getUsage(),
+//     communityName: "123",
+//     usersPaid: "123",
+//     usersUnpaid: "123",
+//     amountPaid: "123",
+//     amountUnpaid: "123",
+//     monthlyUsage: "123",
+//     yearlyUsage: '12345', 
 //   },
-// ];
+// ] 
 
-function getusersPaid() {
+
+const dashboardData = [ 
+  {
+    communityName: csvArray[1][1],
+    usersPaid: getusersPaid(),
+    usersUnpaid: getusersUnpaid(),
+    amountPaid: getamountPaid(),
+    amountUnpaid: getamountUnpaid(),
+    monthlyUsage: getUsage(),
+    yearlyUsage: getUsage(),
+  },
+];
+
+function getusersPaid(){
+console.log(csvArray[3][20]);
 
   let paid = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Paid          ") {
-      paid++;
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][21] == "Paid          "){
+      paid++; 
     }
   }
   return paid;
 }
 
-function getusersUnpaid() {
+function getusersUnpaid(){
 
   let unpaid = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Unpaid        ") {
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][21] == "Unpaid        "){
       unpaid++;
     }
   }
   return unpaid;
 }
 
-function getamountPaid() {
+function getamountPaid(){
   paidAmt = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Paid          ") {
-      paidAmt += parseFloat(csvArray[i][19]);
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][21] == "Paid          "){
+      paidAmt+= parseFloat(csvArray[i][20]);
     }
   }
   return paidAmt;
 }
 
-function getamountUnpaid() {
+function getamountUnpaid(){
   unpaidAmt = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Unpaid        ") {
-      unpaidAmt += parseFloat(csvArray[i][19]);
+  for(let i = 3; i < csvArray.length; i++){
+    if(csvArray[i][21] == "Unpaid        "){
+      unpaidAmt+= parseFloat(csvArray[i][20]);
     }
   }
   return unpaidAmt;
 }
 
-function getUsage() {
+function getUsage(){
   let totalUsed = 0;
-  for (let i = 3; i < csvArray.length; i++) {
+  for(let i = 3; i < csvArray.length; i++){
     totalUsed += csvArray[i][11] - csvArray[i][12];
-
+    
   }
-  return totalUsed;
-}
+  return totalUsed;  
+} 
 
 export default function Dashboard({ navigation }) {
   const { t } = useTranslation();
