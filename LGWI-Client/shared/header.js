@@ -38,14 +38,6 @@ export default function Header() {
               style={styles.headerSearchInput} />
           </View>
 
-          <View style={[styles.headerAction, { alignItems: 'flex-end' }]}>
-            <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}>
-              <FeatherIcon name="more-vertical" size={24} />
-            </TouchableOpacity>
-          </View>
         </View>
         <View style={styles.placeholder}>
           <View style={styles.placeholderInset}>

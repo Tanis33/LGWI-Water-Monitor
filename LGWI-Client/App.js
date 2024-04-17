@@ -66,7 +66,7 @@ export default function App() {
           <Stack.Screen name="View" component={ViewScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="UserView" component={UserViewScreen} />
-          <Stack.Screen name="Conformation" component={ConformationScreen} options={{ headerBackButtonMenuEnabled: false }}/>
+          <Stack.Screen name="Conformation" component={ConformationScreen}/>
           <Stack.Screen name="AddUser" component={UserScreen} />  
           <Stack.Screen name="AddCharge" component={AddCharge} />   
           <Stack.Screen name="EditUser" component={EditUser} />     

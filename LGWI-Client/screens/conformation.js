@@ -26,13 +26,16 @@ function getDateTime() {
 
 export default function ConformationScreen({ navigation, route }) {
   // Data from the previous screen
-  const { inputData } = route.params;
+  const { inputData, balance } = route.params;
+
+  //cedula
+  //meterNumber
 
   // Data to be displayed
   const conformationData = [
     {
       receiptID: '#06',
-      balance: '8.60',
+      balance: balance,
       date: '16/4/24',
       chargeType: 'Water Usage',
 

@@ -15,7 +15,6 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
 
-
 function getName(inx) {
   return(global.csvArray[inx+2][1]).trimRight(); 
 }
@@ -35,15 +34,19 @@ function getCedula(inx) {
 function getsector(inx) {
   return(global.csvArray[inx+2][4]).trimRight();
 }
+
 function getphoneNumber(inx) {
   return(global.csvArray[inx+2][5]).trimRight();
 }
+
 function getemail(inx) {
   return(global.csvArray[inx+2][6]).trimRight();
 }
+
 function getstatus(inx) {
   return(global.csvArray[inx+2][7]).trimRight();
 }
+
 function getcategory(inx) {
   return(global.csvArray[inx+2][8]).trimRight();
 }
@@ -91,22 +94,22 @@ export default function Users({ navigation }) {
   // create a new object for every user in the "users" section of the table
   // Note: this has no max size limit. Todo: add upper limit for size
 
-  for(let i = 1; i < csvArray.length-2; i++){
-    usersData.push({
-      name: getName(i),
-      surname: getSurname(i),
-      meterNumber: getMeterNumber(i),
-      cedula: getCedula(i),
-      tag: getPaidUnpaid(i),
-      date: getDate(i),
+  // for(let i = 1; i < csvArray.length-2; i++){
+  //   usersData.push({
+  //     name: getName(i),
+  //     surname: getSurname(i),
+  //     meterNumber: getMeterNumber(i),
+  //     cedula: getCedula(i),
+  //     tag: getPaidUnpaid(i),
+  //     date: getDate(i),
 
-      sector: getsector(i),
-      phoneNumber: getphoneNumber(i),
-      email: getemail(i),
-      status: getstatus(i),
-      category: getcategory(i),
-    });
-  }
+  //     sector: getsector(i),
+  //     phoneNumber: getphoneNumber(i),
+  //     email: getemail(i),
+  //     status: getstatus(i),
+  //     category: getcategory(i),
+  //   });
+  // }
   const testData = [
     {
       name: 'John',
@@ -164,20 +167,7 @@ export default function Users({ navigation }) {
       status: 'Active',
       category: 'Residential',
     },
-    {
-      name: 'Haim',
-      surname: 'Hong',
-      meterNumber: '65',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'South West',
-      phoneNumber: '123.456.3456',
-      email: 'hh@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
+    
     {
       name: 'Peter',
       surname: 'Parker',
@@ -248,6 +238,20 @@ export default function Users({ navigation }) {
       status: 'Active',
       category: 'Residential',
     },
+    {
+      name: 'Haim',
+      surname: 'Hong',
+      meterNumber: '65',
+      cedula: '123214',
+      tag: 'unpaid',
+      date: '4/13/24',
+
+      sector: 'South West',
+      phoneNumber: '123.456.3456',
+      email: 'hh@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
+    },
 
   ];
   // Translation
@@ -273,7 +277,7 @@ export default function Users({ navigation }) {
 
         {/* Users List */}
         <ScrollView contentContainerStyle={styles.content}>
-          {usersData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
+          {testData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
             return (
               <TouchableOpacity
                 key={index}

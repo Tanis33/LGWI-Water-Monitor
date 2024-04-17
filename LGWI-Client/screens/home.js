@@ -1,98 +1,93 @@
+// home.js 
+// Landing page for the app. User enters the community ID and clicks on "Lets go" button to navigate to the dashboard.
+
+// Imports
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
-import DashboardScreen from './dashboard';
-import { useTranslation } from 'react-i18next';
+import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
+
 
 export default function Home({ navigation }) {
+
   // set the global filename and contents variables to some test values
   global.communityID = '123456';
   global.csvContents = "NothingInteresting";
   global.csvArray = [];
+
+  // form for passing the community ID to the dashboard
   const [home, setHome] = useState({
-    locationID: '',
+    communityID: '',
   });
   const initialFormState = {
-    locationID: '',
+    communityID: '',
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <View style={styles.hero}>
-          <Image
-            source={{ uri: 'https://assets.withfra.me/Landing.3.png' }}
-            style={styles.heroImage}
-            resizeMode="contain"
-          />
-        </View>
 
-        {/* Location ID */}
-        <View style={styles.statsRow}>
-          <View style={styles.statsItem}>
-            <View style={{ backgroundColor: 'white', width: '100%' }}>
-              <Text style={styles.statsItemLabel}>Community ID</Text>
-              <TextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="numeric"
-                onChangeText={locationID => setHome({ ...home, locationID })}
-                placeholder="123456"
-                placeholderTextColor="#6b7280"
-                style={styles.inputControl}
-                value={home.locationID} />
-            </View>
-          </View>
+        {/* Logo */}
+        <View style={styles.logo}>
+          <Ionicons name="water" size={150} color={'blue'}></Ionicons>
         </View>
 
         {/* Welcome Message */}
         <View style={styles.contentHeader}>
           <Text style={styles.title}>
-            Track water usage {'\n'}with{' '}
-            <View style={styles.appName}>
-              <Text style={styles.appNameText}>LGWI Liquid Metircs</Text>
-            </View>
+            <Text style={styles.appNameText}>LGWI Liquid Metircs</Text>
           </Text>
           <Text style={styles.text}>
-
           </Text>
         </View>
 
-
-
-        {/* Let's Go Button */}
-        <TouchableOpacity
-          onPress={() => {
-            //if home.locationID is 6 digit number then navigate to dashboard
-            navigation.navigate('tabsHome', { homeData: home });
-            setHome(initialFormState);
-            //set the global communityID to the locationID
-          }}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Lets go!</Text>
-            {/* //{t('screens.home.text.submitButton')} */}
+        {/* Community ID */}
+        <View style={styles.stats}>
+          <View style={styles.statsRow}>
+            <View style={styles.statsItem}>
+              <View style={{ width: '100%' }}>
+                <Text style={styles.statsItemLabel}>COMMUNITY ID</Text>
+                <TextInput
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  keyboardType="numeric"
+                  onChangeText={communityID => setHome({ ...home, communityID })}
+                  placeholder=""
+                  placeholderTextColor="#6b7280"
+                  style={styles.inputControl}
+                  value={home.communityID} />
+              </View>
+            </View>
           </View>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            //if home.locationID is 6 digit number then navigate to dashboard
-            navigation.navigate('tabsHome', { homeData: home });
-            setHome(initialFormState);
-            //set the global communityID to the locationID
-          }}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Vamos!</Text>
-            {/* //{t('screens.home.text.submitButton')} */}
-          </View>
-        </TouchableOpacity>
+          {/* Let's Go Button */}
+          <TouchableOpacity
+            onPress={() => {
+              //if home.communityID is 6 digit number then navigate to dashboard
+              navigation.navigate('tabsHome', { homeData: home });
+              setHome(initialFormState);
+              //set the global communityID to the communityID
+            }}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Lets go!</Text>
+              {/* //{t('screens.home.text.submitButton')} */}
+            </View>
+          </TouchableOpacity>
+
+          {/* Let's go (SPANISH) */}
+          <TouchableOpacity
+            onPress={() => {
+              //if home.communityID is 6 digit number then navigate to dashboard
+              navigation.navigate('tabsHome', { homeData: home });
+              setHome(initialFormState);
+              //set the global communityID to the communityID
+            }}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Vamos!</Text>
+              {/* //{t('screens.home.text.submitButton')} */}
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -110,7 +105,6 @@ const styles = StyleSheet.create({
     color: '#281b52',
     textAlign: 'center',
     marginBottom: 12,
-    lineHeight: 40,
   },
   text: {
     fontSize: 18,
@@ -118,17 +112,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: '#9992a7',
     textAlign: 'center',
-  },
-  /** Hero */
-  hero: {
-    backgroundColor: '#d8dffe',
-    margin: 12,
-    borderRadius: 16,
-    padding: 16,
-  },
-  heroImage: {
-    width: '100%',
-    height: 350,
   },
   /** Content */
   content: {
@@ -140,28 +123,24 @@ const styles = StyleSheet.create({
   contentHeader: {
     paddingHorizontal: 24,
   },
-  appName: {
-    backgroundColor: '#fff2dd',
-    transform: [
-      {
-        rotate: '-5deg',
-      },
-    ],
-    paddingHorizontal: 6,
-  },
+
   appNameText: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: '700',
     color: '#281b52',
   },
   /** Button */
   button: {
+    width: '90%',
+    height: 56,
     backgroundColor: '#02C3BD',
     paddingVertical: 12,
     paddingHorizontal: 14,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12,
+    marginTop: 20,
+    alignSelf: 'center',
   },
   buttonText: {
     fontSize: 18,
@@ -172,6 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'stretch',
     justifyContent: 'center',
+    marginBottom: 40,
   },
   statsRow: {
     flexDirection: 'row',
@@ -189,17 +169,16 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: '#fff',
     marginHorizontal: 6,
     marginBottom: 12,
   },
   statsItemLabel: {
-    fontSize: 18,
+    fontSize: 16,
     color: 'black',
     marginBottom: 2,
     fontWeight: 'bold',
     marginTop: -6,
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
   },
   /** Input */
   input: {
@@ -213,7 +192,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   inputControl: {
-    height: 44,
+    height: 48,
     backgroundColor: 'white',
     paddingHorizontal: 16,
     borderRadius: 12,
@@ -222,5 +201,11 @@ const styles = StyleSheet.create({
     color: '#222',
     borderWidth: 1,
     borderColor: '#02C3BD',
+  },
+  /** Logo */
+  logo: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 100,
   },
 });

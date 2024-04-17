@@ -37,7 +37,7 @@ export default function UserView({ navigation, route }) {
     {
       receiptID: '06',
       date: '4/16/24',
-      amount: '8.60',
+      amount: '11.50',
       tag: 'Unpaid',
     },
     {

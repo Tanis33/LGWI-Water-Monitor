@@ -3,10 +3,10 @@ import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
 
-const dashboardData = [
+const testData = [
   {
     communityName: "Ecovillage",
-    usersPaid: "2",
+    usersPaid: "3",
     usersUnpaid: "10",
     amountPaid: "11.75",
     amountUnpaid: "48.20",
@@ -14,19 +14,6 @@ const dashboardData = [
     yearlyUsage: "84.6",
   },
 ]
-
-
-// const dashboardData = [
-//   {
-//     communityName: csvArray[1][1],
-//     usersPaid: getusersPaid(),
-//     usersUnpaid: getusersUnpaid(),
-//     amountPaid: getamountPaid(),
-//     amountUnpaid: getamountUnpaid(),
-//     monthlyUsage: getUsage(),
-//     yearlyUsage: getUsage(),
-//   },
-// ];
 
 function getusersPaid() {
 
@@ -80,10 +67,22 @@ function getUsage() {
 }
 
 export default function Dashboard({ navigation }) {
+
+  const dashboardData = [
+    {
+      communityName: 'Ecovillage',
+      usersPaid: getusersPaid(),
+      usersUnpaid: getusersUnpaid(),
+      amountPaid: getamountPaid(),
+      amountUnpaid: getamountUnpaid(),
+      monthlyUsage: getUsage(),
+      yearlyUsage: getUsage(),
+    },
+  ];
   const { t } = useTranslation();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }} >
-      {dashboardData.map(({ communityName, usersPaid, usersUnpaid, amountPaid, amountUnpaid, monthlyUsage, yearlyUsage }, index) => {
+      {testData.map(({ communityName, usersPaid, usersUnpaid, amountPaid, amountUnpaid, monthlyUsage, yearlyUsage }, index) => {
         return (
           <View style={styles.container} key={index}>
             <Text style={styles.title}>{t('screens.dashboard.title')}</Text>

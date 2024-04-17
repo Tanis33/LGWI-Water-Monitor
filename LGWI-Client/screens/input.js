@@ -58,7 +58,7 @@ export default function Input({ navigation }) {
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
 
                   <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.statsItemLabel}>Water Meter Reading  m</Text>
+                    <Text style={styles.statsItemLabel}>{t('screens.input.text.waterMeter')} m</Text>
                     <Text style={styles.volumeDescriptor}>3</Text>
                   </View>
                   <TextInput
@@ -102,9 +102,20 @@ export default function Input({ navigation }) {
                   }
                   //else navigate to the conformation page
                   
+
+                  //CSV
+
+                  // calculate the balance by taking the usageAmount and multiplying it by the rate
+                  // then navigate to the conformation page
+                  //community rate
+                  let balance = inputData.usageAmount * 0.5;
+                  //round to 2 decimal places
+                  balance = Math.round(balance * 100) / 100;
+
+
                   navigation.navigate('Loading');
                   setTimeout(()=> {
-                    navigation.navigate('Conformation', { inputData: inputData });
+                    navigation.navigate('Conformation', { inputData: inputData, balance });
                    }, 1000);
                   
                   

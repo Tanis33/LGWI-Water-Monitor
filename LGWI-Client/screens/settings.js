@@ -298,7 +298,6 @@ const styles = StyleSheet.create({
     padding: 16,
     marginTop: -24,
   },
-
   header: {
     marginVertical: 24,
     paddingHorizontal: 24,
@@ -313,5 +312,45 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     color: '#929292',
+  },
+  /** Profile */
+  profile: {
+    padding: 24,
+    backgroundColor: '#fff',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  profileAvatarWrapper: {
+    position: 'relative',
+  },
+  profileAvatar: {
+    width: 96,
+    height: 96,
+    borderRadius: 9999,
+  },
+  profileAction: {
+    position: 'absolute',
+    right: -4,
+    bottom: -10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 28,
+    height: 28,
+    borderRadius: 9999,
+    backgroundColor: '#007bff',
+  },
+  profileName: {
+    marginTop: 20,
+    fontSize: 22,
+    fontWeight: '600',
+    color: '#414d63',
+    textAlign: 'center',
+  },
+  profileAddress: {
+    marginTop: 5,
+    fontSize: 18,
+    color: '#989898',
+    textAlign: 'center',
   },
 });

@@ -20,7 +20,7 @@ export default function Tabs() {
         tabBarInactiveTintColor: '#037171',
         tabBarActiveTintColor: '#03312E',
         headerShown: true,
-        headerIcon: false,
+        headerBackButtonMenuEnabled: false,
         tabBarStyle: {
           position: 'relative',
           backgroundColor: '#02C3BD',
@@ -34,7 +34,7 @@ export default function Tabs() {
         },
         tabBarLabelStyle: {
           fontSize: 12,
-          fontWeight: 'bold',
+          fontWeight: '600',
           marginBottom: 32,
         },
         headerTintColor: '#02C3BD',
