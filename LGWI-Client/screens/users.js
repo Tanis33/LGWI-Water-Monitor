@@ -276,7 +276,7 @@ export default function Users({ navigation }) {
 
         {/* Users List */}
         <ScrollView contentContainerStyle={styles.content}>
-          {testData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
+          {usersData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
             return (
               <TouchableOpacity
                 key={index}

@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 
 export default function UserView({ navigation, route }) {
@@ -79,6 +80,29 @@ export default function UserView({ navigation, route }) {
                 </View>
               </View>
 
+              {/* Payment Status for current system how mcuh $$ paid and unpaid*/}
+              <View style={styles.statsRow}>
+
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="dollar-sign" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabelGreen}>{t('screens.dashboard.text.paid')}</Text>
+                    <Text style={styles.statsItemValue}>$0.00</Text>
+                  </View>
+                </View>
+                <View style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="dollar-sign" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemLabelRed}>{t('screens.dashboard.text.unpaid')}</Text>
+                    <Text style={styles.statsItemValue}>$50.00</Text>
+                  </View>
+                </View>
+              </View>
+
               {/* Sector */}
               <View style={styles.detailsRow}>
                 <Text style={styles.detailsField}>{t('screens.userView.text.sector')}</Text>
@@ -112,11 +136,12 @@ export default function UserView({ navigation, route }) {
             <View style={styles.details}>
               <Text style={styles.detailsTitle}>{t('screens.userView.text.receipt')}</Text>
 
+
               {/* Reciept Info */}
               {receiptData.map(({ receiptID, date, amount, tag }, i) => {
                 return (
                   <View style={styles.details} key={i}>
-                    <TouchableOpacity style={styles.card} onPress={() => {
+                    <TouchableOpacity style={styles.card1} onPress={() => {
                       // generate a pdf of the reciept with all the details and the option to email to customer
                       navigation.navigate('Receipt', { receiptID, date, amount, tag });
                     }}>
@@ -456,6 +481,71 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#939393',
+  },
+  /** Stats */
+  stats: {
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+  statsRow: {
+    flexDirection: 'row',
+    marginHorizontal: -6,
+  },
+  statsItem: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: '#fff',
+    marginHorizontal: 6,
+    marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
+  },
+  statsItemIcon: {
+    backgroundColor: '#03312E',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 46,
+    height: 46,
+    marginRight: 8,
+    borderRadius: 8,
+  },
+  statsItemLabel: {
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#8e8e93',
+    marginBottom: 2,
+  },
+  statsItemValue: {
+    fontSize: 22,
+    fontWeight: '600',
+    color: '#081730',
+  },
+  statsItemLabelGreen: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#2E7D32',
+    marginBottom: 2
+  },
+  statsItemLabelRed: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#C62828',
+    marginBottom: 2
   },
 
 
