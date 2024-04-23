@@ -17,43 +17,23 @@ export default function UserView({ navigation, route }) {
 
   const { name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category } = route.params;
 
-  // User Details Data
-  // const userDetails = [
-  //   {
-  //     meternumber: '234966',
-  //     name: 'Peter',
-  //     surname: 'Parker',
-  //     idNumber: '123214',
-  //     sector: 'South East',
-  //     phoneNumber: '666-666-6666',
-  //     email: 'pparker@avenge.com',
-  //     status: 'Active',
-  //     category: 'Residential',
-  //   },
-  // ];
+  // get the reciepts for the user
+  function getReceipts(meterID) {
+    let receipts = [];
+    for (let i = 3; i < csvArray.length; i++) {
+      if (csvArray[i][16].trimRight() == meterID) {
+        receipts.push({
+          receiptID: csvArray[i][15],
+          date: csvArray[i][19],
+          amount: csvArray[i][20],
+          tag: csvArray[i][21],
+        });
+      }
+    }
+    return receipts;
+  }
 
-  // Receipt Data
-  const receiptData = [
-    {
-      receiptID: '06',
-      date: '4/16/24',
-      amount: '11.50',
-      tag: 'Unpaid',
-    },
-    {
-      receiptID: '05',
-      date: '4/10/24',
-      amount: '20.00',
-      tag: 'Paid',
-    },
-    {
-      receiptID: '02',
-      date: '4/12/24',
-      amount: '2.43',
-      tag: 'Paid',
-    },
-
-  ];
+  const receiptData = getReceipts(meterNumber);
 
   // Translation
   const { t } = useTranslation();
@@ -66,7 +46,7 @@ export default function UserView({ navigation, route }) {
           <View style={styles.header}>
             <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate('EditUser', {})}
+              onPress={() => navigation.navigate('EditUser', { name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category })}
               style={styles.addBtn}>
               <Text style={styles.addUser}>{t('screens.userView.text.edit')}
               </Text>
@@ -78,59 +58,54 @@ export default function UserView({ navigation, route }) {
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
 
-            {/* User Details */}
-            {/* {userDetails.map(({ meternumber, name, surname, idNumber, sector, phoneNumber, email, status, category }, index) => {
-              return ( */}
-                <View style={styles.details}>
+            <View style={styles.card1}>
 
-                  {/* Meter Number */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.meternumber')}</Text>
-                    <Text style={styles.detailsValue}>{meterNumber}</Text>
-                  </View>
-                  {/* First Name */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.name')}</Text>
-                    <Text style={styles.detailsValue}>{name}</Text>
-                  </View>
-                  {/* Last Name */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.surname')}</Text>
-                    <Text style={styles.detailsValue}>{surname}</Text>
-                  </View>
-                  {/* ID Number */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.idNumber')}</Text>
-                    <Text style={styles.detailsValue}>{cedula}</Text>
-                  </View>
-                  {/* Sector */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.sector')}</Text>
-                    <Text style={styles.detailsValue}>{sector}</Text>
-                  </View>
-                  {/* Phone Number */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.phoneNumber')}</Text>
-                    <Text style={styles.detailsValue}>{phoneNumber}</Text>
-                  </View>
-                  {/* Email */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.email')}</Text>
-                    <Text style={styles.detailsValue}>{email}</Text>
-                  </View>
-                  {/* Status */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.status')}</Text>
-                    <Text style={styles.detailsValue}>{status}</Text>
-                  </View>
-                  {/* Category */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.userView.text.category')}</Text>
-                    <Text style={styles.detailsValue}>{category}</Text>
+              <View style={styles.card}>
+                <View style={styles.cardBody}>
+                  <Text style={styles.cardname}>{name} {surname}</Text>
+                  <View style={styles.cardRow}>
+                    <View style={styles.cardRowItem}>
+                      <Text style={styles.cardRowItemText}>{meterNumber}</Text>
+                    </View>
+                    <Text style={styles.cardRowDivider}>·</Text>
+                    <View style={styles.cardRowItem}>
+                      <Text style={styles.cardRowItemText}>#{cedula}</Text>
+                    </View>
+                    <Text style={styles.cardRowDivider}>·</Text>
+                    <View style={styles.cardRowItem}>
+                      <Text style={styles.cardRowItemText}>{date}</Text>
+                    </View>
                   </View>
                 </View>
-              {/* );
-            })} */}
+              </View>
+
+              {/* Sector */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>{t('screens.userView.text.sector')}</Text>
+                <Text style={styles.detailsValue}>{sector}</Text>
+              </View>
+              {/* Phone Number */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>{t('screens.userView.text.phoneNumber')}</Text>
+                <Text style={styles.detailsValue}>{phoneNumber}</Text>
+              </View>
+              {/* Email */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>{t('screens.userView.text.email')}</Text>
+                <Text style={styles.detailsValue}>{email}</Text>
+              </View>
+              {/* Status */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>{t('screens.userView.text.status')}</Text>
+                <Text style={styles.detailsValue}>{status}</Text>
+              </View>
+              {/* Category */}
+              <View style={styles.detailsRow}>
+                <Text style={styles.detailsField}>{t('screens.userView.text.category')}</Text>
+                <Text style={styles.detailsValue}>{category}</Text>
+              </View>
+            </View>
+
             <View style={styles.divider}>
               <View style={styles.dividerInset} />
             </View>
@@ -281,6 +256,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'column',
     alignItems: 'stretch',
+    padding: 8,
   },
   detailsTitle: {
     fontSize: 22,
@@ -305,13 +281,14 @@ const styles = StyleSheet.create({
   },
   detailsValue: {
     fontSize: 17,
-    lineHeight: 20,
+    lineHeight: 24,
     fontWeight: '600',
     color: '#444',
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
     textAlign: 'right',
+
   },
   /** Button */
   btn: {
@@ -383,8 +360,8 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 3,
   },
-  
-  card: {
+
+  card1: {
     width: '100%',
     flexDirection: 'column',
     backgroundColor: '#fff',
@@ -398,7 +375,88 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 1.22,
     elevation: 3,
-
   },
+  cardTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#222',
+    marginBottom: 16,
+  },
+  cardRow1: {
+    marginBottom: 18,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  /** Card */
+  card: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    borderRadius: 12,
+    padding: 8,
+    marginBottom: 8,
+    backgroundColor: '#fff',
+    borderColor: 'black',
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
+  },
+
+  cardBody: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    paddingHorizontal: 16,
+    height: 72,
+    paddingVertical: 0,
+  },
+  cardTag: {
+    fontWeight: '500',
+    fontSize: 12,
+    color: '#939393',
+    marginBottom: 8,
+    textTransform: 'capitalize',
+  },
+  cardname: {
+    fontWeight: '600',
+    fontSize: 22,
+    lineHeight: 32,
+    color: '#000',
+    marginBottom: 8,
+  },
+  cardRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: -8,
+    marginBottom: 'auto',
+  },
+  cardRowItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 6,
+    borderRightWidth: 1,
+    borderColor: 'transparent',
+  },
+  cardRowItemText: {
+    fontWeight: '400',
+    fontSize: 16,
+    color: '#939393',
+  },
+  cardRowDivider: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#939393',
+  },
+
 
 });

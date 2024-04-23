@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput,
-} from 'react-native';
+import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
 
 export default function Input({ navigation }) {
-
+  // form for passing the houseID or meterNumber and usageAmount to the conformation page
   const [inputData, setForm] = useState({
     meterNumber: '',
     cedula: '',
@@ -27,12 +25,11 @@ export default function Input({ navigation }) {
         <Text style={styles.title}>{t('screens.input.title')}</Text>
         <KeyboardAwareScrollView>
           <View style={styles.inputData}>
-
             {/* Input for house id or gauge ID*/}
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
-                <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>{t('screens.input.text.title')}</Text>
+                <View style={{ width: '100%' }}>
+                  <Text style={styles.statsItemLabel}>   {t('screens.input.text.title')}</Text>
                   <TextInput
                     onChangeText={meterNumber => setForm({ ...inputData, meterNumber })}
                     placeholder="Meter"
@@ -40,6 +37,10 @@ export default function Input({ navigation }) {
                     style={styles.inputControl}
                     keyboardType="numeric"
                     value={inputData.meterNumber} />
+
+                  <Text style={styles.statsItemLabel}>       OR</Text>
+                  <Text style={styles.statsItemLabel}>   {t('screens.input.text.title1')}</Text>
+
                   <TextInput
                     autoCorrect={false}
                     onChangeText={cedula => setForm({ ...inputData, cedula })}
@@ -48,19 +49,15 @@ export default function Input({ navigation }) {
                     style={styles.inputControl}
                     keyboardType="numeric"
                     value={inputData.cedula} />
-                </View>
-              </View>
-            </View>
 
-            {/* Read Amount (Input Data) */}
-            <View style={styles.statsRow}>
-              <View style={styles.statsItem}>
-                <View style={{ backgroundColor: 'white', width: '100%' }}>
+                  <View style={{ flexDirection: 'row', height: 32 }} />
 
                   <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.statsItemLabel}>{t('screens.input.text.waterMeter')} m</Text>
+                    <Text style={styles.statsItemLabel}>    {t('screens.input.text.waterMeter')} m</Text>
                     <Text style={styles.volumeDescriptor}>3</Text>
                   </View>
+
+
                   <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -70,6 +67,7 @@ export default function Input({ navigation }) {
                     placeholderTextColor="#6b7280"
                     style={styles.inputControl}
                     value={inputData.usageAmount} />
+
                 </View>
               </View>
             </View>
@@ -101,7 +99,7 @@ export default function Input({ navigation }) {
                     return;
                   }
                   //else navigate to the conformation page
-                  
+
 
                   //CSV
 
@@ -112,13 +110,7 @@ export default function Input({ navigation }) {
                   //round to 2 decimal places
                   balance = Math.round(balance * 100) / 100;
 
-
-                  navigation.navigate('Loading');
-                  setTimeout(()=> {
-                    navigation.navigate('Conformation', { inputData: inputData, balance });
-                   }, 1000);
-                  
-                  
+                  navigation.navigate('Conformation', { inputData: inputData, balance });
                   setForm(initialFormState);
                 }}>
                 <View style={styles.btn}>
@@ -145,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#1d1d1d',
-    marginBottom: 6,
+    marginBottom: 8,
   },
   /** Form */
   form: {
@@ -166,7 +158,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   inputControl: {
-    height: 44,
+    height: 48,
+    width: '95%',
+    alignSelf: 'center',
     backgroundColor: 'white',
     paddingHorizontal: 16,
     borderRadius: 12,
@@ -184,12 +178,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+    marginTop: -6,
+
   },
   /** Button */
   btn: {
     backgroundColor: '#02C3BD',
+    height: 56,
+    width: '80%',
+    alignSelf: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 14,
+    paddingHorizontal: 16,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12,
@@ -199,7 +198,7 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.22,
-    shadowRadius: 1.22,
+    shadowRadius: 4.22,
     elevation: 3,
   },
   btnText: {
@@ -216,7 +215,8 @@ const styles = StyleSheet.create({
   },
   statsRow: {
     flexDirection: 'row',
-    marginHorizontal: -6,
+    marginHorizontal: 0,
+
   },
   statsItem: {
     flexGrow: 1,
@@ -228,17 +228,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: '#fff',
     marginHorizontal: 6,
     marginBottom: 12,
-    
   },
   statsItemLabel: {
     fontSize: 18,
     color: 'black',
-    marginBottom: 2,
+    marginBottom: 8,
     fontWeight: 'bold',
-    marginTop: 0,
+    marginTop: 8,
   },
   volumeDescriptor: {
     fontSize: 14,

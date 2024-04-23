@@ -16,7 +16,6 @@ import ConformationScreen from './screens/conformation';
 import UserScreen from './screens/addUser';
 import AddCharge from './screens/addCharge';
 import EditUser from './screens/editUser';
-import LoadingScreen from './screens/loading';
 import ReceiptScreen from './screens/receipt';
 import './localization/i18n';
 
@@ -70,7 +69,6 @@ export default function App() {
           <Stack.Screen name="AddUser" component={UserScreen} />  
           <Stack.Screen name="AddCharge" component={AddCharge} />   
           <Stack.Screen name="EditUser" component={EditUser} />     
-          <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }}/>
           <Stack.Screen name="Receipt" component={ReceiptScreen} />
         </Stack.Group>
       </Stack.Navigator>

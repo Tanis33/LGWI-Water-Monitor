@@ -10,8 +10,44 @@ import {
   Image,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
-//User - Querry based on Meter Number or Cedula
+//User Details Functions
+function getName(inx) {
+  return (global.csvArray[inx + 2][1]).trimRight();
+}
+
+function getSurname(inx) {
+  return (global.csvArray[inx + 2][2]).trimRight();
+}
+
+function getmeterNumber(inx) {
+  return (global.csvArray[inx + 2][0]).trimRight();
+}
+
+function getCedula(inx) {
+  return (global.csvArray[inx + 2][3]).trimRight();
+}
+
+function getsector(inx) {
+  return (global.csvArray[inx + 2][4]).trimRight();
+}
+
+function getphoneNumber(inx) {
+  return (global.csvArray[inx + 2][5]).trimRight();
+}
+
+function getemail(inx) {
+  return (global.csvArray[inx + 2][6]).trimRight();
+}
+
+function getstatus(inx) {
+  return (global.csvArray[inx + 2][7]).trimRight();
+}
+
+function getcategory(inx) {
+  return (global.csvArray[inx + 2][8]).trimRight();
+}
 
 // RecieptID - check what the highest recieptID is and add 1 to it
 
@@ -28,28 +64,54 @@ export default function ConformationScreen({ navigation, route }) {
   // Data from the previous screen
   const { inputData, balance } = route.params;
 
-  //cedula
-  //meterNumber
-
   // Data to be displayed
+  let i = 3;
   const conformationData = [
     {
       receiptID: '#06',
       balance: balance,
-      date: '16/4/24',
+      date: '23/4/24',
       chargeType: 'Water Usage',
 
-      meternumber: '66',
-      name: 'Peter',
-      surname: 'Parker',
-      cedula: '123214',
-      sector: 'South East',
-      phoneNumber: '1234569',
-      email: 'pparker@avenge.com',
-      status: 'Active',
-      category: 'Residential',
+      meterNumber: getmeterNumber(i),
+      name: getName(i),
+      surname: getSurname(i),
+      cedula: getCedula(i),
+      sector: getsector(i),
+      phoneNumber: getphoneNumber(i),
+      email: getemail(i),
+      status: getstatus(i),
+      category: getcategory(i),
     },
   ];
+
+  // get the reciepts for the user
+  function getData(meterID) {
+    let userData = [];
+    for (let i = 3; i < csvArray.length; i++) {
+      if (csvArray[i][0].trimRight() == meterID) {
+        userData.push({
+          receiptID: '#06',
+          balance: balance,
+          date: '23/4/24',
+          chargeType: 'Water Usage',
+
+          meterNumber: getmeterNumber(i),
+          name: getName(i),
+          surname: getSurname(i),
+          cedula: getCedula(i),
+          sector: getsector(i),
+          phoneNumber: getphoneNumber(i),
+          email: getemail(i),
+          status: getstatus(i),
+          category: getcategory(i),
+        });
+      }
+    }
+    return userData;
+  }
+
+  const userDetails = getData({ meterNumber: inputData.meterNumber });
 
   // Translation
   const { t } = useTranslation();
@@ -58,7 +120,7 @@ export default function ConformationScreen({ navigation, route }) {
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container}>
-          {conformationData.map(({ receiptID, balance, date, chargeType, meternumber, name, surname, cedula, sector, phoneNumber, email, status, category }, index) => {
+          {conformationData.map(({ receiptID, balance, date, chargeType, meterNumber, name, surname, cedula, sector, phoneNumber, email, status, category }, index) => {
             return (
               <ScrollView
                 contentContainerStyle={styles.receipt}
@@ -85,8 +147,8 @@ export default function ConformationScreen({ navigation, route }) {
                   <Text style={styles.detailsTitle}>{t('screens.conformation.text.userDetails')}</Text>
                   {/* Meter Number */}
                   <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.meternumber')}</Text>
-                    <Text style={styles.detailsValue}>{meternumber}</Text>
+                    <Text style={styles.detailsField}>{t('screens.conformation.text.meterNumber')}</Text>
+                    <Text style={styles.detailsValue}>{inputData.meterNumber}</Text>
                   </View>
                   {/* First Name */}
                   <View style={styles.detailsRow}>
@@ -134,10 +196,7 @@ export default function ConformationScreen({ navigation, route }) {
                   <TouchableOpacity
                     onPress={() => {
                       //go to UserView based on Meter Number
-                      navigation.navigate('Loading');
-                      setTimeout(() => {
-                        navigation.navigate('UserView', { receiptID, balance, date, chargeType, meternumber, name, surname, cedula, sector, phoneNumber, email, status, category });
-                      }, 1000);
+                      navigation.navigate('UserView', { receiptID, balance, date, chargeType, meterNumber, name, surname, cedula, sector, phoneNumber, email, status, category });
                     }}>
                     <View style={styles.btn}>
                       <Text style={styles.btnText}>{t('screens.conformation.text.confirmChange')}</Text>
@@ -356,6 +415,6 @@ const styles = StyleSheet.create({
     color: '#818181',
     marginBottom: -10,
     fontWeight: '500',
-    
+
   },
 });

@@ -32,21 +32,17 @@ export default function Home({ navigation }) {
           <Ionicons name="water" size={150} color={'blue'}></Ionicons>
         </View>
 
-        {/* Welcome Message */}
-        <View style={styles.contentHeader}>
-          <Text style={styles.title}>
-            <Text style={styles.appNameText}>LGWI Liquid Metircs</Text>
-          </Text>
-          <Text style={styles.text}>
-          </Text>
-        </View>
+        {/* App Title */}
+        <Text style={styles.title}>
+          <Text style={styles.appNameText}>LGWI Liquid Metircs</Text>
+        </Text>
 
         {/* Community ID */}
         <View style={styles.stats}>
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={{ width: '100%' }}>
-                <Text style={styles.statsItemLabel}>COMMUNITY ID</Text>
+                <Text style={styles.statsItemLabel}> COMMUNITY ID</Text>
                 <TextInput
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -63,10 +59,8 @@ export default function Home({ navigation }) {
           {/* Let's Go Button */}
           <TouchableOpacity
             onPress={() => {
-              //if home.communityID is 6 digit number then navigate to dashboard
               navigation.navigate('tabsHome', { homeData: home });
               setHome(initialFormState);
-              //set the global communityID to the communityID
             }}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Lets go!</Text>
@@ -77,17 +71,17 @@ export default function Home({ navigation }) {
           {/* Let's go (SPANISH) */}
           <TouchableOpacity
             onPress={() => {
-              //if home.communityID is 6 digit number then navigate to dashboard
               navigation.navigate('tabsHome', { homeData: home });
               setHome(initialFormState);
-              //set the global communityID to the communityID
             }}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Vamos!</Text>
               {/* //{t('screens.home.text.submitButton')} */}
             </View>
           </TouchableOpacity>
+
         </View>
+
       </View>
     </SafeAreaView>
   );
@@ -120,10 +114,6 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 24,
   },
-  contentHeader: {
-    paddingHorizontal: 24,
-  },
-
   appNameText: {
     fontSize: 32,
     fontWeight: '700',
@@ -141,6 +131,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginTop: 20,
     alignSelf: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 4.22,
+    elevation: 3,
   },
   buttonText: {
     fontSize: 18,
@@ -180,6 +178,7 @@ const styles = StyleSheet.create({
     marginTop: -6,
     alignSelf: 'flex-start',
   },
+
   /** Input */
   input: {
     marginBottom: 16,
@@ -201,7 +200,16 @@ const styles = StyleSheet.create({
     color: '#222',
     borderWidth: 1,
     borderColor: '#02C3BD',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 3.22,
+    elevation: 3,
   },
+
   /** Logo */
   logo: {
     alignItems: 'center',
