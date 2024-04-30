@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { globalStyles } from '../styles/globalStyles';
 
 
 export default function UserView({ navigation, route }) {
@@ -36,6 +37,22 @@ export default function UserView({ navigation, route }) {
 
   const receiptData = getReceipts(meterNumber);
 
+  const testData = [
+    {
+      receiptID: "07",
+      date: "2024-04-23",
+      amount: "7.00",
+      tag: "Unpaid",
+    },
+    {
+      receiptID: "02",
+      date: "2024-03-01",
+      amount: "10.00",
+      tag: "Paid",
+    },
+    
+  ];
+
   // Translation
   const { t } = useTranslation();
   // State
@@ -45,13 +62,7 @@ export default function UserView({ navigation, route }) {
         <View style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.detailsTitle}>{t('screens.userView.title')}</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('EditUser', { name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category })}
-              style={styles.addBtn}>
-              <Text style={styles.addUser}>{t('screens.userView.text.edit')}
-              </Text>
-            </TouchableOpacity>
+            <Text style={globalStyles.titleText}>{t('screens.userView.title')}</Text>
           </View>
 
           {/* Body Content */}
@@ -59,23 +70,44 @@ export default function UserView({ navigation, route }) {
             contentContainerStyle={styles.receipt}
             showsVerticalScrollIndicator={false}>
 
-            <View style={styles.card1}>
+            <View style={styles.card}>
 
-              <View style={styles.card}>
-                <View style={styles.cardBody}>
-                  <Text style={styles.cardname}>{name} {surname}</Text>
-                  <View style={styles.cardRow}>
-                    <View style={styles.cardRowItem}>
-                      <Text style={styles.cardRowItemText}>{meterNumber}</Text>
+              <View style={globalStyles.details}>
+                <View style={globalStyles.detailsBody}>
+                  <Text style={globalStyles.detailsName}>{name} {surname}</Text>
+                  <View style={globalStyles.detailsRow}>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{meterNumber}</Text>
                     </View>
-                    <Text style={styles.cardRowDivider}>·</Text>
-                    <View style={styles.cardRowItem}>
-                      <Text style={styles.cardRowItemText}>#{cedula}</Text>
+                    <Text style={globalStyles.detailsRowDivider}>·</Text>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>#{cedula}</Text>
                     </View>
-                    <Text style={styles.cardRowDivider}>·</Text>
-                    <View style={styles.cardRowItem}>
-                      <Text style={styles.cardRowItemText}>{date}</Text>
+                  </View>
+
+                  <View style={globalStyles.detailsRow}>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{category}</Text>
                     </View>
+                    <Text style={globalStyles.detailsRowDivider}>·</Text>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{status}</Text>
+                    </View>
+                    <Text style={globalStyles.detailsRowDivider}>·</Text>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{sector}</Text>
+                    </View>
+
+                  </View>
+                  <View style={globalStyles.detailsRow}>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{phoneNumber}</Text>
+                    </View>
+                    <Text style={globalStyles.detailsRowDivider}>·</Text>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{email}</Text>
+                    </View>
+
                   </View>
                 </View>
               </View>
@@ -89,7 +121,7 @@ export default function UserView({ navigation, route }) {
                   </View>
                   <View>
                     <Text style={styles.statsItemLabelGreen}>{t('screens.dashboard.text.paid')}</Text>
-                    <Text style={styles.statsItemValue}>$0.00</Text>
+                    <Text style={styles.statsItemValue}>$10.00</Text>
                   </View>
                 </View>
                 <View style={styles.statsItem}>
@@ -98,37 +130,58 @@ export default function UserView({ navigation, route }) {
                   </View>
                   <View>
                     <Text style={styles.statsItemLabelRed}>{t('screens.dashboard.text.unpaid')}</Text>
-                    <Text style={styles.statsItemValue}>$50.00</Text>
+                    <Text style={styles.statsItemValue}>$7.00</Text>
                   </View>
                 </View>
               </View>
 
-              {/* Sector */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.sector')}</Text>
-                <Text style={styles.detailsValue}>{sector}</Text>
+              <View style={styles.statsRow}>
+                <TouchableOpacity style={styles.statsItem}onPress={() => {
+                  //go to EditUser
+                  navigation.navigate('Receipt', {  });
+                }}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="folder" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemValue}>Reciepts</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.statsItem}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="credit-card" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemValue}>Pay</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
-              {/* Phone Number */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.phoneNumber')}</Text>
-                <Text style={styles.detailsValue}>{phoneNumber}</Text>
-              </View>
-              {/* Email */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.email')}</Text>
-                <Text style={styles.detailsValue}>{email}</Text>
-              </View>
-              {/* Status */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.status')}</Text>
-                <Text style={styles.detailsValue}>{status}</Text>
-              </View>
-              {/* Category */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.category')}</Text>
-                <Text style={styles.detailsValue}>{category}</Text>
+              <View style={styles.statsRow}>
+                <TouchableOpacity style={styles.statsItem}onPress={() => {
+                  //go to EditUser
+                  navigation.navigate('AddCharge', {  });
+                }}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="plus" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemValue}>Add</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.statsItem} onPress={() => {
+                  //go to EditUser
+                  navigation.navigate('EditUser', { meterNumber, name, surname, cedula, sector, phoneNumber, email, status, category });
+                }}>
+                  <View style={styles.statsItemIcon}>
+                    <FeatherIcon color="#fff" name="edit-2" size={22} />
+                  </View>
+                  <View>
+                    <Text style={styles.statsItemValue}>Edit</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
+
 
             <View style={styles.divider}>
               <View style={styles.dividerInset} />
@@ -138,35 +191,41 @@ export default function UserView({ navigation, route }) {
 
 
               {/* Reciept Info */}
-              {receiptData.map(({ receiptID, date, amount, tag }, i) => {
+              {testData.map(({ receiptID, date, amount, tag }, i) => {
                 return (
                   <View style={styles.details} key={i}>
-                    <TouchableOpacity style={styles.card1} onPress={() => {
+                    <TouchableOpacity style={styles.card} onPress={() => {
                       // generate a pdf of the reciept with all the details and the option to email to customer
                       navigation.navigate('Receipt', { receiptID, date, amount, tag });
                     }}>
                       {/* Reciept Info */}
-                      <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>{t('screens.userView.text.receiptID')}</Text>
-                        <Text style={styles.detailsValue}>#{receiptID}</Text>
-                      </View>
-                      <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>{t('screens.userView.text.date')}</Text>
-                        <Text style={styles.detailsValue}>{date}</Text>
-                      </View>
-                      <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>{t('screens.userView.text.amount')}</Text>
-                        <Text style={styles.detailsValue}>${amount}</Text>
-                      </View>
-                      <View style={styles.detailsRow}>
-                        <Text style={styles.detailsField}>Status</Text>
-                        <Text style={styles.detailsValue}>{tag}</Text>
+                      <View style={globalStyles.detailsBody}>
+                        <View style={globalStyles.detailsRow}>
+                          <Text style={globalStyles.detailsName}>Receipt #{receiptID} </Text>
+                          <Text style={globalStyles.detailsNameRight}>{date}</Text>
+                        </View>
+
+                        <View style={globalStyles.detailsRow}>
+                          <View style={globalStyles.detailsRowItem}>
+                            <Text style={globalStyles.detailsRowItemText}>{tag}</Text>
+                          </View>
+                          <Text style={globalStyles.detailsRowDivider}>·</Text>
+                          <View style={globalStyles.detailsRowItem}>
+                            <Text style={globalStyles.detailsRowItemText}>${amount}</Text>
+                          </View>
+                        </View>
+
+                        <View style={globalStyles.detailsRow}>
+                          <View style={globalStyles.detailsRowItem}>
+                            <Text style={globalStyles.detailsRowItemText}>Description</Text>
+                          </View>
+                        </View>
                       </View>
                     </TouchableOpacity>
+
                     <View style={styles.divider}>
                       <View style={styles.dividerInset} />
                     </View>
-
                   </View>
                 );
               })}
@@ -181,19 +240,11 @@ export default function UserView({ navigation, route }) {
       <View style={styles.overlay}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('AddCharge', {});
-          }}>
-          <View style={styles.btn}>
-            <Text style={styles.btnText}>{t('screens.userView.text.submit')}</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
             // navigate back to the previous page
             navigation.navigate('Users', {});
           }}>
-          <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>{t('screens.userView.text.cancel')}</Text>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>{t('screens.userView.text.cancel')}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -245,7 +296,6 @@ const styles = StyleSheet.create({
   /** Receipt */
   receipt: {
     alignItems: 'center',
-    paddingTop: 16,
     paddingBottom: 16,
   },
 
@@ -315,78 +365,14 @@ const styles = StyleSheet.create({
     textAlign: 'right',
 
   },
-  /** Button */
-  btn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    backgroundColor: '#02C3BD',
-    borderColor: '#02C3BD',
-    marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-  btnText: {
-    fontSize: 18,
-    lineHeight: 26,
-    fontWeight: '600',
-    color: '#fff',
-  },
-  btnSecondary: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    backgroundColor: 'transparent',
-    borderColor: '#02C3BD',
-  },
-  btnSecondaryText: {
-    fontSize: 18,
-    lineHeight: 26,
-    fontWeight: '600',
-    color: '#02C3BD',
-  },
+
   pastReciept: {
     alignItems: 'center',
     paddingTop: 16,
     paddingBottom: 16,
   },
-  addUser: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#000',
-  },
-  addBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
 
-  card1: {
+  card: {
     width: '100%',
     flexDirection: 'column',
     backgroundColor: '#fff',
@@ -401,87 +387,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1.22,
     elevation: 3,
   },
-  cardTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#222',
-    marginBottom: 16,
-  },
-  cardRow1: {
-    marginBottom: 18,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  /** Card */
-  card: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    borderRadius: 12,
-    padding: 8,
-    marginBottom: 8,
-    backgroundColor: '#fff',
-    borderColor: 'black',
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 1.22,
-    elevation: 3,
-  },
 
-  cardBody: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    paddingHorizontal: 16,
-    height: 72,
-    paddingVertical: 0,
-  },
-  cardTag: {
-    fontWeight: '500',
-    fontSize: 12,
-    color: '#939393',
-    marginBottom: 8,
-    textTransform: 'capitalize',
-  },
-  cardname: {
-    fontWeight: '600',
-    fontSize: 22,
-    lineHeight: 32,
-    color: '#000',
-    marginBottom: 8,
-  },
-  cardRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: -8,
-    marginBottom: 'auto',
-  },
-  cardRowItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 6,
-    borderRightWidth: 1,
-    borderColor: 'transparent',
-  },
-  cardRowItemText: {
-    fontWeight: '400',
-    fontSize: 16,
-    color: '#939393',
-  },
-  cardRowDivider: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#939393',
-  },
   /** Stats */
   stats: {
     flexDirection: 'column',

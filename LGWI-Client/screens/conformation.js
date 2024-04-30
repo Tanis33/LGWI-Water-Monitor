@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import { globalStyles } from '../styles/globalStyles';
 
 //User Details Functions
 function getName(inx) {
@@ -66,22 +67,25 @@ export default function ConformationScreen({ navigation, route }) {
 
   // Data to be displayed
   let i = 3;
-  const conformationData = [
+  let conformationData = [
     {
       receiptID: '#06',
       balance: balance,
       date: '23/4/24',
       chargeType: 'Water Usage',
 
-      meterNumber: getmeterNumber(i),
-      name: getName(i),
-      surname: getSurname(i),
-      cedula: getCedula(i),
-      sector: getsector(i),
-      phoneNumber: getphoneNumber(i),
-      email: getemail(i),
-      status: getstatus(i),
-      category: getcategory(i),
+      name: 'James',
+      surname: 'Smith',
+      meterNumber: '62',
+      cedula: '21321412',
+      tag: 'paid',
+      date: '4/13/24',
+
+      sector: 'North East',
+      phoneNumber: '123.456.3456',
+      email: 'jsm@yahoo.com',
+      status: 'Active',
+      category: 'Residential',
     },
   ];
 
@@ -143,79 +147,69 @@ export default function ConformationScreen({ navigation, route }) {
                 <View style={styles.divider}>
                   <View style={styles.dividerInset} />
                 </View>
-                <View style={styles.details} >
-                  <Text style={styles.detailsTitle}>{t('screens.conformation.text.userDetails')}</Text>
-                  {/* Meter Number */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.meterNumber')}</Text>
-                    <Text style={styles.detailsValue}>{inputData.meterNumber}</Text>
-                  </View>
-                  {/* First Name */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.name')}</Text>
-                    <Text style={styles.detailsValue}>{name}</Text>
-                  </View>
-                  {/* Last Name */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.surname')}</Text>
-                    <Text style={styles.detailsValue}>{surname}</Text>
-                  </View>
-                  {/* ID Number */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.idNumber')}</Text>
-                    <Text style={styles.detailsValue}>{cedula}</Text>
-                  </View>
-                  {/* Sector */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.sector')}</Text>
-                    <Text style={styles.detailsValue}>{sector}</Text>
-                  </View>
-                  {/* Phone Number */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.phoneNumber')}</Text>
-                    <Text style={styles.detailsValue}>{phoneNumber}</Text>
-                  </View>
-                  {/* Email */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.email')}</Text>
-                    <Text style={styles.detailsValue}>{email}</Text>
-                  </View>
-                  {/* Status */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.status')}</Text>
-                    <Text style={styles.detailsValue}>{status}</Text>
-                  </View>
-                  {/* Category */}
-                  <View style={styles.detailsRow}>
-                    <Text style={styles.detailsField}>{t('screens.conformation.text.category')}</Text>
-                    <Text style={styles.detailsValue}>{category}</Text>
-                  </View>
-                </View>
-                <View style={styles.spacing} />
-                <View style={styles.overlay}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      //go to UserView based on Meter Number
-                      navigation.navigate('UserView', { receiptID, balance, date, chargeType, meterNumber, name, surname, cedula, sector, phoneNumber, email, status, category });
-                    }}>
-                    <View style={styles.btn}>
-                      <Text style={styles.btnText}>{t('screens.conformation.text.confirmChange')}</Text>
+                <View style={globalStyles.details}>
+                  <View style={globalStyles.detailsBody}>
+                    <Text style={globalStyles.detailsName}>{name} {surname}</Text>
+                    <View style={globalStyles.detailsRow}>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>{meterNumber}</Text>
+                      </View>
+                      <Text style={globalStyles.detailsRowDivider}>·</Text>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>#{cedula}</Text>
+                      </View>
+
                     </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigation.navigate('tabsHome', {});
-                    }}>
-                    <View style={styles.btnSecondary}>
-                      <Text style={styles.btnSecondaryText}>{t('screens.conformation.text.cancel')}</Text>
+                    <View style={globalStyles.detailsRow}>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>{category}</Text>
+                      </View>
+                      <Text style={globalStyles.detailsRowDivider}>·</Text>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>{status}</Text>
+                      </View>
+                      <Text style={globalStyles.detailsRowDivider}>·</Text>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>{sector}</Text>
+                      </View>
+
                     </View>
-                  </TouchableOpacity>
+                    <View style={globalStyles.detailsRow}>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>{phoneNumber}</Text>
+                      </View>
+                      <Text style={globalStyles.detailsRowDivider}>·</Text>
+                      <View style={globalStyles.detailsRowItem}>
+                        <Text style={globalStyles.detailsRowItemText}>{email}</Text>
+                      </View>
+                    </View>
+                  </View>
                 </View>
               </ScrollView>
+
             );
           })}
         </View>
       </SafeAreaView>
+      <View style={globalStyles.overlay}>
+        <TouchableOpacity
+          onPress={() => {
+            //go to UserView based on Meter Number
+            navigation.navigate('UserView', { receiptID, balance, date, chargeType, meterNumber, name, surname, cedula, sector, phoneNumber, email, status, category });
+          }}>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>{t('screens.conformation.text.confirmChange')}</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('tabsHome', {});
+          }}>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>{t('screens.conformation.text.cancel')}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -227,26 +221,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
-  },
-  overlay: {
-    position: 'absolute',
-    bottom: -20,
-    left: 0,
-    right: 0,
-    backgroundColor: '#fff',
-    flexDirection: 'column',
-    alignItems: 'stretch',
-    paddingTop: 12,
-    paddingHorizontal: 16,
-    paddingBottom: 48,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
   },
   /** Header */
   header: {
@@ -266,21 +240,6 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 140,
   },
-  receiptLogo: {
-    width: 60,
-    height: 60,
-    borderRadius: 9999,
-    marginBottom: 12,
-    backgroundColor: '#0e0e0e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  receiptTitle: {
-    fontSize: 21,
-    fontWeight: '600',
-    color: '#151515',
-    marginBottom: 2,
-  },
   receiptSubtitle: {
     fontSize: 18,
     lineHeight: 20,
@@ -298,7 +257,7 @@ const styles = StyleSheet.create({
     lineHeight: 38,
     fontWeight: 'bold',
     letterSpacing: 0.35,
-    color: '#8338ec',
+    color: 'red',
   },
   receiptDescription: {
     fontSize: 18,
@@ -370,42 +329,6 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     flexBasis: 0,
     textAlign: 'right',
-  },
-  /** Button */
-  btn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    backgroundColor: '#02C3BD',
-    borderColor: '#02C3BD',
-    marginBottom: 12,
-  },
-  btnText: {
-    fontSize: 18,
-    lineHeight: 26,
-    fontWeight: '600',
-    color: '#fff',
-  },
-  btnSecondary: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    backgroundColor: 'transparent',
-    borderColor: '#02C3BD',
-  },
-  btnSecondaryText: {
-    fontSize: 18,
-    lineHeight: 26,
-    fontWeight: '600',
-    color: '#02C3BD',
   },
   spacing: {
     marginBottom: 120,

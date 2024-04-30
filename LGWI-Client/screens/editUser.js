@@ -10,6 +10,7 @@ import {
   TextInput,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { globalStyles } from '../styles/globalStyles';
 
 //User Information
 const userData = [
@@ -49,7 +50,7 @@ export default function EditUser({ navigation, route }) {
   const { t } = useTranslation();
   return (
     <View style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
         <View style={styles.container}>
           {/* Maps userData */}
 
@@ -178,22 +179,22 @@ export default function EditUser({ navigation, route }) {
         </View>
       </SafeAreaView>
 
-      <View style={styles.overlay}>
+      <View style={globalStyles.overlay}>
         <TouchableOpacity
           onPress={() => {
             // on Press add the user data to the database and navigate to the home page also reset the form so its empty
-            navigation.navigate('tabsHome', {});
+            navigation.goBack('', {});
           }}>
-          <View style={styles.btn}>
-            <Text style={styles.btnText}>Confrim Edit</Text>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>Confrim Edit</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('tabsHome', {});
+            navigation.goBack('', {});
           }}>
-          <View style={styles.btnSecondary}>
-            <Text style={styles.btnSecondaryText}>{t('screens.addUser.text.cancel')}</Text>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>{t('screens.addUser.text.cancel')}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -208,26 +209,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
-  },
-  overlay: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: '#fff',
-    flexDirection: 'column',
-    alignItems: 'stretch',
-    paddingTop: 12,
-    paddingHorizontal: 16,
-    paddingBottom: 48,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
   },
   /** Header */
   header: {
@@ -293,51 +274,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
 
   },
-  /** Button */
-  btn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    backgroundColor: '#02C3BD',
-    borderColor: '#02C3BD',
-    marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-  btnText: {
-    fontSize: 18,
-    lineHeight: 26,
-    fontWeight: '600',
-    color: '#fff',
-  },
-  btnSecondary: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderWidth: 1,
-    backgroundColor: 'transparent',
-    borderColor: '#02C3BD',
 
-  },
-  btnSecondaryText: {
-    fontSize: 18,
-    lineHeight: 26,
-    fontWeight: '600',
-    color: '#02C3BD',
-  },
   inputBox: {
     height: 40,
     width: 200,

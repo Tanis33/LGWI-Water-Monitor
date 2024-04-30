@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
+import { globalStyles } from '../styles/globalStyles';
 
 
 function getName(inx) {
@@ -260,7 +261,7 @@ export default function Users({ navigation }) {
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.name}>{t('screens.users.title')}</Text>
+          <Text style={globalStyles.titleText}>{t('screens.users.title')}</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('AddUser', {})}
             style={styles.addBtn}>
@@ -276,7 +277,7 @@ export default function Users({ navigation }) {
 
         {/* Users List */}
         <ScrollView contentContainerStyle={styles.content}>
-          {usersData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
+          {testData.map(({ name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category }, index) => {
             return (
               <TouchableOpacity
                 key={index}
@@ -315,12 +316,6 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 110,
     backgroundColor: '#f3f3f3',
-  },
-  name: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#1d1d1d',
-    marginBottom: 16,
   },
   header: {
     flexDirection: 'row',

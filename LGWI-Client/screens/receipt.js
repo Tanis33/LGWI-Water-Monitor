@@ -4,60 +4,80 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
+import { globalStyles } from '../styles/globalStyles';
 
 export default function Receipt({ navigation, route }) {
 
-  const { receiptID, date, amount, tag } = route.params;
 
   // Translation
   const { t } = useTranslation();
+
+  const testData = [
+    {
+      receiptID: "07",
+      date: "2024-04-23",
+      amount: "7.00",
+      tag: "Unpaid",
+    },
+    {
+      receiptID: "02",
+      date: "2024-03-01",
+      amount: "10.00",
+      tag: "Paid",
+    },
+
+  ];
   // Render
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
         <Text style={styles.title}>Reciept</Text>
-        <KeyboardAwareScrollView>
-          <View style={styles.recpeitData}>
-            <View style={styles.details} >
+        {/* Reciept Info */}
+        {testData.map(({ receiptID, date, amount, tag }, i) => {
+          return (
+            <View style={styles.details} key={i}>
+              <TouchableOpacity style={styles.card} onPress={() => {
+              // generate PDF
+              }}>
+                {/* Reciept Info */}
+                <View style={globalStyles.detailsBody}>
+                  <View style={globalStyles.detailsRow}>
+                    <Text style={globalStyles.detailsName}>Receipt #{receiptID} </Text>
+                    <Text style={globalStyles.detailsNameRight}>{date}</Text>
+                  </View>
 
-              {/* Reciept Info */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.receiptID')}</Text>
-                <Text style={styles.detailsValue}>#{receiptID}</Text>
-              </View>
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.date')}</Text>
-                <Text style={styles.detailsValue}>{date}</Text>
-              </View>
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>{t('screens.userView.text.amount')}</Text>
-                <Text style={styles.detailsValue}>${amount}</Text>
-              </View>
-              <View style={styles.detailsRow}>
-                <Text style={styles.detailsField}>Status</Text>
-                <Text style={styles.detailsValue}>{tag}</Text>
-              </View>
+                  <View style={globalStyles.detailsRow}>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>{tag}</Text>
+                    </View>
+                    <Text style={globalStyles.detailsRowDivider}>·</Text>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>${amount}</Text>
+                    </View>
+                  </View>
 
-              <View style={styles.divider}>
-                <View style={styles.dividerInset} />
-              </View>
-
-            </View>
-
-            {/*Cancel Button */}
-            <View style={styles.formAction}>
-              <TouchableOpacity
-                onPress={() => {
-                  //else navigate to the conformation page
-                  navigation.goBack({ });
-                }}>
-                <View style={styles.btn}>
-                  <Text style={styles.btnText}>Payment Accepted</Text>
+                  <View style={globalStyles.detailsRow}>
+                    <View style={globalStyles.detailsRowItem}>
+                      <Text style={globalStyles.detailsRowItemText}>Description</Text>
+                    </View>
+                  </View>
                 </View>
               </TouchableOpacity>
+
             </View>
+          );
+        })}
+      </View>
+
+      <View style={globalStyles.overlay}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack('', {});
+          }}>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>{t('screens.addUser.text.cancel')}</Text>
           </View>
-        </KeyboardAwareScrollView>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -210,5 +230,26 @@ const styles = StyleSheet.create({
     color: '#818181',
     textAlign: 'center',
     marginBottom: 12,
+  },
+  card: {
+    width: '100%',
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
+  },
+  details: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    padding: 8,
   },
 });

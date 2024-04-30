@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
-
+import { globalStyles } from '../styles/globalStyles';
 
 export default function Home({ navigation }) {
 
@@ -50,7 +50,7 @@ export default function Home({ navigation }) {
                   onChangeText={communityID => setHome({ ...home, communityID })}
                   placeholder=""
                   placeholderTextColor="#6b7280"
-                  style={styles.inputControl}
+                  style={globalStyles.inputBox}
                   value={home.communityID} />
               </View>
             </View>
@@ -62,8 +62,8 @@ export default function Home({ navigation }) {
               navigation.navigate('tabsHome', { homeData: home });
               setHome(initialFormState);
             }}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Lets go!</Text>
+            <View style={globalStyles.button}>
+              <Text style={globalStyles.buttonText}>Lets go!</Text>
               {/* //{t('screens.home.text.submitButton')} */}
             </View>
           </TouchableOpacity>
@@ -74,8 +74,8 @@ export default function Home({ navigation }) {
               navigation.navigate('tabsHome', { homeData: home });
               setHome(initialFormState);
             }}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Vamos!</Text>
+            <View style={globalStyles.button}>
+              <Text style={globalStyles.buttonText}>Vamos!</Text>
               {/* //{t('screens.home.text.submitButton')} */}
             </View>
           </TouchableOpacity>
@@ -119,32 +119,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#281b52',
   },
-  /** Button */
-  button: {
-    width: '90%',
-    height: 56,
-    backgroundColor: '#02C3BD',
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 12,
-    marginTop: 20,
-    alignSelf: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 4.22,
-    elevation: 3,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#fff',
-  },
+  
   stats: {
     flexDirection: 'column',
     alignItems: 'stretch',
@@ -179,36 +154,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
 
-  /** Input */
-  input: {
-    marginBottom: 16,
-  },
-  inputLabel: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#222',
-    marginBottom: 8,
-    alignContent: 'center',
-  },
-  inputControl: {
-    height: 48,
-    backgroundColor: 'white',
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#222',
-    borderWidth: 1,
-    borderColor: '#02C3BD',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 3.22,
-    elevation: 3,
-  },
 
   /** Logo */
   logo: {

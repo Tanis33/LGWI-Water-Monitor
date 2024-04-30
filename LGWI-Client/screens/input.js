@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
+import { globalStyles } from '../styles/globalStyles';
 
 export default function Input({ navigation }) {
   // form for passing the houseID or meterNumber and usageAmount to the conformation page
@@ -29,31 +30,31 @@ export default function Input({ navigation }) {
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>   {t('screens.input.text.title')}</Text>
+                  <Text style={styles.statsItemLabel}>{t('screens.input.text.title')}</Text>
                   <TextInput
                     onChangeText={meterNumber => setForm({ ...inputData, meterNumber })}
                     placeholder="Meter"
                     placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
+                    style={globalStyles.inputBox}
                     keyboardType="numeric"
                     value={inputData.meterNumber} />
 
                   <Text style={styles.statsItemLabel}>       OR</Text>
-                  <Text style={styles.statsItemLabel}>   {t('screens.input.text.title1')}</Text>
+                  <Text style={styles.statsItemLabel}>{t('screens.input.text.title1')}</Text>
 
                   <TextInput
                     autoCorrect={false}
                     onChangeText={cedula => setForm({ ...inputData, cedula })}
                     placeholder="Cédula"
                     placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
+                    style={globalStyles.inputBox}
                     keyboardType="numeric"
                     value={inputData.cedula} />
 
                   <View style={{ flexDirection: 'row', height: 32 }} />
 
                   <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.statsItemLabel}>    {t('screens.input.text.waterMeter')} m</Text>
+                    <Text style={styles.statsItemLabel}>{t('screens.input.text.waterMeter')} m</Text>
                     <Text style={styles.volumeDescriptor}>3</Text>
                   </View>
 
@@ -65,7 +66,7 @@ export default function Input({ navigation }) {
                     onChangeText={usageAmount => setForm({ ...inputData, usageAmount })}
                     placeholder="123.43"
                     placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
+                    style={globalStyles.inputBox}
                     value={inputData.usageAmount} />
 
                 </View>
@@ -113,9 +114,11 @@ export default function Input({ navigation }) {
                   navigation.navigate('Conformation', { inputData: inputData, balance });
                   setForm(initialFormState);
                 }}>
-                <View style={styles.btn}>
-                  <Text style={styles.btnText}>Submit</Text>
+
+                <View style={globalStyles.button}>
+                  <Text style={globalStyles.buttonText}>Submit</Text>
                 </View>
+
               </TouchableOpacity>
             </View>
           </View>
@@ -147,66 +150,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
 
-  /** Input */
-  input: {
-    marginBottom: 16,
-  },
-  inputLabel: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#222',
-    marginBottom: 8,
-  },
-  inputControl: {
-    height: 48,
-    width: '95%',
-    alignSelf: 'center',
-    backgroundColor: 'white',
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#222',
-    borderWidth: 1,
-    borderColor: '#02C3BD',
-    margin: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-    marginTop: -6,
-
-  },
-  /** Button */
-  btn: {
-    backgroundColor: '#02C3BD',
-    height: 56,
-    width: '80%',
-    alignSelf: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 4.22,
-    elevation: 3,
-  },
-  btnText: {
-    fontSize: 18,
-    lineHeight: 24,
-    fontWeight: '600',
-    color: '#fff',
-  },
   /** From Menu Screen */
   stats: {
     flexDirection: 'column',

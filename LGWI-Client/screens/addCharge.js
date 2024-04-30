@@ -4,9 +4,10 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
+import { globalStyles } from '../styles/globalStyles';
 
-export default function AddCharge( {navigation} ) {
-  
+export default function AddCharge({ navigation }) {
+
   const [receiptData, setForm] = useState({
     amount: '',
     chargeType: '',
@@ -24,58 +25,68 @@ export default function AddCharge( {navigation} ) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
       <View style={styles.container}>
-          <Text style={styles.title}>{t('screens.addCharge.title')}</Text>
+        <Text style={styles.title}>{t('screens.addCharge.title')}</Text>
         <KeyboardAwareScrollView>
           <View style={styles.recpeitData}>
             {/* Input for adding Charge*/}
             <View style={styles.statsRow}>
               <View style={styles.statsItem}>
                 <View style={{ backgroundColor: 'white', width: '100%' }}>
-                  <Text style={styles.statsItemLabel}>{t('screens.addCharge.text.title')}</Text>
+                  <View style={{ flexDirection: 'row'}} />
+                  <Text style={styles.statsItemLabel}>Amount</Text>
                   <TextInput
                     onChangeText={amount => setForm({ ...receiptData, amount })}
                     placeholder="Amount"
                     placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
+                    style={globalStyles.inputBox}
                     keyboardType="numeric"
                     value={receiptData.amount} />
-                    <TextInput
+                  <View style={{ flexDirection: 'row', height: 16 }} />
+                  <Text style={styles.statsItemLabel}>Type</Text>
+                  <TextInput
                     autoCorrect={false}
                     onChangeText={chargeType => setForm({ ...receiptData, chargeType })}
                     placeholder="Type of Charge"
                     placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
+                    style={globalStyles.inputBox}
                     value={receiptData.chargeType} />
-                    <TextInput
+                  <View style={{ flexDirection: 'row', height: 16 }} />
+                  <Text style={styles.statsItemLabel}>Description</Text>
+                  <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
                     onChangeText={description => setForm({ ...receiptData, description })}
                     placeholder="Description"
                     placeholderTextColor="#6b7280"
-                    style={styles.inputControl}
+                    style={globalStyles.inputBox}
                     value={receiptData.description} />
                 </View>
               </View>
             </View>
-  
-            {/*Cancel Button */}
-            <View style={styles.formAction}>
-              <TouchableOpacity
-                onPress={() => {
-                  
-                  //else navigate to the conformation page
-                  navigation.navigate('UserView', { receiptData: receiptData})
-                  setForm(initialFormState);
-                }}>
-                <View style={styles.btn}>
-                  <Text style={styles.btnText}>Submit</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
           </View>
         </KeyboardAwareScrollView>
       </View>
+      <View style={globalStyles.overlay}>
+        <TouchableOpacity
+          onPress={() => {
+            // on Press add the user data to the database and navigate to the home page also reset the form so its empty
+            navigation.goBack('', {});
+          }}>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>Add Charge</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack('', {});
+          }}>
+          <View style={globalStyles.button}>
+            <Text style={globalStyles.buttonText}>{t('screens.addUser.text.cancel')}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
+
   );
 }
 
@@ -167,6 +178,6 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 2,
     fontWeight: 'bold',
-    marginTop: -6,
+    marginTop: 0,
   },
 });
