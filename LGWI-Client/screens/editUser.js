@@ -33,15 +33,15 @@ export default function EditUser({ navigation, route }) {
   const userData = [
     {
       spacer: '                                            ',
-      meterNumber: '234966',
-      name: 'Peter',
-      surname: 'Parker',
-      cedula: '123214',
-      sector: 'South East',
-      phoneNumber: '666-666-6666',
-      email: 'pparker@avenge.com',
-      status: 'Active',
-      category: 'Residential',
+      meterNumber,
+      name,
+      surname,
+      cedula,
+      sector,
+      phoneNumber,
+      email,
+      status,
+      category
     },
   ];
 
