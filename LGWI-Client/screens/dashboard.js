@@ -2,84 +2,78 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTranslation } from 'react-i18next';
+import { useFocusEffect } from '@react-navigation/native'; 
 
-const testData = [
-  {
-    communityName: "Ecovillage",
-    usersPaid: "3",
-    usersUnpaid: "10",
-    amountPaid: "11.75",
-    amountUnpaid: "48.20",
-    monthlyUsage: "34.4",
-    yearlyUsage: "84.6",
-  },
-]
-
-function getusersPaid() {
-
-  let paid = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Paid          ") {
-      paid++;
-    }
-  }
-  return paid;
-}
-
-function getusersUnpaid() {
-
-  let unpaid = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Unpaid        ") {
-      unpaid++;
-    }
-  }
-  return unpaid;
-}
-
-function getamountPaid() {
-  paidAmt = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Paid          ") {
-      paidAmt += parseFloat(csvArray[i][19]);
-    }
-  }
-  return paidAmt;
-}
-
-function getamountUnpaid() {
-  unpaidAmt = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    if (csvArray[i][20] == "Unpaid        ") {
-      unpaidAmt += parseFloat(csvArray[i][19]);
-    }
-  }
-  return unpaidAmt;
-}
-
-function getUsage() {
-  let totalUsed = 0;
-  for (let i = 3; i < csvArray.length; i++) {
-    totalUsed += csvArray[i][11] - csvArray[i][12];
-
-  }
-  return totalUsed;
-}
-
-export default function Dashboard({ navigation }) {
-
-  const dashboardData = [
+  const testData = [ 
     {
-      communityName: 'Ecovillage',
+      communityName: global.csvArray[1][1],
       usersPaid: getusersPaid(),
       usersUnpaid: getusersUnpaid(),
       amountPaid: getamountPaid(),
       amountUnpaid: getamountUnpaid(),
       monthlyUsage: getUsage(),
       yearlyUsage: getUsage(),
-    },
-  ];
-  const { t } = useTranslation();
+    }, 
+  ];    
+
+
+function getusersPaid(){
+console.log(global.csvArray[3][20]);
+
+  let paid = 0;
+  for(let i = 3; i < global.csvArray.length; i++){
+    if(global.csvArray[i][21] == "Paid          "){
+      paid++; 
+    }
+  }
+  return paid;
+}
+
+function getusersUnpaid(){
+
+  let unpaid = 0;
+  for(let i = 3; i < global.csvArray.length; i++){
+    if(global.csvArray[i][21] == "Unpaid        "){
+      unpaid++;
+    }
+  }
+  return unpaid;
+}
+
+function getamountPaid(){
+  paidAmt = 0;
+  for(let i = 3; i < global.csvArray.length; i++){
+    if(global.csvArray[i][21] == "Paid          "){
+      paidAmt+= parseFloat(global.csvArray[i][20]);
+    }
+  }
+  return paidAmt;
+}
+
+function getamountUnpaid(){
+  unpaidAmt = 0;
+  for(let i = 3; i < global.csvArray.length; i++){
+    if(global.csvArray[i][21] == "Unpaid        "){
+      unpaidAmt+= parseFloat(global.csvArray[i][20]);
+    }
+  }
+  return unpaidAmt;
+}
+
+function getUsage(){
+  let totalUsed = 0;
+  for(let i = 3; i < global.csvArray.length; i++){
+    totalUsed += global.csvArray[i][11] - global.csvArray[i][12];
+    
+  }
+  return totalUsed;  
+}
+
+export default function Dashboard({ navigation }) {
+
+
+
+  const { t } = useTranslation();   
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }} >
       {testData.map(({ communityName, usersPaid, usersUnpaid, amountPaid, amountUnpaid, monthlyUsage, yearlyUsage }, index) => {
