@@ -19,6 +19,7 @@ export default function UserView({ navigation, route }) {
 
   const { name, surname, meterNumber, cedula, tag, date, sector, phoneNumber, email, status, category } = route.params;
 
+
   // get the reciepts for the user
   function getReceipts(meterID) {
     let receipts = [];
@@ -36,22 +37,6 @@ export default function UserView({ navigation, route }) {
   }
 
   const receiptData = getReceipts(meterNumber);
-
-  const testData = [
-    {
-      receiptID: "07",
-      date: "2024-04-23",
-      amount: "7.00",
-      tag: "Unpaid",
-    },
-    {
-      receiptID: "02",
-      date: "2024-03-01",
-      amount: "10.00",
-      tag: "Paid",
-    },
-    
-  ];
 
   // Translation
   const { t } = useTranslation();
@@ -191,7 +176,7 @@ export default function UserView({ navigation, route }) {
 
 
               {/* Reciept Info */}
-              {testData.map(({ receiptID, date, amount, tag }, i) => {
+              {receiptData.map(({ receiptID, date, amount, tag }, i) => {
                 return (
                   <View style={styles.details} key={i}>
                     <TouchableOpacity style={styles.card} onPress={() => {
