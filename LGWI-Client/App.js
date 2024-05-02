@@ -25,7 +25,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator initialRouteName="home" lazy={true}
+        unmountInactiveRoutes={true}
+          screenOptions={{
+          lazy: true, // Set lazy to true to only render screens when they are navigated to
+          unmountInactiveRoutes: true, // Set unmountInactiveRoutes to true to unmount inactive routes
+        }}>
         {/*Home Screen*/}
         <Stack.Group
           screenOptions={{
