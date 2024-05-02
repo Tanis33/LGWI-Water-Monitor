@@ -138,7 +138,7 @@ export default function UserView({ navigation, route }) {
               <View style={styles.statsRow}>
                 <TouchableOpacity style={styles.statsItem}onPress={() => {
                   //go to EditUser
-                  navigation.navigate('Receipt', {  });
+                  navigation.navigate('Receipt', { meterNumber });
                 }}>
                   <View style={styles.statsItemIcon}>
                     <FeatherIcon color="#fff" name="folder" size={22} />
