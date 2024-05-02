@@ -89,18 +89,18 @@ function getDate(inx) {
 export default function Users({ navigation }) {
   
   // User Data
-  let usersData = [];
+  let testData = [];
 
   //create a new object for every user in the "users" section of the table
   //Note: this has no max size limit.Todo: add upper limit for size
 
   for (let i = 1; i < csvArray.length - 2; i++) {
-      usersData.push({
+    testData.push({
         name: getName(i),
         surname: getSurname(i),
         meterNumber: getMeterNumber(i),
         cedula: getCedula(i),
-        tag: getPaidUnpaid(i),
+        tag: getPaidUnpaid(i), 
         date: getDate(i),
 
         sector: getsector(i),
@@ -110,150 +110,7 @@ export default function Users({ navigation }) {
         category: getcategory(i),
       });
     }
-  const testData = [
-    {
-      name: 'John',
-      surname: 'Doe',
-      meterNumber: '61',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'North East',
-      phoneNumber: '123.456.3456',
-      email: 'jd@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'James',
-      surname: 'Smith',
-      meterNumber: '62',
-      cedula: '21321412',
-      tag: 'paid',
-      date: '4/13/24',
-
-      sector: 'North East',
-      phoneNumber: '123.456.3456',
-      email: 'jsm@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'Howard',
-      surname: 'Lane',
-      meterNumber: '63',
-      cedula: '21321312',
-      tag: 'paid',
-      date: '4/13/24',
-
-      sector: 'North East',
-      phoneNumber: '123.456.3456',
-      email: 'hlane@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'John',
-      surname: 'Cena',
-      meterNumber: '64',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'North West',
-      phoneNumber: '123.456.3456',
-      email: 'jcena@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-
-    {
-      name: 'Peter',
-      surname: 'Parker',
-      meterNumber: '66',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'South East',
-      phoneNumber: '666-666-6666',
-      email: 'pparker@avenge.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'Frank',
-      surname: 'Castle',
-      meterNumber: '67',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'North East',
-      phoneNumber: '123.456.3456',
-      email: 'fcastle@demo.com',
-      status: 'Inactive',
-      category: 'Commercial',
-    },
-    {
-      name: 'Tony',
-      surname: 'Stark',
-      meterNumber: '68',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'South West',
-      phoneNumber: '123.456.3456',
-      email: 'tstark@avenge.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'Steve',
-      surname: 'Rogers',
-      meterNumber: '69',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'North West',
-      phoneNumber: '123.456.3456',
-      email: 'srog@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'Bruce',
-      surname: 'Wayne',
-      meterNumber: '70',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'North West',
-      phoneNumber: '123.456.3456',
-      email: 'srog@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-    {
-      name: 'Haim',
-      surname: 'Hong',
-      meterNumber: '65',
-      cedula: '123214',
-      tag: 'unpaid',
-      date: '4/13/24',
-
-      sector: 'South West',
-      phoneNumber: '123.456.3456',
-      email: 'hh@yahoo.com',
-      status: 'Active',
-      category: 'Residential',
-    },
-
-  ];
+  
   // Translation
   const { t } = useTranslation();
   // Render
