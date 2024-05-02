@@ -7,26 +7,44 @@ import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { globalStyles } from '../styles/globalStyles';
+import * as FileSystem from 'expo-file-system';
+
+export let csvContents = 'Blank';
+export let csvArray = 'Blank';
+export let communityID = '';
+
+global.csvContents = 'Blank';
+global.csvArray = 'Blank';
+global.communityID = '';
 
 export default function Home({ navigation }) {
 
   // set the global filename and contents variables to some test values
-  global.communityID = '123456';
-  global.csvContents = "NothingInteresting";
-  global.csvArray = [];
+
 
   // form for passing the community ID to the dashboard
   const [home, setHome] = useState({
     communityID: '',
+    csvContents: 'Blank',
+    csvArray: 'Blank',
+
   });
   const initialFormState = {
     communityID: '',
+    csvContents: 'Blank',
+    csvArray: 'Blank',
   };
 
+  function setID (text){
+    global.communityID = text;
+    communityID = text;
+    console.log(global.communityID);
+  }
+
+ 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-
         {/* Logo */}
         <View style={styles.logo}>
           <Ionicons name="water" size={150} color={'blue'}></Ionicons>
@@ -38,7 +56,8 @@ export default function Home({ navigation }) {
         </Text>
 
         {/* Community ID */}
-        <View style={styles.stats}>
+
+      <View style={styles.stats}>
           <View style={styles.statsRow}>
             <View style={styles.statsItem}>
               <View style={{ width: '100%' }}>
@@ -47,8 +66,11 @@ export default function Home({ navigation }) {
                   autoCapitalize="none"
                   autoCorrect={false}
                   keyboardType="numeric"
-                  onChangeText={communityID => setHome({ ...home, communityID })}
-                  placeholder=""
+                  onChangeText={text => {
+                    setHome({...home, communityID: text});
+                    setID(text);
+                  }}
+                  placeholder="ex. 123"
                   placeholderTextColor="#6b7280"
                   style={globalStyles.inputBox}
                   value={home.communityID} />
@@ -58,10 +80,24 @@ export default function Home({ navigation }) {
 
           {/* Let's Go Button */}
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('tabsHome', { homeData: home });
-              setHome(initialFormState);
-            }}>
+            onPress={async () => {
+              const fileUri = `${FileSystem.documentDirectory}local.csv`;
+              try {
+                const fileInfo = await FileSystem.getInfoAsync(fileUri);
+                if (fileInfo.exists) {
+                 console.log('File Exists', 'The file "local.csv" exists!');
+                 navigation.navigate('tabsHome', { homeData: home });
+                 setHome(initialFormState);
+                } else {
+                  console.log('File Not Found', 'No local.csv detected. Navigating to download screen!' );
+                  navigation.navigate('DatabaseTest', {});
+                  setHome(initialFormState); 
+                }
+              } catch (error) {
+                console.error('Error checking file:', error);
+              }
+            }}
+          >
             <View style={globalStyles.button}>
               <Text style={globalStyles.buttonText}>Lets go!</Text>
               {/* //{t('screens.home.text.submitButton')} */}
@@ -70,9 +106,22 @@ export default function Home({ navigation }) {
 
           {/* Let's go (SPANISH) */}
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('tabsHome', { homeData: home });
-              setHome(initialFormState);
+            onPress={async () => {
+              const fileUri = `${FileSystem.documentDirectory}local.csv`;
+              try {
+                const fileInfo = await FileSystem.getInfoAsync(fileUri);
+                if (fileInfo.exists) {
+                 console.log('File Exists', 'The file "local.csv" exists!');
+                 navigation.navigate('tabsHome', { homeData: home });
+                 setHome(initialFormState);
+                } else {
+                  console.log('File Not Found', 'No local.csv detected. Navigating to download screen!' );
+                  navigation.navigate('DatabaseTest', {});
+                  setHome(initialFormState); 
+                }
+              } catch (error) {
+                console.error('Error checking file:', error);
+              }
             }}>
             <View style={globalStyles.button}>
               <Text style={globalStyles.buttonText}>Vamos!</Text>
