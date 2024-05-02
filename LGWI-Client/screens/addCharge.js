@@ -76,7 +76,7 @@ export default function AddCharge({ navigation }) {
           }}>
           <View style={globalStyles.button}>
             <Text style={globalStyles.buttonText} onPress={() => {
-            global.csvArray.append(meterNumber, chargeType, description, new Date(), amount);
+            global.csvArray.append(csvArray.length+1, meterNumber, chargeType, description, new Date(), amount, "Unpaid");
           }}>Add Charge</Text>
           </View>
         </TouchableOpacity>
