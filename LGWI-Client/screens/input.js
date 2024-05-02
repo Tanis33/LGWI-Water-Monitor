@@ -17,6 +17,7 @@ export default function Input({ navigation }) {
     cedula: '',
     usageAmount: '',
   };
+  
 
   const { t } = useTranslation();
 
