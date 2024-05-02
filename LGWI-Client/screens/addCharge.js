@@ -8,6 +8,8 @@ import { globalStyles } from '../styles/globalStyles';
 
 export default function AddCharge({ navigation }) {
 
+  const {meterNumber} = route.params;
+
   const [receiptData, setForm] = useState({
     amount: '',
     chargeType: '',
@@ -73,7 +75,9 @@ export default function AddCharge({ navigation }) {
             navigation.goBack('', {});
           }}>
           <View style={globalStyles.button}>
-            <Text style={globalStyles.buttonText}>Add Charge</Text>
+            <Text style={globalStyles.buttonText} onPress={() => {
+            global.csvArray.append(meterNumber, chargeType, description, new Date(), amount);
+          }}>Add Charge</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
