@@ -12,22 +12,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { globalStyles } from '../styles/globalStyles';
 
-//User Information
-const userData = [
-  {
-    spacer: '                                            ',
-    meterNumber: '234966',
-    name: 'Peter',
-    surname: 'Parker',
-    cedula: '123214',
-    sector: 'South East',
-    phoneNumber: '666-666-6666',
-    email: 'pparker@avenge.com',
-    status: 'Active',
-    category: 'Residential',
-  },
-];
-
 
 export default function EditUser({ navigation, route }) {
 
@@ -45,6 +29,21 @@ export default function EditUser({ navigation, route }) {
     status: '',
     category: '',
   });
+
+  const userData = [
+    {
+      spacer: '                                            ',
+      meterNumber: '234966',
+      name: 'Peter',
+      surname: 'Parker',
+      cedula: '123214',
+      sector: 'South East',
+      phoneNumber: '666-666-6666',
+      email: 'pparker@avenge.com',
+      status: 'Active',
+      category: 'Residential',
+    },
+  ];
 
   //Translation
   const { t } = useTranslation();
@@ -191,6 +190,18 @@ export default function EditUser({ navigation, route }) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
+            // find that user in the spreadsheet
+            let index = 0;
+            for(let i = 3; i < global.csvArray.length; i++){
+              if(global.csvArray[i][0] == meterNumber){
+                index = i;
+              }
+              if(index = 0){ // index shouldn't be zero. If it is, that meter number doesn't exist.
+                console.error("Not found!");
+              }
+            }
+            // add values to the spreadsheet at index.
+            global.csvArray[index] = [meterNumber, name, surname, cedula, sector, phoneNumber, email, status,	category, ""]; // Why no address?
             navigation.goBack('', {});
           }}>
           <View style={globalStyles.button}>
