@@ -2,11 +2,27 @@ import React, { useState } from 'react';
 import { WebView } from 'react-native-webview';
 import * as FileSystem from 'expo-file-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { csvContents } from './home.js';
+import { csvArray } from './home.js';
+import { communityID } from './home.js';
 
+// "Write" as in write to the csv locally, not to the cloud. For that, see arrayToCSVContents
 export const write = async () => {
   parse();
-
 };
+
+arrayToCSVContents();
+
+function arrayToCSVContents() {
+    if(global.csvContents != "Blank"){
+      global.csvContents = (global.csvArray).map(row => row.join(',')).join('\n');
+      console.log("gabbagoop" + global.csvContents);
+    }
+}
+
+
 
 export const parse = async () => {
     // unpack the csv contents
@@ -43,7 +59,7 @@ export const parse = async () => {
     console.log(row.join("  "));
   }
 
-  csvArray = dataArray;
+  global.csvArray = dataArray;
 };
 
 export default function DatabaseTest({ navigation }) {
@@ -112,10 +128,11 @@ const firestore = firebase.firestore();
 <script>
 
 let fname = "` + communityID + `";
-let globalContents = "` + csvContents.replace("\n", /#/g) + `";
+let globalContents = "` + (global.csvContents).replace("\n", /#/g) + `";
 
 
   function handleWrite(){
+      console.log("TESTTTT!!");
       writeEntry(fname, globalContents);
   }
 
@@ -168,9 +185,9 @@ async function onMessage(event) {
     console.log('Retrieved content:', retrievedContent);
 
     // put it in a global variable
-    csvContents = retrievedContent;
+    global.csvContents = retrievedContent;
     write();
-
+    navigation.navigate('tabsHome', {}); 
 }
 
 
