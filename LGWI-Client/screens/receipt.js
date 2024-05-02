@@ -8,25 +8,25 @@ import { globalStyles } from '../styles/globalStyles';
 
 export default function Receipt({ navigation, route }) {
 
+  const { meterNumber } = route.params;
+
 
   // Translation
   const { t } = useTranslation();
 
-  const testData = [
-    {
-      receiptID: "07",
-      date: "2024-04-23",
-      amount: "7.00",
-      tag: "Unpaid",
-    },
-    {
-      receiptID: "02",
-      date: "2024-03-01",
-      amount: "10.00",
-      tag: "Paid",
-    },
+  testData = [];
 
-  ];
+  for(let i = 3; i < global.csvArray.length; i++){
+    if(global.csvArray[i][18] == meterNumber){
+      testData.push([{
+        receiptID: global.csvArray[i][17],
+        date: global.csvArray[i][21],
+        amount: global.csvArray[i][22],
+        tag: global.csvArray[i][23],
+      }]);
+    }
+  }
+
   // Render
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
