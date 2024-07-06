@@ -19,13 +19,13 @@ If you're reading this, chances are you're the '25 students who picked this proj
   - PWAs don't require verification from Google Play or the App Store
   - Victor Norman would approve
 ## Todo
-What we've done
-* 
-What needs to be done
+This is what you'll be working on this year
 * Image-to-text processing
 * Multi-community support
 * Receipt creation/printing
+* Querying/filtering through reciepts
 * Spanish translation
+Additionally, don't forget the [CS-396/8 requirements](https://cs.calvin.edu/courses/cs/396/kvlinden/)!
 ## Project materials
 All of our CS-396/8 class materials – including our project proposal, presentations, todo lists, etc can be found [here](about:blank).
 
