@@ -31,6 +31,12 @@ Additionally, don't forget the [CS-396/8 requirements](https://cs.calvin.edu/cou
 All of our CS-396/8 class materials – including our project proposal, presentations, todo lists, etc can be found [here](https://drive.google.com/drive/folders/1nDc61zaPWj0OzmBFdk4gacMAmKYI4X28?usp=sharing).
 
 Our project website can be found [here](https://jacobwestra.com/LGWI/).
+
+Our Firebase database can be accessed [here](https://console.firebase.google.com/u/0/project/lgwi-csv/firestore)
+
+The (new) Github repository can be found [here](https://github.com/LifeGivingWaterInternational).
+
+If you can't access any of these things, please reach out! I'll list my contact info below. 
 ## Contact
 Please keep in touch! I (Jacob) have taken the reins of development. I'm usually a bit busy – I'm currently doing software development at [Kairos Media](https://thekairosmedia.com/), and doing some volunteer maintainence on [Calvinchimes.org](https://calvinchimes.org/). But I'll still be around!
 * Me - [me@jacobwestra.com](mailto:me@jacobwestra.com/) / (616) 312-5302
