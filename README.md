@@ -5,4 +5,4 @@ This was comissioned Life Giving Water International (LGWI), to monitor well wat
 
 # Picking up development
 If you're reading this, chances are you're the '25 students who picked this project (or were assigned it by Kvlinden). Here are some notes!
-- 
+
