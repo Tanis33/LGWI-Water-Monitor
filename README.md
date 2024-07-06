@@ -25,6 +25,7 @@ This is what you'll be working on this year
 * Receipt creation/printing
 * Querying/filtering through reciepts
 * Spanish translation
+
 Additionally, don't forget the [CS-396/8 requirements](https://cs.calvin.edu/courses/cs/396/kvlinden/)!
 ## Project materials
 All of our CS-396/8 class materials – including our project proposal, presentations, todo lists, etc can be found [here](about:blank).
