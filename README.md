@@ -33,6 +33,6 @@ All of our CS-396/8 class materials – including our project proposal, presenta
 Our project website can be found [here](https://jacobwestra.com/LGWI/).
 ## Contact
 Please keep in touch! I (Jacob) have taken the reins of development. I'm usually a bit busy – I'm currently doing software development at [Kairos Media](https://thekairosmedia.com/), and doing some volunteer maintainence on [Calvinchimes.org](https://calvinchimes.org/). But I'll still be around!
-* Me - [me@jacobwestra.com](https://jacobwestra.com/) / (616) 312-5302
-* Mark DeHaan – [markdh92@gmail.com](https://gmail.com/) / (616) 613-6153
-* Chris Visscher – [cvisscher81@gmail.com](https://gmail.com/)
+* Me - [me@jacobwestra.com](mailto:me@jacobwestra.com/) / (616) 312-5302
+* Mark DeHaan – [markdh92@gmail.com](mailto:markdh92@gmail.com) / (616) 613-6153
+* Chris Visscher – [cvisscher81@gmail.com](mailto:cvisscher81@gmail.com)
