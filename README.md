@@ -17,4 +17,21 @@ If you're reading this, chances are you're the '25 students who picked this proj
   - There are almost no dependencies. You'll only have to worry about Firebase, and that's it
   - The app doesn't need anything beyond the capabilities of a PWA. This app, to paraphrase, is basically a glorified Excel spreadsheet
   - PWAs don't require verification from Google Play or the App Store
+  - Victor Norman would approve
 ## Todo
+What we've done
+* 
+What needs to be done
+* Image-to-text processing
+* Multi-community support
+* Receipt creation/printing
+* Spanish translation
+## Project materials
+All of our CS-396/8 class materials – including our project proposal, presentations, todo lists, etc can be found [here](about:blank).
+
+Our project website can be found [here](https://jacobwestra.com/LGWI/).
+## Contact
+Please keep in touch! I (Jacob) have taken the reins of development. I'm usually a bit busy – I'm currently doing software development at [Kairos Media](https://thekairosmedia.com/), and doing some volunteer maintainence on [Calvinchimes.org](https://calvinchimes.org/). But I'll still be around!
+* Me - [me@jacobwestra.com](https://jacobwestra.com/) / (616) 312-5302
+* Mark DeHaan – [markdh92@gmail.com](https://gmail.com/) / (616) 613-6153
+* Chris Visscher – [cvisscher81@gmail.com](https://gmail.com/)
