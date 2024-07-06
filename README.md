@@ -5,6 +5,13 @@ This was comissioned Life Giving Water International (LGWI), to monitor well wat
 
 ## Picking up development
 If you're reading this, chances are you're the '25 students who picked this project (or were assigned it by Kvlinden). Here are some notes!
-* Everything contained in `/old` is (mostly) outdated, and only exists for archival purposes. This includes our react-native client – which I (Jacob) am officially retiring. Here are some reasons why:
-  - It's dependency hell. Getting a development environment set up is an absolute nightmare, requiring you to install old/outdated versions of packages
-  - There were a lot of iOS- or Android-specific bugs.
+* Everything contained in `/old` is (mostly) outdated, and only exists for archival purposes. This includes our React Native client – which I (Jacob) am officially retiring. Here are some reasons why:
+  - It's dependency hell. Getting a development environment set up is an absolute nightmare, requiring you to install old/outdated versions of packages just to get the app to run
+  - There were a lot of iOS- or Android-specific bugs
+* In its place, I'll be making an offline PWA in Vanilla JS/html. Here are some reasons why I chose to do that:
+  - It is less platform-specific; elements will behave almost identically across iOS/Android
+  - Testing is easier – no special tools are required. Just load it up in a browser window, and adjust the screen size as needed
+  - Development is much simpler and beginner-friendly – easier for incoming seniors to pick up; less technical debt
+  - There are almost no dependencies. You'll only have to worry about Firebase, and that's it
+  - The app doesn't need anything beyond the capabilities of a PWA. This app, to paraphrase, is basically a glorified Excel spreadsheet
+  - PWAs don't require verification from Google Play or the App Store
