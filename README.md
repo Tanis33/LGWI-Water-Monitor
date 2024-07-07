@@ -39,6 +39,6 @@ The (new) Github repository can be found [here](https://github.com/LifeGivingWat
 If you can't access any of these things, please reach out! I'll list my contact info below. 
 ## Contact
 Please keep in touch! I (Jacob) have taken the reins of development. I'm usually a bit busy – I'm currently doing software development at [Kairos Media](https://thekairosmedia.com/), and doing some volunteer maintainence on [Calvinchimes.org](https://calvinchimes.org/). But I'll still be around!
-* Me - [me@jacobwestra.com](mailto:me@jacobwestra.com/) / (616) 312-5302
-* Mark DeHaan – [markdh92@gmail.com](mailto:markdh92@gmail.com) / (616) 613-6153
+* Me - [me@jacobwestra.com](mailto:me@jacobwestra.com/)
+* Mark DeHaan – [markdh92@gmail.com](mailto:markdh92@gmail.com)
 * Chris Visscher – [cvisscher81@gmail.com](mailto:cvisscher81@gmail.com)
