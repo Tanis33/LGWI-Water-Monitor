@@ -5,11 +5,11 @@ This was comissioned by Life Giving Water International (LGWI), to monitor well 
 
 ## Setup
 
-In your terminal, run 'git clone Tanis33/LGWI-Water-Monitor' OR download the repository as a .zip.
+In your terminal, run `git clone Tanis33/LGWI-Water-Monitor` OR download the repository as a .zip.
 
-Once you've cd'd to (LGWI-Water-Monitor -> LGWI-Client), run 'npm install'. If you don't have Node.js set up yet, see [this](https://nodejs.org/en/download/prebuilt-installer/current).
+Once you've cd'd to (LGWI-Water-Monitor -> LGWI-Client), run `npm install`. If you don't have Node.js set up yet, see [this](https://nodejs.org/en/download/prebuilt-installer/current).
 
-Once installation is done, run 'expo start'. This will present you with a QR code, which you can scan via the Expo Go app for [iOS](https://apps.apple.com/us/app/expo-go/id982107779) and [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&pli=1).
+Once installation is done, run `expo start`. This will present you with a QR code, which you can scan via the Expo Go app for [iOS](https://apps.apple.com/us/app/expo-go/id982107779) and [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&pli=1).
 
 ## Picking up development
 If you're reading this, chances are you're the '25 students who picked this project (or were assigned it by Kvlinden). Here are some notes!
