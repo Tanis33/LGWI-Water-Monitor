@@ -1,7 +1,15 @@
 # LGWI Liquid Metrics
 This is the senior design project of Ben Tanis and Jacob Westra, both class of '24 graduates of Calvin University.
 
-This was comissioned Life Giving Water International (LGWI), to monitor well water for LGWI's water systems in Ecuador. You can read more [here](https://jacobwestra.com/LGWI/).
+This was comissioned by Life Giving Water International (LGWI), to monitor well water for LGWI's water systems in Ecuador. You can read more [here](https://jacobwestra.com/LGWI/).
+
+## Setup
+
+In your terminal, run 'git clone Tanis33/LGWI-Water-Monitor' OR download the repository as a .zip.
+
+Once you've cd'd to (LGWI-Water-Monitor -> LGWI-Client), run 'npm install'. If you don't have Node.js set up yet, see [this](https://nodejs.org/en/download/prebuilt-installer/current).
+
+Once installation is done, run 'expo start'. This will present you with a QR code, which you can scan via the Expo Go app for [iOS](https://apps.apple.com/us/app/expo-go/id982107779) and [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&pli=1).
 
 ## Picking up development
 If you're reading this, chances are you're the '25 students who picked this project (or were assigned it by Kvlinden). Here are some notes!
@@ -26,7 +34,7 @@ This is what you'll be working on this year
 * Querying/filtering through reciepts
 * Spanish translation
 
-Additionally, don't forget the [CS-396/8 requirements](https://cs.calvin.edu/courses/cs/396/kvlinden/)!
+Additionally, don't forget about the [CS-396/8 requirements](https://cs.calvin.edu/courses/cs/396/kvlinden/)!
 ## Project materials
 All of our CS-396/8 class materials – including our project proposal, presentations, todo lists, etc can be found [here](https://drive.google.com/drive/folders/1nDc61zaPWj0OzmBFdk4gacMAmKYI4X28?usp=sharing).
 
